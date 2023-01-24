@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Muli", sans-serif;
+}
+
+body {
+    background-color: rgb(5, 16, 57);
+    color: #fff;
+    font-size: 18px;
+}
+
+legend {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+fieldset {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border: none;
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 10%;
+}
+
+input, .boton {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #d6b9f0;
+    font-size: 15px;
+    transition: background-color .5s ease;
+}
+
+input:hover, .boton:hover {
+    background-color: #b99bd1;
+}
+
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+p {
+    padding: 10px;
+}
+
+h3 {
+    text-align: left;
+}
+
+.botones {
+    text-align: center;
+}
+
+.menu {
+    text-align: center;
+}

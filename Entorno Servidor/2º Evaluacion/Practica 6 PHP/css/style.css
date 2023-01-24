@@ -1,0 +1,36 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+.contenedor {
+    margin-top: 25vh;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+}
+
+fieldset {
+    border-radius: 1rem;
+    padding: 1.2rem;
+}
+
+div {
+    padding: .8rem;
+}
+
+input {
+    width: 8rem;
+    text-align: center;
+}
+
+#principal {
+    text-align: center;
+}
+
+#validarDatos {
+    margin-top: .8rem;
+    cursor: pointer;
+}

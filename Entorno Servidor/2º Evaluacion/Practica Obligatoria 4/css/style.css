@@ -1,0 +1,19 @@
+form {
+    padding: 10px;
+    margin: auto;
+}
+
+label {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+input, select {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+p {
+    font-weight: 900;
+    font-size: 18px;
+}

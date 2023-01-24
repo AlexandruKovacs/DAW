@@ -1,0 +1,48 @@
+body {
+    font-family: 'Maven Pro', sans-serif;
+}
+
+input[type="submit"] {
+    border: 1px solid #CCC;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    transition: background-color 0.5s;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+}
+
+input[type="text"] {
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+fieldset {
+    background-color: #CCC;
+    border: 1px solid #333;
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.respuesta {
+    margin-top: 50px;
+}
+
+.noExiste {
+    text-align: center;
+    margin-top: 20px;
+}

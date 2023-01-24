@@ -1,0 +1,7 @@
+Numeros que estan en ambos ficheros: 
+
+456
+
+Numeros que no estan en ambos ficheros: 
+
+123789

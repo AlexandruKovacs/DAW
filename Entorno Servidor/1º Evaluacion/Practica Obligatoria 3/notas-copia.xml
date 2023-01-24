@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<notas asignatura="SSOO">
+    <alumno>
+        <matricula>x0501</matricula>
+        <nombre>Dario</nombre>
+        <apellidos>Bueno Gutierrez</apellidos>
+        <teoria>5</teoria>
+        <practicas>4.5</practicas>
+    </alumno>
+    <alumno>
+        <matricula>x0502</matricula>
+        <nombre>Rodrigo</nombre>
+        <apellidos>Vaquero Gutierrez</apellidos>
+        <teoria>9</teoria>
+        <practicas>7</practicas>
+    </alumno>
+    <alumno>
+        <matricula>x0503</matricula>
+        <nombre>Ines</nombre>
+        <apellidos>Bueno Gutierrez</apellidos>
+        <teoria>8</teoria>
+        <practicas>9</practicas>
+    </alumno>
+    <alumno>
+        <matricula>x0504</matricula>
+        <nombre>Violeta</nombre>
+        <apellidos>Duro Gutierrez</apellidos>
+        <teoria>4.5</teoria>
+        <practicas>7</practicas>
+    </alumno>
+</notas>
