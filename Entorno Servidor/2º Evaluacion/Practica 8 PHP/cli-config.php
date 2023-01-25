@@ -2,7 +2,7 @@
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-// replace with file to your own project bootstrap
+// replace with file to your own project bootstrap.php
 require_once 'bootstrap.php';
 return ConsoleRunner::createHelperSet($entityManager);
 
