@@ -27,7 +27,7 @@ class Equipo {
     }
 
     public function getNombre() {
-        return $this->id;
+        return $this->nombre;
     }
 
     public function setNombre($nombre) {
@@ -35,7 +35,7 @@ class Equipo {
     }
 
     public function getFundacion() {
-        return $this->id;
+        return $this->fundacion;
     }
 
     public function setFundacion($fundacion) {
@@ -43,7 +43,7 @@ class Equipo {
     }
 
     public function getSocios() {
-        return $this->id;
+        return $this->socios;
     }
 
     public function setSocios($socios) {
@@ -51,7 +51,7 @@ class Equipo {
     }
 
     public function getCiudad() {
-        return $this->id;
+        return $this->ciudad;
     }
 
     public function setCiudad($ciudad) {

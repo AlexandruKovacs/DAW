@@ -3,11 +3,11 @@
 require_once('./src/Equipo.php');
 require_once('bootstrap.php');
 
-$eq = $entityManager->find('equipo', 1);
+$eq = $entityManager->find('equipo', 2);
 
 echo $eq->getSocios();
 
-$eq->setSocios(80000);
+$eq->setSocios(40000);
 
 $entityManager->flush();
 
