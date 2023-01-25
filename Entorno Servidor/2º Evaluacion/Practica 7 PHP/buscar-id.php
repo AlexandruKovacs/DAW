@@ -1,6 +1,6 @@
 <?php
 
-require_once('./entities/Equipo.php');
+require_once('./src/Equipo.php');
 require_once('bootstrap.php');
 
 $eq = $entityManager->find('Equipo', 1);
