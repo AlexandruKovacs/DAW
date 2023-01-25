@@ -49,5 +49,4 @@ class Equipo
      */
     private $ciudad;
 
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once('./src/Equipo.php');
+require_once('./entities/Equipo.php');
 require_once('bootstrap.php');
 
 echo '<h3>Modificar socios</h3>';
@@ -8,7 +8,7 @@ echo '<h3>Modificar socios</h3>';
 $eq = $entityManager->find('equipo', 2);
 echo 'El numero de socios anterior es: ' . $eq->getSocios() . '</p>';
 
-$eq->setSocios(100000);
+$eq->setSocios(50000);
 echo '<p>El numero de socios modificado es: ' . $eq->getSocios() . '</p>';
 
 $entityManager->flush();
