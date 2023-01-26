@@ -182,7 +182,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
             );
         }
 
-        if ($useSimpleAnnotationReader) {
+        if ($useSimpleAnnotationReader == false) {
             if (! class_exists(SimpleAnnotationReader::class)) {
                 throw new BadMethodCallException(
                     'SimpleAnnotationReader has been removed in doctrine/annotations 2.'

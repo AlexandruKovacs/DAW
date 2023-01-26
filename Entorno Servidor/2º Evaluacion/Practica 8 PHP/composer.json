@@ -3,6 +3,6 @@
         "doctrine/orm": "^2.14",
         "irap/autoloader": "^2.0",
         "symfony/cache": "^6.2",
-        "doctrine/annotations": "^1.0"
+        "doctrine/annotations": "^2.0"
     }
 }
