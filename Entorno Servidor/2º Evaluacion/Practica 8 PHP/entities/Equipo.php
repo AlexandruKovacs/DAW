@@ -49,4 +49,111 @@ class Equipo
      */
     private $ciudad;
 
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre.
+     *
+     * @param string|null $nombre
+     *
+     * @return Equipo
+     */
+    public function setNombre($nombre = null)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre.
+     *
+     * @return string|null
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set socios.
+     *
+     * @param int|null $socios
+     *
+     * @return Equipo
+     */
+    public function setSocios($socios = null)
+    {
+        $this->socios = $socios;
+
+        return $this;
+    }
+
+    /**
+     * Get socios.
+     *
+     * @return int|null
+     */
+    public function getSocios()
+    {
+        return $this->socios;
+    }
+
+    /**
+     * Set fundacion.
+     *
+     * @param string|null $fundacion
+     *
+     * @return Equipo
+     */
+    public function setFundacion($fundacion = null)
+    {
+        $this->fundacion = $fundacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fundacion.
+     *
+     * @return string|null
+     */
+    public function getFundacion()
+    {
+        return $this->fundacion;
+    }
+
+    /**
+     * Set ciudad.
+     *
+     * @param string|null $ciudad
+     *
+     * @return Equipo
+     */
+    public function setCiudad($ciudad = null)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad.
+     *
+     * @return string|null
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
 }
