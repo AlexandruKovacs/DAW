@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManager;
 // Ruta donde guardaremos los documentod creados
 $paths = array("./entities");
 $isDevMode = false;
-$useSimpleAnnotationReader = false;
 
 // Conection Configuration, 'tienda' es la base de datos
 $dbParams = [
