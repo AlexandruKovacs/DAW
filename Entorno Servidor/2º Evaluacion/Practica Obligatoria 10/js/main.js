@@ -1,33 +1,43 @@
-addEventListener('load', inciciarEvento, false);
-let xhr;
+let selectCategoria = document.getElementById('categoria');
+let selectProducto = document.getElementById('producto');
+let pedido = document.getElementById('pedido');
 
-function inciciarEvento() {
-    let boton = document.getElementById('enviar');
-    boton.addEventListener('click', enviarDatos, false);
-}
+// xhr = new XMLHttpRequest();
+// xhr.open('POST', 'insertar-datos.php', true);
+// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-function enviarDatos() {
-    
-    let nombre = document.getElementById('nombre').value;
-    let apellidos = document.getElementById('apellidos').value;
+// xhr.onreadystatechange = function() {
+//     if(xhr.readyState === 4 && xhr.status === 200) {
 
-    let pedido = document.getElementById('pedido');
+//         selectCategoria.addEventListener('change', function() { actualizarProductos(); });
+//     }
+// };
 
-    xhr = new XMLHttpRequest();
-    xhr.open('POST', 'insertar-datos.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// xhr.send(`nombre=${nombre}&apellidos=${apellidos}`);
 
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200) {
-            let datos = JSON.parse(xhr.responseText);
-    
-            let salida = `<p>${datos.nombre}</p>`;
-            salida = salida + `<p>${datos.apellidos}</p>`;
 
-            pedido.innerHTML = salida;
-        }
-    }
+selectCategoria.addEventListener('change', function(event) {
+  let idCategoria = event.target.value;
+  let xhr = new XMLHttpRequest();
 
-    xhr.send(`nombre=${nombre}&apellidos=${apellidos}`);
-}
+  xhr.open('GET', 'consulta-productos.php?idCategoria=' + idCategoria);
+
+  xhr.onload = function() {
+    let productos = JSON.parse(xhr.responseText);
+
+    selectProducto.innerHTML = '';
+
+    productos.forEach(function(producto) {
+
+      let option = document.createElement('option');
+      option.textContent = producto;
+      option.value = producto;
+
+      selectProducto.appendChild(option);
+    });
+
+  };
+
+  xhr.send();
   
+});
