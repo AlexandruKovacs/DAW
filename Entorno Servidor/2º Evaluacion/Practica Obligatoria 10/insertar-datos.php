@@ -1,28 +1,26 @@
 <?php
-
-    $nombre = $_REQUEST['nombre'];
-    $apellidos = $_REQUEST['apellidos'];
-
-    // Conectarse a la base de datos y escapar los datos
-    $conn = mysqli_connect("localhost","root","","prueba");
-
-    $nombre = mysqli_real_escape_string($conn, $nombre);
-    $apellidos = mysqli_real_escape_string($conn, $apellidos);
-
-    // Insertar los datos en la tabla
-    $sql = "INSERT INTO pedidos (nombre, apellidos) VALUES ('$nombre', '$apellidos')";
-    mysqli_query($conn, $sql);
-
-    $datos = [
-        "nombre" => $nombre,
-        "apellidos" => $apellidos
-    ];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        $productosSeleccionados = $_POST['productos'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $telefono = $_POST['telefono'];
     
-    // CODIFICAMOS EL ARRAY A JSON
-    $JSON = json_encode($datos);
+        $conn = mysqli_connect('localhost', 'root', '', 'tienda');
+
+        $productos = implode(',', $productosSeleccionados);
+        $codigoEnvio = substr(md5(rand()), 0, 10);
     
-    // ESCRIBIMOS EL JSON
-    echo $JSON;
-    
-    mysqli_close($conn);
+        $consulta = "INSERT INTO pedidos (nombreProd, nombreCom, telefono, direccion, codigoEnvio) 
+                VALUES ('$productos', '$nombre', '$direccion', '$telefono', '$codigoEnvio')";
+
+        if (mysqli_query($conn, $consulta)) {
+            echo 'Insertado correctamente';
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+
 ?>

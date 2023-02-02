@@ -1,43 +1,59 @@
-let selectCategoria = document.getElementById('categoria');
-let selectProducto = document.getElementById('producto');
-let pedido = document.getElementById('pedido');
+const selectCategoria = document.getElementById('categorias');
+const selectProducto = document.getElementById('productos');
+const pedido = document.getElementById('pedido');
+const compra = document.getElementById('compra');
+const enviar = document.getElementById('enviar');
+const formulario = document.getElementById('formulario');
 
-// xhr = new XMLHttpRequest();
-// xhr.open('POST', 'insertar-datos.php', true);
-// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+pedido.style.display = 'none';
+compra.style.display = 'none';
 
-// xhr.onreadystatechange = function() {
-//     if(xhr.readyState === 4 && xhr.status === 200) {
-
-//         selectCategoria.addEventListener('change', function() { actualizarProductos(); });
-//     }
-// };
-
-// xhr.send(`nombre=${nombre}&apellidos=${apellidos}`);
-
+let xhr = new XMLHttpRequest();
 
 selectCategoria.addEventListener('change', function(event) {
-  let idCategoria = event.target.value;
-  let xhr = new XMLHttpRequest();
+    let idCategoria = event.target.value;
 
-  xhr.open('GET', 'consulta-productos.php?idCategoria=' + idCategoria);
+    xhr.open('GET', 'consulta-productos.php?idCategoria=' + idCategoria);
+    xhr.onreadystatechange = function() {
+        let productos = JSON.parse(xhr.responseText);
 
-  xhr.onload = function() {
-    let productos = JSON.parse(xhr.responseText);
+        selectProducto.innerHTML = '';
 
-    selectProducto.innerHTML = '';
+        productos.forEach(function(producto) {
 
-    productos.forEach(function(producto) {
+            let option = document.createElement('option');
+            option.textContent = producto;
+            option.value = producto;
 
-      let option = document.createElement('option');
-      option.textContent = producto;
-      option.value = producto;
+            selectProducto.appendChild(option);
+        });
+    };
+    xhr.send();
+});
 
-      selectProducto.appendChild(option);
-    });
+selectProducto.addEventListener('change', function() {
 
-  };
+    if (selectProducto.selectedOptions.length > 3) {
+        selectProducto.selectedOptions[3].selected = false;
+    }
 
-  xhr.send();
+    compra.style.display = 'block';
+});
+
+formulario.addEventListener("submit", function(event) {
+    event.preventDefault();
   
+    var formData = new FormData(this);
+  
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "insertar-datos.php", true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            formulario.style.display = 'none';
+            pedido.style.display = 'block';
+        }
+    };
+    xhr.send(formData);
 });

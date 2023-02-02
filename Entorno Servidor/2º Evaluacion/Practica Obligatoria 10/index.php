@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="container">
-        <form class="w-25">
-            <div>
+        <form id="formulario" class="w-25 p-3">
+            <div class="mt-3">
                 <label for="categoria">Categoría</label>
-                <select name="categoria" id="categoria" class="form-control">
+                <select name="categorias" id="categorias" class="form-control">
                     <option value="">Selecciona una categoría</option>
 
                     <?php include('consulta-categoria.php'); ?>
@@ -26,17 +26,33 @@
 
                 </select>
             </div>
-            <div>
-                <label for="producto">Seleccione un producto</label>
-                <select name="producto" id="producto" class="form-control"></select>
+            <div class="mt-3">
+                <label for="productos">Seleccione los productos (máx. 3):</label>
+                <select multiple name="productos[]" id="productos" class="form-control"></select>
             </div>
-            <div>
-                <button id="enviar" class="btn btn-success mt-4">Realizar pedido</button>
+            <div id="compra" class="mt-3">
+                <div class="mt-3">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" name="direccion" id="direccion" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tlf" name="telefono" id="telefono" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <button id="enviar" class="btn btn-success mt-4">Realizar pedido</button>
+                </div>
             </div>
         </form>
     </div>
 
-    <div id="pedido"></div>
+    <div id="pedido">
+        <h3>Pedido enviado correctamente.</h3>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
