@@ -43,17 +43,19 @@ selectProducto.addEventListener('change', function() {
 formulario.addEventListener("submit", function(event) {
     event.preventDefault();
   
-    var formData = new FormData(this);
+    var datos = new FormData(formulario);
   
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "insertar-datos.php", true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            
             formulario.style.display = 'none';
             pedido.style.display = 'block';
+            console.log(xhr.responseText);
+            
         }
     };
-    xhr.send(formData);
+    xhr.send(datos);
 });

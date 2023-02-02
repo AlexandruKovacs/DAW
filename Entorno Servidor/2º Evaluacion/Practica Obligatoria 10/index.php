@@ -41,7 +41,7 @@
                 </div>
                 <div class="mt-3">
                     <label for="telefono">Teléfono:</label>
-                    <input type="tlf" name="telefono" id="telefono" class="form-control">
+                    <input type="tel" name="telefono" id="telefono" class="form-control">
                 </div>
                 <div class="mt-3">
                     <button id="enviar" class="btn btn-success mt-4">Realizar pedido</button>
