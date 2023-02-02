@@ -52,6 +52,7 @@
 
     <div id="pedido">
         <h3>Pedido enviado correctamente.</h3>
+        <button id="volver" class="btn btn-success mt-4">Volver a comprar</button>
     </div>
 
     <script src="js/main.js"></script>

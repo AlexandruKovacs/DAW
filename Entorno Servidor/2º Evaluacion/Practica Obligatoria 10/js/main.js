@@ -3,6 +3,7 @@ const selectProducto = document.getElementById('productos');
 const pedido = document.getElementById('pedido');
 const compra = document.getElementById('compra');
 const enviar = document.getElementById('enviar');
+const volver = document.getElementById('volver');
 const formulario = document.getElementById('formulario');
 
 pedido.style.display = 'none';
@@ -40,7 +41,7 @@ selectProducto.addEventListener('change', function() {
     compra.style.display = 'block';
 });
 
-formulario.addEventListener("submit", function(event) {
+formulario.addEventListener('submit', function(event) {
     event.preventDefault();
   
     var datos = new FormData(formulario);
@@ -58,4 +59,12 @@ formulario.addEventListener("submit", function(event) {
         }
     };
     xhr.send(datos);
+});
+
+volver.addEventListener('click', function() {
+
+    formulario.style.display = 'block';
+    pedido.style.display = 'none';
+    location.reload();
+    
 });
