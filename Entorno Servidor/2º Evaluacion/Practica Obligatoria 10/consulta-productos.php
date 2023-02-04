@@ -4,7 +4,7 @@
     $productos = [];
     
     mysqli_select_db($conn, 'tienda') or die ('No se puede seleccionar la BD');
-    $idCategoria = (int) $_GET['idCategoria'];
+    $idCategoria = (int) $_REQUEST['idCategoria'];
 
     $consulta = "SELECT * FROM productos WHERE idCategoria = $idCategoria";
     $resultado = mysqli_query($conn, $consulta);

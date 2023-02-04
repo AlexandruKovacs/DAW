@@ -1,33 +1,34 @@
 const selectCategoria = document.getElementById('categorias');
 const selectProducto = document.getElementById('productos');
 const pedido = document.getElementById('pedido');
-const compra = document.getElementById('compra');
+const datosCompra = document.getElementById('datosCompra');
+const datosEnvio = document.getElementById('datosEnvio');
 const enviar = document.getElementById('enviar');
 const volver = document.getElementById('volver');
 const formulario = document.getElementById('formulario');
-
-pedido.style.display = 'none';
-compra.style.display = 'none';
 
 let xhr = new XMLHttpRequest();
 
 selectCategoria.addEventListener('change', function(event) {
     let idCategoria = event.target.value;
 
-    xhr.open('GET', 'consulta-productos.php?idCategoria=' + idCategoria);
+    xhr.open('POST', 'consulta-productos.php?idCategoria=' + idCategoria);
     xhr.onreadystatechange = function() {
-        let productos = JSON.parse(xhr.responseText);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            
+            let productos = JSON.parse(xhr.responseText);
 
-        selectProducto.innerHTML = '';
+            selectProducto.innerHTML = '';
 
-        productos.forEach(function(producto) {
+            productos.forEach(function(producto) {
 
-            let option = document.createElement('option');
-            option.textContent = producto;
-            option.value = producto;
+                let option = document.createElement('option');
+                option.textContent = producto;
+                option.value = producto;
 
-            selectProducto.appendChild(option);
-        });
+                selectProducto.appendChild(option);
+            });
+        }
     };
     xhr.send();
 });
@@ -38,19 +39,16 @@ selectProducto.addEventListener('change', function() {
         selectProducto.selectedOptions[3].selected = false;
     }
 
-    compra.style.display = 'block';
+    datosCompra.style.display = 'block';
 });
 
-formulario.addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    var datos = new FormData(formulario);
-  
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "insertar-datos.php", true);
-  
+formulario.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let datos = new FormData(formulario);
+
+    xhr.open('POST', 'insertar-datos.php', true);
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             
             formulario.style.display = 'none';
             pedido.style.display = 'block';
@@ -62,9 +60,5 @@ formulario.addEventListener('submit', function(event) {
 });
 
 volver.addEventListener('click', function() {
-
-    formulario.style.display = 'block';
-    pedido.style.display = 'none';
-    location.reload();
-    
+    location.reload(); 
 });

@@ -1,10 +1,10 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $productosSeleccionados = $_POST['productos'];
-        $nombre = $_POST['nombre'];
-        $direccion = $_POST['direccion'];
-        $telefono = $_POST['telefono'];
+        $productosSeleccionados = $_REQUEST['productos'];
+        $nombre = $_REQUEST['nombre'];
+        $direccion = $_REQUEST['direccion'];
+        $telefono = $_REQUEST['telefono'];
     
         $conn = mysqli_connect('localhost', 'root', '', 'tienda');
 
@@ -17,7 +17,7 @@
         if (mysqli_query($conn, $consulta)) {
             echo 'Insertado correctamente';
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
         }
 
         mysqli_close($conn);
