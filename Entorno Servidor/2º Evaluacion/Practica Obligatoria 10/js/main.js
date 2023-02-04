@@ -49,8 +49,8 @@ formulario.addEventListener('submit', function(e) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
-            let datosEnvio = JSON.parse(xhr.responseText);
-            
+            let datosEnvio = JSON.parse(xhr.responseText)
+
             formulario.style.display = 'none';
             pedido.style.display = 'block';
             pedido.className = 'd-block justify-content-center text-center mt-4';
@@ -61,6 +61,8 @@ formulario.addEventListener('submit', function(e) {
                 <p>Código de envío: ${datosEnvio.codigoEnvio}</p>
             `
             infoEnvio.className = 'mt-4';
+
+            console.log(datosEnvio);
         }
     };
     xhr.send(datos);
