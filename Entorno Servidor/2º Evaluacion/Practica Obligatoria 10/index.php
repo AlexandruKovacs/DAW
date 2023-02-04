@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,25 +13,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container d-flex justify-content-center text-center">
+    <div class="container d-flex justify-content-center text-center mt-5">
         <form id="formulario">
-            <div class="mt-5">
-                <label for="categoria">Categoría</label>
-                <select name="categorias" id="categorias" class="form-control mt-2 mb-4" required>
-                    <option>Selecciona una categoría</option>
+            <label for="categoria">Categoría</label>
+            <select name="categorias" id="categorias" class="form-control mt-2 mb-4" required>
+                <option>Selecciona una categoría</option>
 
-                    <?php include('consulta-categoria.php'); ?>
-                    <?php while ($categoria = $categorias->fetch_assoc()): ?>
-                        <option value="<?php echo $categoria['id'] ?>" id="categoriaSeleccionada">
-                        <?php echo $categoria['nombre'] ?>
-                        </option>
-                    <?php endwhile; ?>
+                <?php include('consulta-categoria.php'); ?>
+                <?php while ($categoria = $categorias->fetch_assoc()): ?>
+                    <option value="<?php echo $categoria['id'] ?>" id="categoriaSeleccionada">
+                    <?php echo $categoria['nombre'] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
 
-                </select>
-            </div>
-
-                <label for="productos">Seleccione los productos (máx. 3):</label>
-                <select multiple name="productos[]" id="productos" class="form-control mt-2 mb-2" required></select>
+            <label for="productos">Seleccione los productos (máx. 3):</label>
+            <select multiple name="productos[]" id="productos" class="form-control mt-2 mb-2" required></select>
 
             <div id="datosCompra" class="mt-4">
            
