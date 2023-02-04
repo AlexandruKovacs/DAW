@@ -11,7 +11,7 @@
         $productos = implode(', ', $productosSeleccionados);
         $codigoEnvio = substr(md5(rand()), 0, 10);
     
-        $consulta = "INSERT INTO pedidos (nombreProd, nombreCom, telefono, direccion, codigoEnvio) 
+        $consulta = "INSERT INTO pedidos (nombreProd, nombreCom, telefono, direccion, codEnvio) 
                 VALUES ('$productos', '$nombre', '$telefono', '$direccion', '$codigoEnvio')";
 
         $resultado = mysqli_query($conn, $consulta);
