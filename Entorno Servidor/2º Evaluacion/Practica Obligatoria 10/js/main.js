@@ -56,8 +56,8 @@ formulario.addEventListener('submit', function(e) {
             pedido.className = 'd-block justify-content-center text-center mt-4';
 
             infoEnvio.innerHTML = `
-                <p>Tus productos: ${datosEnvio.productos}</p>
-                <p>Dirección de entrega: ${datosEnvio.direccion}</p>
+                <p>Tus productos: ${datosEnvio.productos}.</p>
+                <p>Tu pedido será entregado en ${datosEnvio.direccion} en un plazo de 14 días.</p>
                 <p>Código de envío: ${datosEnvio.codigoEnvio}</p>
             `
             infoEnvio.className = 'mt-4';
