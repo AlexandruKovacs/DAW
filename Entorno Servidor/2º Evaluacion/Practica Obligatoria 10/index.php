@@ -16,8 +16,8 @@
         <form id="formulario">
             <div class="mt-4">
                 <label for="categoria">Categoría</label>
-                <select name="categorias" id="categorias" class="form-control mt-2">
-                    <option value="">Selecciona una categoría</option>
+                <select name="categorias" id="categorias" class="form-control mt-2" required>
+                    <option>Selecciona una categoría</option>
 
                     <?php include('consulta-categoria.php'); ?>
                     <?php while ($categoria = $categorias->fetch_assoc()): ?>
@@ -30,20 +30,20 @@
             </div>
             <div class="mt-4">
                 <label for="productos">Seleccione los productos (máx. 3):</label>
-                <select multiple name="productos[]" id="productos" class="form-control mt-2"></select>
+                <select multiple name="productos[]" id="productos" class="form-control mt-2" required></select>
             </div>
             <div id="datosCompra" class="mt-4">
                 <div class="mt-3">
                     <label for="nombre">Nombre del comprador</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control">
+                    <input type="text" name="nombre" id="nombre" class="form-control" required>
                 </div>
                 <div class="mt-3">
                     <label for="direccion">Dirección de envío</label>
-                    <input type="text" name="direccion" id="direccion" class="form-control">
+                    <input type="text" name="direccion" id="direccion" class="form-control" required>
                 </div>
                 <div class="mt-3">
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" class="form-control">
+                    <input type="tel" name="telefono" id="telefono" class="form-control" required>
                 </div>
                 <div class="mt-3">
                     <button id="enviar" class="btn btn-success mt-4">Realizar pedido <i class="fa-solid fa-cart-shopping"></i></button>
@@ -54,8 +54,8 @@
 
     <div id="pedido">
         <h3>Pedido enviado correctamente.</h3>
-        <div id="datosEnvio"></div>
-        <button id="volver" class="btn btn-success mt-4">Volver a comprar</button>
+        <div id="infoEnvio"></div>
+        <button id="volver" class="btn btn-success mt-4">Volver a comprar <i class="fa-solid fa-rotate-left"></i></button>
     </div>
 
     <script src="js/main.js"></script>

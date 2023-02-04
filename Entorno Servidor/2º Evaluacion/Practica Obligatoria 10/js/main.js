@@ -2,7 +2,7 @@ const selectCategoria = document.getElementById('categorias');
 const selectProducto = document.getElementById('productos');
 const pedido = document.getElementById('pedido');
 const datosCompra = document.getElementById('datosCompra');
-const datosEnvio = document.getElementById('datosEnvio');
+const infoEnvio = document.getElementById('infoEnvio');
 const enviar = document.getElementById('enviar');
 const volver = document.getElementById('volver');
 const formulario = document.getElementById('formulario');
@@ -15,7 +15,7 @@ selectCategoria.addEventListener('change', function(event) {
     xhr.open('POST', 'consulta-productos.php?idCategoria=' + idCategoria);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            
+
             let productos = JSON.parse(xhr.responseText);
 
             selectProducto.innerHTML = '';
@@ -49,11 +49,19 @@ formulario.addEventListener('submit', function(e) {
     xhr.open('POST', 'insertar-datos.php', true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
+
+            let datosEnvio = JSON.parse(xhr.responseText);
             
             formulario.style.display = 'none';
             pedido.style.display = 'block';
-            console.log(xhr.responseText);
-            
+            pedido.className = 'd-block justify-content-center text-center mt-4';
+
+            infoEnvio.innerHTML = `
+                <p>Tus productos: ${datosEnvio.productos}</p>
+                <p>Dirección de entrega: ${datosEnvio.direccion}</p>
+                <p>Código de envío: ${datosEnvio.codigoEnvio}</p>
+            `
+            infoEnvio.className = 'mt-4';
         }
     };
     xhr.send(datos);
