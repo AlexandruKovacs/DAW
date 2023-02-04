@@ -15,9 +15,9 @@
 <body>
     <div class="container d-flex justify-content-center text-center">
         <form id="formulario">
-            <div class="mt-4">
+            <div class="mt-5">
                 <label for="categoria">Categoría</label>
-                <select name="categorias" id="categorias" class="form-control mt-2" required>
+                <select name="categorias" id="categorias" class="form-control mt-2 mb-4" required>
                     <option>Selecciona una categoría</option>
 
                     <?php include('consulta-categoria.php'); ?>
@@ -29,26 +29,23 @@
 
                 </select>
             </div>
-            <div class="mt-4">
+
                 <label for="productos">Seleccione los productos (máx. 3):</label>
-                <select multiple name="productos[]" id="productos" class="form-control mt-2" required></select>
-            </div>
+                <select multiple name="productos[]" id="productos" class="form-control mt-2 mb-2" required></select>
+
             <div id="datosCompra" class="mt-4">
-                <div class="mt-3">
-                    <label for="nombre">Nombre del comprador</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" required>
-                </div>
-                <div class="mt-3">
-                    <label for="direccion">Dirección de envío</label>
-                    <input type="text" name="direccion" id="direccion" class="form-control" required>
-                </div>
-                <div class="mt-3">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" class="form-control" required>
-                </div>
-                <div class="mt-3">
-                    <button id="enviar" class="btn btn-success mt-4">Realizar pedido <i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
+           
+                <label for="nombre">Nombre del comprador</label>
+                <input type="text" name="nombre" id="nombre" class="form-control mt-2 mb-2" required>
+
+                <label for="direccion">Dirección de envío</label>
+                <input type="text" name="direccion" id="direccion" class="form-control mt-2 mb-2" required>
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" name="telefono" id="telefono" class="form-control mt-2 mb-2" required>
+
+                <button class="btn btn-success mt-4">Realizar pedido <i class="fa-solid fa-cart-shopping"></i></button>
+
             </div>
         </form>
     </div>

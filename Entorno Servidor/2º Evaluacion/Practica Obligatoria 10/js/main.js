@@ -3,7 +3,6 @@ const selectProducto = document.getElementById('productos');
 const pedido = document.getElementById('pedido');
 const datosCompra = document.getElementById('datosCompra');
 const infoEnvio = document.getElementById('infoEnvio');
-const enviar = document.getElementById('enviar');
 const volver = document.getElementById('volver');
 const formulario = document.getElementById('formulario');
 
