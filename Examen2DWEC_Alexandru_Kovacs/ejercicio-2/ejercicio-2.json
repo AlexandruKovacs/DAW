@@ -1,0 +1,34 @@
+{
+    "productos": [
+      {
+        "producto": "Manzanas",
+        "stocks": [
+          "10",
+          "15",
+          "20",
+          "25"
+        ]
+      },
+      {
+        "producto": "Plátanos",
+        "stocks": [
+          "10",
+          "15",
+          "20"
+        ]
+      },
+      {
+        "producto": "Sandías",
+        "stocks": [
+          "10",
+          "15"
+        ]
+      },
+      {
+        "producto": "Uvas",
+        "stocks": [
+          "10"
+        ]
+      }
+    ]
+  }
