@@ -49,7 +49,7 @@ formulario.addEventListener('submit', function(e) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
-            let datosEnvio = JSON.parse(xhr.responseText)
+            let datosEnvio = JSON.parse(xhr.responseText);
 
             formulario.style.display = 'none';
             pedido.style.display = 'block';
