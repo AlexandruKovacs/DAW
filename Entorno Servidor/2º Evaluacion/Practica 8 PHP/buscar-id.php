@@ -1,7 +1,7 @@
 <?php
 
-require_once('./entities/Equipo.php');
-require_once('bootstrap.php');
+require_once './entities/Equipo.php';
+require_once 'bootstrap.php';
 
 echo '<h3>Modificar socios</h3>';
 
