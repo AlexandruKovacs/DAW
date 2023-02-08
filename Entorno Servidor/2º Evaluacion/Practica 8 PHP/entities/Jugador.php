@@ -46,10 +46,10 @@ class Jugador {
      *
      * @ORM\ManyToOne(targetEntity="Equipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="equipo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="idEquipo", referencedColumnName="id")
      * })
      */
-    private $equipo;
+    private $idEequipo;
 
 
 
@@ -138,13 +138,13 @@ class Jugador {
     /**
      * Set equipo.
      *
-     * @param \Equipo|null $equipo
+     * @param \Equipo|null $idEquipo
      *
      * @return Jugador
      */
-    public function setEquipo(\Equipo $equipo = null)
+    public function setIdEquipo(\Equipo $idEquipo = null)
     {
-        $this->equipo = $equipo;
+        $this->idEquipo = $idEquipo;
 
         return $this;
     }
@@ -154,8 +154,8 @@ class Jugador {
      *
      * @return \Equipo|null
      */
-    public function getEquipo()
+    public function getIdEquipo()
     {
-        return $this->equipo;
+        return $this->idEquipo;
     }
 }

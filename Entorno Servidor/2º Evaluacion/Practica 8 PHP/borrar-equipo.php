@@ -3,7 +3,7 @@
 require_once './entities/Equipo.php';
 require_once 'bootstrap.php';
 
-$id = 0;
+$id = 2;
 
 // Buscar el jugador con el ID indicado
 $equipo = $entityManager->find('Equipo', $id);
