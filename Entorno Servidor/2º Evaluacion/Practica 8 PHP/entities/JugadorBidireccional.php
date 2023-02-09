@@ -51,7 +51,7 @@ class JugadorBidireccional
      *
      * @param string|null $nombre
      *
-     * @return Jugador
+     * @return JugadorBidireccional
      */
     public function setNombre($nombre = null)
     {
@@ -75,7 +75,7 @@ class JugadorBidireccional
      *
      * @param string|null $apellidos
      *
-     * @return Jugador
+     * @return JugadorBidireccional
      */
     public function setApellidos($apellidos = null)
     {
@@ -99,7 +99,7 @@ class JugadorBidireccional
      *
      * @param int|null $edad
      *
-     * @return Jugador
+     * @return JugadorBidireccional
      */
     public function setEdad($edad = null)
     {
@@ -121,9 +121,9 @@ class JugadorBidireccional
     /**
      * Set equipo.
      *
-     * @param \Equipo|null $idEquipo
+     * @param \EquipoBidireccional|null $idEquipo
      *
-     * @return Jugador
+     * @return JugadorBidireccional
      */
     public function setIdEquipo(\Equipo $idEquipo = null)
     {
@@ -135,7 +135,7 @@ class JugadorBidireccional
     /**
      * Get equipo.
      *
-     * @return \Equipo|null
+     * @return \EquipoBidireccional|null
      */
     public function getIdEquipo()
     {

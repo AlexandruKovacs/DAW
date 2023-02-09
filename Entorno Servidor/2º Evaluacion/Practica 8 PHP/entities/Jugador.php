@@ -52,7 +52,6 @@ class Jugador {
     private $idEquipo;
 
 
-
     /**
      * Get id.
      *

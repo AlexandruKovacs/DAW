@@ -63,7 +63,7 @@ class EquipoBidireccional
      *
      * @param string|null $nombre
      *
-     * @return Equipo
+     * @return EquipoBidireccional
      */
     public function setNombre($nombre = null)
     {
@@ -87,7 +87,7 @@ class EquipoBidireccional
      *
      * @param int|null $socios
      *
-     * @return Equipo
+     * @return EquipoBidireccional
      */
     public function setSocios($socios = null)
     {
@@ -111,7 +111,7 @@ class EquipoBidireccional
      *
      * @param string|null $fundacion
      *
-     * @return Equipo
+     * @return EquipoBidireccional
      */
     public function setFundacion($fundacion = null)
     {
@@ -135,7 +135,7 @@ class EquipoBidireccional
      *
      * @param string|null $ciudad
      *
-     * @return Equipo
+     * @return EquipoBidireccional
      */
     public function setCiudad($ciudad = null)
     {
@@ -159,7 +159,7 @@ class EquipoBidireccional
      *
      * @param array|null $jugadores
      *
-     * @return Equipo
+     * @return EquipoBidireccional
      */
     public function setJugadores($jugadores = null)
     {
