@@ -13,8 +13,8 @@ if (!$jugador) {
     echo 'Jugador no encontrado';
 } else {
 
-    echo 'Nombre del jugador: ' . $jugador->getNombre() . '<br>';
-    $equipo = $jugador->getEquipo();
+    echo 'Nombre y apellidos del jugador: ' . $jugador->getNombre() . ' ' . $jugador->getApellidos() . '<br>';
+    $equipo = $jugador->getIdEquipo();
     echo 'Nombre del equipo: ' . $equipo->getNombre() . '<br>';
 
 }

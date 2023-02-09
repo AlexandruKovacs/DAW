@@ -49,7 +49,7 @@ class Jugador {
      *   @ORM\JoinColumn(name="idEquipo", referencedColumnName="id")
      * })
      */
-    private $idEequipo;
+    private $idEquipo;
 
 
 
