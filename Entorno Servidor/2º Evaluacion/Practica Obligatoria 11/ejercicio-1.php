@@ -13,7 +13,7 @@
 </head>
 <body>
     <h2 class="mt-3">Articulos</h2>
-    <table class="table table-hover table-striped w-50 mt-5">
+    <table class="table table-hover table-striped w-75 mt-5">
 		<tr>
 			<th>ID</th>
 			<th>NOMBRE</th>
@@ -39,7 +39,7 @@
                 <td><?php echo $articulo->getId() ?></td>
                 <td><?php echo $articulo->getNombre() ?></td>
                 <td><?php echo $articulo->getDescripcion() ?></td>
-                <td><?php echo $articulo->getPrecio() ?></td>
+                <td><?php echo $articulo->getPrecio() ?>€</td>
                 <td><?php echo $articulo->getCantidad() ?></td>
                 <td><?php echo $proveedor->getNombre() ?></td>
                 <td>
@@ -49,5 +49,8 @@
             </tr>
 	    <?php endforeach; ?>
 	</table>
+    <div class="container d-flex justify-content-center">
+        <a href="index.php" class="btn btn-danger">Volver</a>
+    </div>
 </body>
 </html>
