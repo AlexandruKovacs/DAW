@@ -34,9 +34,10 @@ class JugadorBidireccional
      * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy="jugadores")
      * @ORM\JoinColumn(name="idEquipo", referencedColumnName="id")
      */
-    private $idEquipo;
+    private $equipo;
 
-        /**
+
+    /**
      * Get id.
      *
      * @return int
@@ -121,13 +122,13 @@ class JugadorBidireccional
     /**
      * Set equipo.
      *
-     * @param \EquipoBidireccional|null $idEquipo
+     * @param \EquipoBidireccional|null $equipo
      *
      * @return JugadorBidireccional
      */
-    public function setIdEquipo(\Equipo $idEquipo = null)
+    public function setEquipo(\EquipoBidireccional $equipo = null)
     {
-        $this->idEquipo = $idEquipo;
+        $this->equipo = $equipo;
 
         return $this;
     }
@@ -137,8 +138,8 @@ class JugadorBidireccional
      *
      * @return \EquipoBidireccional|null
      */
-    public function getIdEquipo()
+    public function getEquipo()
     {
-        return $this->idEquipo;
+        return $this->equipo;
     }
 }
