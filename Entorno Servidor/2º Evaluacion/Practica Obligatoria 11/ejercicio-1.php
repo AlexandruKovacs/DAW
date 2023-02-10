@@ -54,3 +54,38 @@
     </div>
 </body>
 </html>
+
+<html>
+  <head>
+    <title>Inventario de Artículos</title>
+  </head>
+  <body>
+    <h1>Inventario de Artículos</h1>
+    <form action="">
+      <label for="filter-by">Filtrar por:</label>
+      <select id="filter-by">
+        <option value="none">Ninguno</option>
+        <option value="price">Precio</option>
+        <option value="provider">Proveedor</option>
+        <option value="quantity">Cantidad</option>
+      </select>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Proveedor</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="inventory-items">
+        <!-- Aquí se mostrarán los artículos -->
+      </tbody>
+    </table>
+    <button id="add-item-button">Añadir Artículo</button>
+    <button id="delete-item-button">Borrar Artículo</button>
+    <button id="delete-provider-button">Borrar Proveedor</button>
+  </body>
+</html>
