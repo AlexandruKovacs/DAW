@@ -1,3 +1,14 @@
+<?php
+
+require_once 'bootstrap.php';
+require_once './entities/Articulos.php';
+require_once './entities/Proveedor.php';
+
+$selectProveedor = $entityManager->createQuery('SELECT pro FROM Proveedor pro');
+$proveedores = $selectProveedor->getResult();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,14 +23,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2 class="mt-3 mb-5">Selecciona lo que quieres hacer</h2>
-    <div class="container d-flex gap-2 justify-content-center">
-        <a href="ejercicio-1.php" class="text-decoration-none text-light btn btn-primary">Mostrar todos los artículos</a>
-        <a href="ejercicio-2.php" class="text-decoration-none text-light btn btn-primary">Ejercicio 2</a>
-        <a href="ejercicio-3.php" class="text-decoration-none text-light btn btn-primary">Ejercicio 3</a>
-        <a href="ejercicio-4.php" class="text-decoration-none text-light btn btn-primary">Ejercicio 4</a>
-        <a href="ejercicio-5.php" class="text-decoration-none text-light btn btn-primary">Ejercicio 5</a>
+    <h2 class="mt-3">Artículos</h2>
+    <div class="container d-block w-25 mb-5">
+        <form id="form-filtros">
+            <label for="filtroPrecio">Filtrar por precio:</label>
+            <select id="filtroPrecio" class="form-control mb-3">
+                <option value="">Todos</option>
+                <option value="bajo">Bajo</option>
+                <option value="medio">Medio</option>
+                <option value="alto">Alto</option>
+            </select>
+
+            <label for="filtroProveedor">Filtrar por proveedor:</label>
+            <select id="filtroProveedor" class="form-control mb-3">
+                <option value="">Todos</option>
+                <?php foreach ($proveedores as $proveedor) : ?>
+                <option value="<?php echo $proveedor->getId(); ?>"><?php echo $proveedor->getNombre(); ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <label for="filtroCantidad">Filtrar por cantidad:</label>
+            <select id="filtroCantidad" class="form-control mb-3">
+                <option value="">Todos</option>
+                <option value="baja">Baja</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+            </select>
+        </form>
     </div>
-    
+    <div id="cajaTabla">
+        <table class="table table-hover table-striped w-75" id="tablaArticulos">
+            <thead>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCIÓN</th>
+                <th>PRECIO</th>
+                <th>CANTIDAD</th>
+                <th>PROVEEDOR</th>
+                <th></th>
+            </thead>
+            <tbody></tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
