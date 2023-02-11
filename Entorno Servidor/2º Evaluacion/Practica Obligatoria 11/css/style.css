@@ -23,6 +23,6 @@ select {
     margin-bottom: 3rem;
 }
 
-#cajaModificar, #cajaAnadir, #cajaBorrar, #cajaTabla {
+#cajaModificar, #cajaAnadir, #cajaBorrar, #cajaTabla, #cajaCantidad {
     display: none;
 }

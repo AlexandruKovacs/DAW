@@ -1,8 +1,8 @@
 <?php
 
 require_once 'bootstrap.php';
-require_once './entities/ProveedorBidireccional.php';
-require_once './entities/ArticulosBidireccional.php';
+require_once './src/ProveedorBidireccional.php';
+require_once './src/ArticulosBidireccional.php';
 
 $precio = $_GET['precio'];
 

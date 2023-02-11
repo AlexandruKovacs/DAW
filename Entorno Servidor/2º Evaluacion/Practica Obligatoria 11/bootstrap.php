@@ -6,7 +6,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 // Ruta donde guardaremos los documentod creados
-$paths = array("./entities");
+$paths = array("./src");
 $isDevMode = false;
 
 // Conection Configuration, 'tienda' es la base de datos
