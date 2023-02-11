@@ -6,15 +6,36 @@ require_once './entities/ArticulosBidireccional.php';
 
 $cantidad = $_GET['cantidad'];
 
-if ($cantidad == 'baja') {
-    $minCantidad = 0;
-    $maxCantidad = 25;
-} elseif ($cantidad == 'media') {
-    $minCantidad = 50;
-    $maxCantidad = 100;
-} elseif ($cantidad == 'alta') {
-    $minCantidad = 100;
-    $maxCantidad = 9999;
+switch ($cantidad) {
+    case '0':
+        $minCantidad = 0;
+        $maxCantidad = 9;
+        break;
+
+    case '1':
+        $minCantidad = 10;
+        $maxCantidad = 50;
+        break;
+
+    case '2':
+        $minCantidad = 50;
+        $maxCantidad = 100;
+        break;
+
+    case '3':
+        $minCantidad = 100;
+        $maxCantidad = 200;
+        break;
+
+    case '4':
+        $minCantidad = 200;
+        $maxCantidad = 99999;
+        break;
+
+    default:
+        $minCantidad = 0;
+        $maxCantidad = 0;
+        break;
 }
 
 if ($cantidad != '') {
@@ -41,7 +62,7 @@ foreach ($articulos as $articulo) {
     echo '<td>' . $articulo->getNombre(). '</td>';
     echo '<td>' . $articulo->getDescripcion(). '</td>';
     echo '<td>' . $articulo->getPrecio() . '€</td>';
-    echo '<td>' . $articulo->getCantidad() . '</td>';
+    echo '<td>' . $articulo->getCantidad() . ' uds</td>';
     echo '<td>' . $proveedor->getNombre() . '<td>'; 
     echo '</tr>';
 }

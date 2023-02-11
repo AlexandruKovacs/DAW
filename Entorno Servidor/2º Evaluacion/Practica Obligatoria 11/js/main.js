@@ -18,15 +18,6 @@ const cerrarBorrar = document.getElementById('cerrarBorrar');
 
 let xhr = new XMLHttpRequest();
 
-document.addEventListener('DOMContentLoaded', function(){
-    masOpciones.style.display = 'none';
-    cajaModificar.style.display = 'none';
-    cajaAnadir.style.display = 'none';
-    cajaBorrar.style.display = 'none';
-    cajaTabla.style.visibility = 'hidden';
-});
-
-
 filtroPrecio.addEventListener('change', function(event) {
     let precio = event.target.value;
 
@@ -39,8 +30,10 @@ filtroPrecio.addEventListener('change', function(event) {
             tbody.innerHTML = '';
             tbody.innerHTML = articulosFiltrados;
 
-            cajaTabla.style.visibility = 'visible';
+            masOpciones.style.display = 'none';
+            cajaTabla.style.display = 'block';
 
+            esconderTodosForms();
         }
     };
     xhr.send();
@@ -59,8 +52,10 @@ filtroProveedor.addEventListener('change', function(event) {
             tbody.innerHTML = '';
             tbody.innerHTML = articulosFiltrados;
 
-            cajaTabla.style.visibility = 'visible';
+            masOpciones.style.display = 'none';
+            cajaTabla.style.display = 'block';
 
+            esconderTodosForms();
         }
     };
     xhr.send();
@@ -79,8 +74,10 @@ filtroCantidad.addEventListener('change', function(event) {
             tbody.innerHTML = '';
             tbody.innerHTML = articulosFiltrados;
 
-            cajaTabla.style.visibility = 'visible';
+            masOpciones.style.display = 'none';
+            cajaTabla.style.display = 'block';
 
+            esconderTodosForms();
         }
     };
     xhr.send();
@@ -90,15 +87,18 @@ filtroCantidad.addEventListener('change', function(event) {
 botonOpciones.addEventListener('click', function (e) {
     e.preventDefault();
     let icon = botonOpciones.querySelector('i');
+    cajaTabla.style.display = 'none';
 
     if (icon.classList.contains('fa-arrow-down')) {
         icon.classList.remove('fa-arrow-down');
         icon.classList.add('fa-arrow-up');
-        masOpciones.style.display = 'block';
+        masOpciones.style.display = 'flex';
+        
     } else {
         icon.classList.remove('fa-arrow-up');
         icon.classList.add('fa-arrow-down');
         masOpciones.style.display = 'none';
+        esconderTodosForms();
     }
 });
 
@@ -131,3 +131,9 @@ cerrarAnadir.addEventListener('click', function () {
 cerrarBorrar.addEventListener('click', function () {
     cajaBorrar.style.display = 'none';
 });
+
+function esconderTodosForms() {
+    cajaModificar.style.display = 'none';
+    cajaAnadir.style.display = 'none';
+    cajaBorrar.style.display = 'none';
+}

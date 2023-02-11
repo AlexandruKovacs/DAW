@@ -7,10 +7,22 @@ h2 {
 }
 
 table {
-    margin: auto;
+    margin: 4rem auto;
     text-align: center;
 }
 
 select {
     cursor: pointer;
+}
+
+#masOpciones {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+#cajaModificar, #cajaAnadir, #cajaBorrar, #cajaTabla {
+    display: none;
 }

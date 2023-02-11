@@ -25,7 +25,7 @@ foreach ($articulos as $articulo) {
     echo '<td>' . $articulo->getNombre(). '</td>';
     echo '<td>' . $articulo->getDescripcion(). '</td>';
     echo '<td>' . $articulo->getPrecio() . '€</td>';
-    echo '<td>' . $articulo->getCantidad() . '</td>';
+    echo '<td>' . $articulo->getCantidad() . ' uds</td>';
     echo '<td>' . $proveedor->getNombre() . '<td>'; 
     echo '</tr>';
 }

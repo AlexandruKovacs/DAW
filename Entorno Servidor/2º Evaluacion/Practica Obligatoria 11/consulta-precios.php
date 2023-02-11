@@ -6,23 +6,44 @@ require_once './entities/ArticulosBidireccional.php';
 
 $precio = $_GET['precio'];
 
-if ($precio == 'bajo') {
-    $minPrecio = 0;
-    $maxPrecio = 25;
-} elseif ($precio == 'medio') {
-    $minPrecio = 50;
-    $maxPrecio = 100;
-} elseif ($precio == 'alto') {
-    $minPrecio = 100;
-    $maxPrecio = 9999;
+switch ($precio) {
+    case '0':
+        $minPrecio = 0;
+        $maxPrecio = 9;
+        break;
+
+    case '1':
+        $minPrecio = 10;
+        $maxPrecio = 50;
+        break;
+
+    case '2':
+        $minPrecio = 50;
+        $maxPrecio = 100;
+        break;
+
+    case '3':
+        $minPrecio = 100;
+        $maxPrecio = 200;
+        break;
+
+    case '4':
+        $minPrecio = 201;
+        $maxPrecio = 99999;
+        break;
+
+    default:
+        $minPrecio = 0;
+        $maxPrecio = 0;
+        break;
 }
 
 if ($precio != '') {
 
     $selectArticulos = $entityManager->createQuery("
-    SELECT art
-    FROM ArticulosBidireccional art
-    WHERE art.precio BETWEEN $minPrecio AND $maxPrecio
+        SELECT art
+        FROM ArticulosBidireccional art
+        WHERE art.precio BETWEEN $minPrecio AND $maxPrecio
     ");
     
     $articulos = $selectArticulos->getResult();
@@ -41,7 +62,7 @@ foreach ($articulos as $articulo) {
     echo '<td>' . $articulo->getNombre(). '</td>';
     echo '<td>' . $articulo->getDescripcion(). '</td>';
     echo '<td>' . $articulo->getPrecio() . '€</td>';
-    echo '<td>' . $articulo->getCantidad() . '</td>';
+    echo '<td>' . $articulo->getCantidad() . ' uds</td>';
     echo '<td>' . $proveedor->getNombre() . '<td>'; 
     echo '</tr>';
 }

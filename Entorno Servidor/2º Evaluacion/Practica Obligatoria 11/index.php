@@ -26,37 +26,41 @@ $articulos = $selectArticulos->getResult();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2 class="mt-3">AlmaGest</h2>
-    <div class="container w-25 mb-4">
+    <h2 class="mt-3 mb-5">AlmaGest</h2>
+    <div class="container mb-4">
         <form id="formFiltros">
 
-            <label for="filtroPrecio">Filtrar por precio:</label>
-            <select id="filtroPrecio" class="form-control mb-3">
-                <option value="">Todos</option>
-                <option value="bajo">Bajo</option>
-                <option value="medio">Medio</option>
-                <option value="alto">Alto</option>
-            </select>
-
-            <label for="filtroProveedor">Filtrar por proveedor:</label>
-            <select id="filtroProveedor" class="form-control mb-3">
-                <option value="">Todos</option>
-                <?php foreach ($proveedores as $proveedor) : ?>
-                <option value="<?php echo $proveedor->getId(); ?>"><?php echo $proveedor->getNombre(); ?></option>
-                <?php endforeach; ?>
-            </select>
-
-            <label for="filtroCantidad">Filtrar por cantidad:</label>
-            <div class="d-flex gap-2">
-                <select id="filtroCantidad" class="form-control">
+            <div class="form-group d-flex align-items-center">
+                <label for="filtroPrecio" class="w-25 text-end me-2">Filtrar por precio:</label>
+                <select id="filtroPrecio" class="form-control w-25">
                     <option value="">Todos</option>
-                    <option value="baja">Baja</option>
-                    <option value="media">Media</option>
-                    <option value="alta">Alta</option>
+                    <option value="0"><10€</option>
+                    <option value="1">10-50€</option>
+                    <option value="2">50-100€</option>
+                    <option value="3">100-200€</option>
+                    <option value="4">>200€</option>
                 </select>
-                <button class="btn btn-primary" id="botonOpciones"><i class="fa-sharp fa-solid fa-arrow-down"></i></button>
-            </div>
 
+                <label for="filtroProveedor" class="w-25 text-end me-2">Filtrar por proveedor:</label>
+                <select id="filtroProveedor" class="form-control w-25">
+                    <option value="">Todos</option>
+                    <?php foreach ($proveedores as $proveedor) : ?>
+                    <option value="<?php echo $proveedor->getId(); ?>"><?php echo $proveedor->getNombre(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                
+                <label for="filtroCantidad" class="w-25 text-end me-2">Filtrar por cantidad:</label>
+                <select id="filtroCantidad" class="form-control w-25">
+                    <option value="">Todos</option>
+                    <option value="0"><10 uds</option>
+                    <option value="1">10-50 uds</option>
+                    <option value="2">50-100 uds</option>
+                    <option value="3">100-200 uds</option>
+                    <option value="4">>200 uds</option>
+                </select>
+
+                <button class="btn btn-primary ms-3" id="botonOpciones"><i class="fa-sharp fa-solid fa-arrow-down"></i></button>
+            </div>
         </form>
     </div>
 
@@ -66,7 +70,7 @@ $articulos = $selectArticulos->getResult();
         <button class="btn btn-danger" id="borrarArticulo">Borrar artículo <i class="fa-solid fa-trash"></i></button>
     </div>
 
-    <div class="container w-25 justify-content-center mt-5" id="cajaModificar">
+    <div class="container w-25 justify-content-center" id="cajaModificar">
         <h5 class="text-center mb-4">Modificar artículo</h5>
         <form id="formModificar">
 
@@ -90,7 +94,7 @@ $articulos = $selectArticulos->getResult();
         </form>
     </div>
 
-    <div class="container w-25 justify-content-center mt-5" id="cajaAnadir">
+    <div class="container w-25 justify-content-center" id="cajaAnadir">
         <h5 class="text-center mb-4">Añadir articulo</h5>
         <form id="formAnadir">
 
@@ -114,26 +118,22 @@ $articulos = $selectArticulos->getResult();
         </form>
     </div>
 
-    <div class="container w-25 justify-content-center mt-5" id="cajaBorrar">
+    <div class="container w-25 justify-content-center" id="cajaBorrar">
         <h5 class="text-center mb-4">Borrar articulo</h5>
         <form id="formModificar">
 
             <label for="articuloModificar">Selecciona el articulo:</label>
-            <select id="articuloModificar" class="form-control mb-3" required>
-                <option value="">Selecciona un artículo</option>
-                <?php foreach ($articulos as $articulo) : ?>
-                    <option value="<?php echo $articulo->getId(); ?>">
-                    <?php echo $articulo->getNombre() . ' - ' .  $articulo->getCantidad() . ' unidades'; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <div id="cajaCantidad">
-                <label for="cantidadModificar">Nueva cantidad:</label>
-                <div class="d-flex gap-2">
-                    <input type="number" class="form-control" value="2" required>
-                    <button class="btn btn-success w-25" id="actualizarBorrar"><i class="fa-solid fa-check"></i></button>
-                    <button class="btn btn-danger" id="cerrarBorrar"><i class="fa-solid fa-xmark"></i></button>
-                </div>
+            <div class="d-flex gap-2">
+                <select id="articuloModificar" class="form-control" required>
+                    <option value="">Selecciona un artículo</option>
+                    <?php foreach ($articulos as $articulo) : ?>
+                        <option value="<?php echo $articulo->getId(); ?>">
+                        <?php echo $articulo->getNombre(); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <button class="btn btn-success w-25" id="actualizarBorrar"><i class="fa-solid fa-check"></i></button>
+                <button class="btn btn-danger" id="cerrarBorrar"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </form>
     </div>
