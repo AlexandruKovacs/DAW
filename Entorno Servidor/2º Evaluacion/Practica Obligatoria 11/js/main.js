@@ -9,6 +9,8 @@ const borrarArticulo = document.getElementById('borrarArticulo');
 const articuloBorrar = document.getElementById('articuloBorrar');
 const articuloModificar = document.getElementById('articuloModificar');
 const borrar = document.getElementById('borrar');
+const modificar = document.getElementById('modificar');
+const anadir = document.getElementById('anadir');
 const cerrarModificar = document.getElementById('cerrarModificar');
 const cerrarAnadir = document.getElementById('cerrarAnadir');
 const cerrarBorrar = document.getElementById('cerrarBorrar');
@@ -23,6 +25,7 @@ function obtenerProveedores() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             document.getElementById('filtroProveedor').innerHTML = xhr.responseText;
+            document.getElementById('proveedor').innerHTML = xhr.responseText;
 
         }
     };
@@ -99,20 +102,30 @@ document.getElementById('filtroCantidad').addEventListener('change', function(ev
 articuloModificar.addEventListener('change', function(event) {
     let idArticulo = event.target.value;
 
+
     xhr.open('GET', `obtener-cantidad.php?idArticulo=${idArticulo}`);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             document.getElementById('cajaCantidad').style.display = 'block';
-            document.getElementById('datoCantidad').innerHTML = xhr.responseText;
+
+            const datoCantidad = document.getElementById('datoCantidad');
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.id = 'nuevaCantidad';
+            input.className = 'form-control';
+            input.required = true;
+            input.value = xhr.responseText;
+
+            datoCantidad.insertBefore(input, datoCantidad.childNodes[0]);
         }
     };
 
     document.getElementById('cajaCantidad').style.display = 'none';
+    document.getElementById('datoCantidad').innerHTML = '';
     xhr.send();
 
 });
-
-borrar.addEventListener('click', borrarArticuloSeleccionado);
 
 botonOpciones.addEventListener('click', function (event) {
     event.preventDefault();
@@ -139,16 +152,17 @@ modificarCantidad.addEventListener('click', function () {
 
     obtenerArticulos(articuloModificar);
 
+    document.getElementById('cajaCantidad').style.display = 'none';
     cajaModificar.style.display = 'block';
     cajaAnadir.style.display = 'none';
     cajaBorrar.style.display = 'none';
 });
 
-// anadirArticulo.addEventListener('click', function () {
-//     cajaModificar.style.display = 'none';
-//     cajaAnadir.style.display = 'block';
-//     cajaBorrar.style.display = 'none';
-// });
+anadirArticulo.addEventListener('click', function () {
+    cajaModificar.style.display = 'none';
+    cajaAnadir.style.display = 'block';
+    cajaBorrar.style.display = 'none';
+});
 
 borrarArticulo.addEventListener('click', function () {
     respuesta.innerHTML = '';
@@ -160,13 +174,14 @@ borrarArticulo.addEventListener('click', function () {
     cajaBorrar.style.display = 'block';
 });
 
-// cerrarModificar.addEventListener('click', function () {
-//     cajaModificar.style.display = 'none';
-// });
+cerrarModificar.addEventListener('click', function (event) {
+    event.preventDefault();
+    cajaModificar.style.display = 'none';
+});
 
-// cerrarAnadir.addEventListener('click', function () {
-//     cajaAnadir.style.display = 'none';
-// });
+cerrarAnadir.addEventListener('click', function () {
+    cajaAnadir.style.display = 'none';
+});
 
 cerrarBorrar.addEventListener('click', function (event) {
     event.preventDefault();
@@ -201,10 +216,6 @@ function obtenerArticulos(select) {
     xhr.send();
 }
 
-function obtenerCantidad() {
-
-}
-
 function borrarArticuloSeleccionado(event) {
     event.preventDefault();
     let idArticulo = articuloBorrar.value;
@@ -221,3 +232,52 @@ function borrarArticuloSeleccionado(event) {
     };
     xhr.send();
 }
+
+function modificarCantidadSeleccionada(event) {
+    event.preventDefault();
+    let idArticulo = articuloModificar.value;
+    let nuevaCantidad = document.getElementById('nuevaCantidad').value;
+
+    xhr.open('GET', `modificar-cantidad.php?idArticulo=${idArticulo}&nuevaCantidad=${nuevaCantidad}`);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            respuesta.innerHTML = xhr.responseText;
+            esconderTodosForms();
+            obtenerArticulos(articuloModificar);
+
+        }
+    };
+    xhr.send();
+}
+
+function anadirArticuloIntroducido(event) {
+    event.preventDefault();
+    let nombre = document.getElementById('nombre').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let precio = document.getElementById('precio').value;
+    let cantidad = document.getElementById('cantidad').value;
+    let idProveedor = document.getElementById('proveedor').value;
+
+    xhr.open('GET', `insertar-articulo.php?
+                    nombre=${nombre}&
+                    descripcion=${descripcion}&
+                    precio=${precio}&
+                    cantidad=${cantidad}&
+                    idProveedor=${idProveedor}`);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            respuesta.innerHTML = xhr.responseText;
+            esconderTodosForms();
+            obtenerArticulos(articuloModificar);
+
+        }
+    };
+    xhr.send();
+}
+
+borrar.addEventListener('click', borrarArticuloSeleccionado);
+modificar.addEventListener('click', modificarCantidadSeleccionada);
+anadir.addEventListener('click', anadirArticuloIntroducido);

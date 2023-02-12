@@ -11,7 +11,5 @@ $articulos = $entityManager->getRepository('Articulos')
 
 
 foreach ($articulos as $articulo) {
-    echo '<input type="number" class="form-control" value="' . $articulo->getCantidad() . '" required>';
-    echo '<button class="btn btn-success w-25" id="modificar"><i class="fa-solid fa-check"></i></button>';
-    echo '<button class="btn btn-danger" id="cerrarModificar"><i class="fa-solid fa-xmark"></i></button>';
+    echo $articulo->getCantidad();
 }
