@@ -159,6 +159,8 @@ modificarCantidad.addEventListener('click', function () {
 });
 
 anadirArticulo.addEventListener('click', function () {
+    respuesta.innerHTML = '';
+
     cajaModificar.style.display = 'none';
     cajaAnadir.style.display = 'block';
     cajaBorrar.style.display = 'none';
