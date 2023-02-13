@@ -22,6 +22,8 @@ const cerrarBorrarProveedor = document.getElementById('cerrarBorrarProveedor');
 const forms = document.getElementsByTagName('form');
 const respuesta = document.getElementById('respuesta');
 
+console.log(forms);
+
 let xhr = new XMLHttpRequest();
 
 function obtenerProveedores() {
@@ -173,6 +175,8 @@ modificarCantidad.addEventListener('click', function () {
 anadirArticulo.addEventListener('click', function () {
     respuesta.innerHTML = '';
 
+    obtenerProveedores();
+
     cajaModificar.style.display = 'none';
     cajaAnadir.style.display = 'block';
     cajaBorrar.style.display = 'none';
@@ -301,6 +305,7 @@ function anadirArticuloIntroducido(event) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
+            forms[2].reset();
             respuesta.innerHTML = xhr.responseText;
             esconderTodosForms();
             obtenerArticulos(articuloModificar);

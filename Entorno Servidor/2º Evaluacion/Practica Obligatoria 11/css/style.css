@@ -23,11 +23,16 @@ select {
     margin-bottom: 3rem;
 }
 
-#cajaModificar, #cajaAnadir, #cajaBorrar, #cajaTabla, #cajaCantidad, #cajaBorrarProveedor {
+#cajaCantidad {
+    display: none;
+}
+
+#cajaModificar, #cajaAnadir, #cajaBorrar, #cajaTabla, #cajaBorrarProveedor {
+    margin-top: 6rem;
     display: none;
 }
 
 #respuesta {
-    margin-top: 5rem;
-    font-size: 1.5rem;
+    margin-top: 6rem;
+    font-size: 1.3rem;
 }
