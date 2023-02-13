@@ -54,6 +54,7 @@
         <button class="btn btn-warning" id="modificarCantidad">Modificar cantidad <i class="fa-solid fa-pen-to-square"></i></button>
         <button class="btn btn-success" id="anadirArticulo">Añadir artículo <i class="fa-solid fa-plus"></i></button>
         <button class="btn btn-danger" id="borrarArticulo">Borrar artículo <i class="fa-solid fa-trash"></i></button>
+        <button class="btn btn-dark" id="borrarProveedor">Borrar proveedor  <i class="fa-solid fa-trash"></i></button>
     </div>
 
     <div class="container w-25" id="cajaModificar">
@@ -119,6 +120,21 @@
                 </select>
                 <button class="btn btn-success w-25" id="borrar"><i class="fa-solid fa-check"></i></button>
                 <button class="btn btn-danger" id="cerrarBorrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="container w-25" id="cajaBorrarProveedor">
+        <h5 class="text-center mb-4">Borrar proveedor</h5>
+        <form>
+
+            <div class="d-flex gap-2">
+                <select id="proveedorBorrar" class="form-control">
+                    <option value="">Selecciona un proveedor</option>
+                </select>
+                <button class="btn btn-success w-25" id="botonBorrarProveedor"><i class="fa-solid fa-check"></i></button>
+                <button class="btn btn-danger" id="cerrarBorrarProveedor"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
         </form>

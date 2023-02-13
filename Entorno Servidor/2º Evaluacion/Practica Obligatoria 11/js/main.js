@@ -3,17 +3,22 @@ const masOpciones = document.getElementById('masOpciones');
 const cajaModificar = document.getElementById('cajaModificar');
 const cajaAnadir = document.getElementById('cajaAnadir');
 const cajaBorrar = document.getElementById('cajaBorrar');
+const cajaBorrarProveedor = document.getElementById('cajaBorrarProveedor');
 const modificarCantidad = document.getElementById('modificarCantidad');
 const anadirArticulo = document.getElementById('anadirArticulo');
 const borrarArticulo = document.getElementById('borrarArticulo');
+const proveedorBorrar = document.getElementById('proveedorBorrar');
 const articuloBorrar = document.getElementById('articuloBorrar');
 const articuloModificar = document.getElementById('articuloModificar');
 const borrar = document.getElementById('borrar');
 const modificar = document.getElementById('modificar');
 const anadir = document.getElementById('anadir');
+const botonBorrarProveedor = document.getElementById('botonBorrarProveedor');
+const borrarProveedor = document.getElementById('borrarProveedor');
 const cerrarModificar = document.getElementById('cerrarModificar');
 const cerrarAnadir = document.getElementById('cerrarAnadir');
 const cerrarBorrar = document.getElementById('cerrarBorrar');
+const cerrarBorrarProveedor = document.getElementById('cerrarBorrarProveedor');
 const forms = document.getElementsByTagName('form');
 const respuesta = document.getElementById('respuesta');
 
@@ -26,6 +31,7 @@ function obtenerProveedores() {
 
             document.getElementById('filtroProveedor').innerHTML = xhr.responseText;
             document.getElementById('proveedor').innerHTML = xhr.responseText;
+            document.getElementById('proveedorBorrar').innerHTML = xhr.responseText;
 
         }
     };
@@ -47,6 +53,7 @@ document.getElementById('filtroPrecio').addEventListener('change', function(even
             tbody.innerHTML = articulosFiltrados;
 
             masOpciones.style.display = 'none';
+            respuesta.innerHTML = '';
 
             mostrarTabla();
             esconderTodosForms();
@@ -69,6 +76,7 @@ document.getElementById('filtroProveedor').addEventListener('change', function(e
             tbody.innerHTML = articulosFiltrados;
 
             masOpciones.style.display = 'none';
+            respuesta.innerHTML = '';
 
             mostrarTabla();
             esconderTodosForms();
@@ -91,6 +99,7 @@ document.getElementById('filtroCantidad').addEventListener('change', function(ev
             tbody.innerHTML = articulosFiltrados;
 
             masOpciones.style.display = 'none';
+            respuesta.innerHTML = '';
 
             mostrarTabla();
             esconderTodosForms();
@@ -118,6 +127,8 @@ articuloModificar.addEventListener('change', function(event) {
             input.value = xhr.responseText;
 
             datoCantidad.insertBefore(input, datoCantidad.childNodes[0]);
+
+            respuesta.innerHTML = '';
         }
     };
 
@@ -156,6 +167,7 @@ modificarCantidad.addEventListener('click', function () {
     cajaModificar.style.display = 'block';
     cajaAnadir.style.display = 'none';
     cajaBorrar.style.display = 'none';
+    cajaBorrarProveedor.style.display = 'none';
 });
 
 anadirArticulo.addEventListener('click', function () {
@@ -164,6 +176,7 @@ anadirArticulo.addEventListener('click', function () {
     cajaModificar.style.display = 'none';
     cajaAnadir.style.display = 'block';
     cajaBorrar.style.display = 'none';
+    cajaBorrarProveedor.style.display = 'none';
 });
 
 borrarArticulo.addEventListener('click', function () {
@@ -174,6 +187,16 @@ borrarArticulo.addEventListener('click', function () {
     cajaModificar.style.display = 'none';
     cajaAnadir.style.display = 'none';
     cajaBorrar.style.display = 'block';
+    cajaBorrarProveedor.style.display = 'none';
+});
+
+borrarProveedor.addEventListener('click', function () {
+    respuesta.innerHTML = '';
+
+    cajaModificar.style.display = 'none';
+    cajaAnadir.style.display = 'none';
+    cajaBorrar.style.display = 'none';
+    cajaBorrarProveedor.style.display = 'block';
 });
 
 cerrarModificar.addEventListener('click', function (event) {
@@ -181,7 +204,8 @@ cerrarModificar.addEventListener('click', function (event) {
     cajaModificar.style.display = 'none';
 });
 
-cerrarAnadir.addEventListener('click', function () {
+cerrarAnadir.addEventListener('click', function (event) {
+    event.preventDefault();
     cajaAnadir.style.display = 'none';
 });
 
@@ -190,12 +214,18 @@ cerrarBorrar.addEventListener('click', function (event) {
     cajaBorrar.style.display = 'none';
 });
 
+cerrarBorrarProveedor.addEventListener('click', function(event) {
+    event.preventDefault();
+    cajaBorrarProveedor.style.display = 'none';
+});
+
 
 // FUNCIONES
 function esconderTodosForms() {
     cajaModificar.style.display = 'none';
     cajaAnadir.style.display = 'none';
     cajaBorrar.style.display = 'none';
+    cajaBorrarProveedor.style.display = 'none';
 }
 
 function mostrarTabla() {
@@ -280,6 +310,24 @@ function anadirArticuloIntroducido(event) {
     xhr.send();
 }
 
+function borrarProveedorSeleccionado(event) {
+    event.preventDefault();
+    let idProveedor = proveedorBorrar.value;
+
+    xhr.open('GET', `borrar-proveedor.php?idArticulo=${idProveedor}`);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            respuesta.innerHTML = xhr.responseText;
+            obtenerProveedores();
+            esconderTodosForms();
+
+        }
+    };
+    xhr.send();
+}
+
 borrar.addEventListener('click', borrarArticuloSeleccionado);
 modificar.addEventListener('click', modificarCantidadSeleccionada);
 anadir.addEventListener('click', anadirArticuloIntroducido);
+botonBorrarProveedor.addEventListener('click', borrarProveedorSeleccionado);
