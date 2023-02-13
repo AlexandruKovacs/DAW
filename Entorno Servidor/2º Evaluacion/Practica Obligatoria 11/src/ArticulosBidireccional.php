@@ -36,9 +36,9 @@ class ArticulosBidireccional implements JsonSerializable
     private $descripcion;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="precio", type="integer", nullable=false)
+     * @ORM\Column(name="precio", type="string", nullable=false)
      */
     private $precio;
 
@@ -117,7 +117,7 @@ class ArticulosBidireccional implements JsonSerializable
     /**
      * Set precio.
      *
-     * @param int $precio
+     * @param string $precio
      *
      * @return ArticulosBidireccional
      */
@@ -131,7 +131,7 @@ class ArticulosBidireccional implements JsonSerializable
     /**
      * Get precio.
      *
-     * @return int
+     * @return string
      */
     public function getPrecio()
     {

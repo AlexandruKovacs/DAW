@@ -36,9 +36,9 @@ class Articulos
     private $descripcion;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="precio", type="integer", nullable=false)
+     * @ORM\Column(name="precio", type="string", nullable=false)
      */
     private $precio;
 
@@ -122,7 +122,7 @@ class Articulos
     /**
      * Set precio.
      *
-     * @param int $precio
+     * @param string $precio
      *
      * @return Articulos
      */
@@ -136,7 +136,7 @@ class Articulos
     /**
      * Get precio.
      *
-     * @return int
+     * @return string
      */
     public function getPrecio()
     {
