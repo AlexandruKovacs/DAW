@@ -10,19 +10,24 @@ $precio = $_GET['precio'];
 $cantidad = $_GET['cantidad'];
 $idProveedor = $_GET['idProveedor'];
 
-$nuevoArticulo = new Articulos();
+if ($idProveedor != '') {
 
-$proveedor = $entityManager->find('Proveedor', $idProveedor);
+    $nuevoArticulo = new Articulos();
 
-$nuevoArticulo->setNombre($nombre);
-$nuevoArticulo->setDescripcion($descripcion);
-$nuevoArticulo->setPrecio($precio);
-$nuevoArticulo->setCantidad($cantidad);
-$nuevoArticulo->setIdProveedor($proveedor);
+    $proveedor = $entityManager->find('Proveedor', $idProveedor);
 
-$entityManager->persist($nuevoArticulo);
-$entityManager->flush();
+    $nuevoArticulo->setNombre($nombre);
+    $nuevoArticulo->setDescripcion($descripcion);
+    $nuevoArticulo->setPrecio($precio);
+    $nuevoArticulo->setCantidad($cantidad);
+    $nuevoArticulo->setIdProveedor($proveedor);
 
-echo '<p class="text-center text-success">Articulo insertado correctamente.</p>';
+    $entityManager->persist($nuevoArticulo);
+    $entityManager->flush();
+
+    echo '<p class="text-center text-success">Articulo insertado correctamente.</p>';
+} else {
+    echo '<p class="text-center text-danger">Por favor, introduzca los datos correctamente.</p>';
+}
 
 ?>
