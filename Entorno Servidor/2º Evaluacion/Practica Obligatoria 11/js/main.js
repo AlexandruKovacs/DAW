@@ -16,7 +16,7 @@ function obtenerProveedores() {
 
 obtenerProveedores();
 
-document.getElementById('filtroPrecio').addEventListener('change', function(event) {
+filtroPrecio.addEventListener('change', function(event) {
     let precio = event.target.value;
 
     xhr.open('GET', `consulta-precios.php?precio=${precio}`);
@@ -39,7 +39,7 @@ document.getElementById('filtroPrecio').addEventListener('change', function(even
 });
 
 
-document.getElementById('filtroProveedor').addEventListener('change', function(event) {
+filtroProveedor.addEventListener('change', function(event) {
     let idProveedor = event.target.value;
 
     xhr.open('GET', `consulta-proveedores.php?idProveedor=${idProveedor}`);
@@ -62,7 +62,7 @@ document.getElementById('filtroProveedor').addEventListener('change', function(e
 });
 
 
-document.getElementById('filtroCantidad').addEventListener('change', function(event) {
+filtroCantidad.addEventListener('change', function(event) {
     let cantidad = event.target.value;
 
     xhr.open('GET', `consulta-cantidad.php?cantidad=${cantidad}`);

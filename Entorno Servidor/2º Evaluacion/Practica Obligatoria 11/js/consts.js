@@ -1,3 +1,7 @@
+const filtroPrecio = document.getElementById('filtroPrecio');
+const filtroProveedor = document.getElementById('filtroProveedor');
+const filtroCantidad = document.getElementById('filtroCantidad');
+
 const botonOpciones = document.getElementById('botonOpciones');
 const masOpciones = document.getElementById('masOpciones');
 const cajaModificar = document.getElementById('cajaModificar');
