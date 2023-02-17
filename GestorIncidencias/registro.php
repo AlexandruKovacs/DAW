@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+
+    header('Location: menu-profesor.php');
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +27,7 @@
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -22,7 +35,7 @@
         <div class="form-container">
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
 
-            <form action="server/register.php" method="POST" class="form-register">
+            <form action="server/registro-usuario.php" method="POST" class="form-register">
                 
                 <div>
                     <label for="nombre">Nombre</label>
@@ -33,7 +46,7 @@
 
                     <label for="departamento">Departamento</label>
                     <select name="departamento" id="departamento">
-                        <option value="">Selecciona un departamento</option>
+                        <option value="">Selecciona tu departamento</option>
                     </select>
                 </div>
                 <div>
@@ -47,9 +60,13 @@
                     <input type="email" name="correo" id="correo">
                 </div>
 
-                <a class="atras" id="atras" href="index.html">Atrás</a>
-                <button class="registrar" id="registrar">Registrarme</button>
-
+                <div>
+                    <a class="atras" id="atras" href="index.php">Atrás</a>
+                </div>
+                <div>
+                    <button class="registrar" id="registrar">Registrarme</button>
+                </div>
+                
             </form>
 
         </div>

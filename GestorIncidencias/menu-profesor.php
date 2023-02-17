@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION['usuario'])) {
 
-  header("Location: index.html");
+  header("Location: index.php");
   exit();
 }
 
@@ -27,6 +27,7 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -38,8 +39,10 @@ if (!isset($_SESSION['usuario'])) {
         </div>
         <div class="info-container">
             Bienvenido/a <?php echo $_SESSION['usuario']; ?>.
-            <a class="logout" href="server/logout.php">(Cerrar sesión)</a>
+            <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>
+
+    <h2>Profesor</h2>
 </body>
 </html>

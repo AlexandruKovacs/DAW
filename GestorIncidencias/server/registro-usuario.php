@@ -11,6 +11,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $correo = $_POST['correo'];
 
+    $password = hash('sha512', $password);
+
     $conn = mysqli_connect('localhost', 'root', '', 'gestor');
 
     $consulta = "INSERT INTO profesores (nombre, apellidos, idDepartamento, usuario, password, correo) 

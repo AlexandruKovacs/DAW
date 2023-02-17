@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
+
+    header("Location: menu-admin.php");
+    exit();
+} else if (isset($_SESSION['usuario']) && $_SESSION['usuario'] !== 'CTIC') {
+
+    header("Location: menu-profesor.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +31,7 @@
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -23,22 +40,22 @@
         <div class="form-container">
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
 
-            <form action="server/login.php" method="POST" class="form-login">
+            <form action="server/iniciar-sesion.php" method="POST" class="form-login">
                 
                 <div class="usuario-container">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" name="usuario" id="usuario" required>
+                    <!-- <label for="usuario">Usuario</label> -->
+                    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" required>
                 </div>
                 <div class="password-container">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" required>
+                    <!-- <label for="password">Contraseña</label> -->
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
                 </div>
 
                 <button class="acceder" id="acceder">Acceder</button>
 
             </form>
 
-            <p>¿No tienes una cuenta? <a href="register.html">Regístrate</a></p>
+            <p>¿No tienes una cuenta? <a href="registro.php">Regístrate</a></p>
         </div>
     </main>
 
