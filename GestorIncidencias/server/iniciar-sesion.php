@@ -17,14 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conexion = new mysqli('localhost', 'root', '', 'gestor');
 
-    if ($conexion->connect_error) {
-        die("Error al conectarse a la base de datos: " . $conexion->connect_error);
-    }
-
     $sql = "SELECT * FROM profesores WHERE usuario = ?";
 
     $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("s", $usuario);
+    $stmt->bind_param('s', $usuario);
     $stmt->execute();
 
     $resultado = $stmt->get_result();
@@ -35,34 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idUsuario = $fila['id'];
         $usuarioBD = $fila['usuario'];
         $passwordBD = $fila['password'];
-        $nombreBD = $fila['nombre'];
-        $apellidosBD = $fila['apellidos'];
+        $nombreApellidosBD = $fila['nombreApellidos'];
 
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
             $_SESSION['usuario'] = $nombreBD;
 
-            header("Location: ../menu-admin.php");
+            header('Location: ../menu-admin.php');
             exit();
 
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
             $_SESSION['usuario'] = $nombreBD . ' ' . $apellidosBD;
 
-            header("Location: ../menu-profesor.php");
+            header('Location: ../menu-profesor.php');
             exit();
             
         } else {
-
-            echo "La contraseña es incorrecta.";
+            echo 'La contraseña es incorrecta.';
         }
     } else {
-
-        echo "El usuario no existe.";
+        echo 'El usuario no existe.';
     }
-
-    $stmt->close();
-    $conexion->close();
-
 }
 ?>

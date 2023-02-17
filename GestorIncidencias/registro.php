@@ -38,12 +38,12 @@ if (isset($_SESSION['usuario'])) {
             <form action="server/registro-usuario.php" method="POST" class="form-register">
                 
                 <div>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" required>
+                    <label for="nombre">Nombre y apellidos</label>
+                    <input type="text" name="nombreApellidos" id="nombreApellidos" required>
 
-                    <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" required>
-
+                    <label for="correo">Correo corporativo</label>
+                    <input type="email" name="correo" id="correo">
+                    
                     <label for="departamento">Departamento</label>
                     <select name="departamento" id="departamento">
                         <option value="">Selecciona tu departamento</option>
@@ -56,8 +56,8 @@ if (isset($_SESSION['usuario'])) {
                     <label for="password">Contraseña</label>
                     <input type="password" name="password" id="password" required>
 
-                    <label for="correo">Correo corporativo</label>
-                    <input type="email" name="correo" id="correo">
+                    <label for="password2">Confirmar contraseña</label>
+                    <input type="password" name="password2" id="password2" required>
                 </div>
 
                 <div>
