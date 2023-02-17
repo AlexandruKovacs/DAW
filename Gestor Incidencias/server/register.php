@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nombre = $_POST['nombre'];
@@ -19,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     mysqli_close($conn);
 
-    header('Location: ../login.html');
+    $_SESSION['usuario'] = $nombre . ' ' . $apellidos;
+    header('Location: ../menu-profesor.php');
 
 }
