@@ -38,17 +38,18 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
     
     <main class="main">
         <div class="form-container">
+            <div id="mensaje"></div>
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
 
-            <form action="server/iniciar-sesion.php" method="POST" class="form-login">
+            <form class="form-login" id="formLogin">
                 
                 <div class="usuario-container">
                     <!-- <label for="usuario">Usuario</label> -->
-                    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" required>
+                    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
                 </div>
                 <div class="password-container">
                     <!-- <label for="password">Contraseña</label> -->
-                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
                 </div>
 
                 <button class="acceder" id="acceder">Acceder</button>

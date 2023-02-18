@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
 
-    header("Location: ../menu-profesor.php");
+    header('Location: ../menu-profesor.php');
     exit();
 }
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conexion = new mysqli('localhost', 'root', '', 'gestor');
 
-    $sql = "SELECT * FROM profesores WHERE usuario = ?";
+    $sql = 'SELECT * FROM profesores WHERE usuario = ?';
 
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param('s', $usuario);
@@ -37,22 +37,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
             $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
-
-            header('Location: ../menu-admin.php');
-            exit();
+            $response = [
+                'success' => true,
+                'redirectUrl' => 'menu-admin.php'
+            ];
 
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
             $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
-
-            header('Location: ../menu-profesor.php');
-            exit();
+            $response = [
+                'success' => true,
+                'redirectUrl' => 'menu-profesor.php'
+            ];
             
         } else {
-            echo 'La contraseña es incorrecta.';
+            $response = [
+                'success' => false,
+                'message' => 'Acceso inválido. Por favor, inténtelo otra vez.'
+            ];
         }
     } else {
-        echo 'El usuario no existe.';
+        $response = [
+            'success' => false,
+            'message' => 'Acceso inválido. Por favor, inténtelo otra vez.'
+        ];
     }
+
+    echo json_encode($response);
 }
 ?>

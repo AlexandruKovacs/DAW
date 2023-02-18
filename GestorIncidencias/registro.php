@@ -55,14 +55,13 @@ if (isset($_SESSION['usuario'])) {
                     <label for="password">Contraseña</label>
                     <div class="input-icon">
                         <input type="password" name="password" id="password" required>
-                        <i class="fa-solid fa-eye" id="showPassword"></i>
+                        <i class="fa-regular fa-eye" id="showPassword"></i>
                     </div>
-                    
 
                     <label for="password2">Confirmar contraseña</label>
                     <div class="input-icon">
                     <input type="password" name="password2" id="password2" required>
-                        <i class="fa-solid fa-eye" id="showPassword2"></i>
+                        <i class="fa-regular fa-eye" id="showPassword2"></i>
                     </div>
                 </div>
 

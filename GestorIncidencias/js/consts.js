@@ -3,3 +3,5 @@ const showPassword = document.getElementById('showPassword');
 const showPassword2 = document.getElementById('showPassword2');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
+const formLogin = document.getElementById('formLogin');
+const mensaje = document.getElementById('mensaje');
