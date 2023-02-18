@@ -36,18 +36,17 @@ if (isset($_SESSION['usuario'])) {
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
 
             <form action="server/registro-usuario.php" method="POST" class="form-register">
-                
                 <div>
-                    <label for="nombre">Nombre y apellidos</label>
-                    <input type="text" name="nombreApellidos" id="nombreApellidos" required>
+
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required>
+
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" name="apellidos" id="apellidos" required>
 
                     <label for="correo">Correo corporativo</label>
                     <input type="email" name="correo" id="correo">
                     
-                    <label for="departamento">Departamento</label>
-                    <select name="departamento" id="departamento">
-                        <option value="">Selecciona tu departamento</option>
-                    </select>
                 </div>
                 <div>
                     <label for="usuario">Usuario</label>
@@ -61,6 +60,13 @@ if (isset($_SESSION['usuario'])) {
                 </div>
 
                 <div>
+                    <label for="departamento">Departamento</label>
+                    <select name="departamento" id="departamento">
+                        <option value="">Selecciona tu departamento</option>
+                    </select>
+                </div>
+
+                <div>
                     <a class="atras" id="atras" href="index.php">Atrás</a>
                 </div>
                 <div>
@@ -71,7 +77,6 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
     </main>
-
     <script src="js/main.js"></script>
 </body>
 </html>

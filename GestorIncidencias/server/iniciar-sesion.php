@@ -31,18 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idUsuario = $fila['id'];
         $usuarioBD = $fila['usuario'];
         $passwordBD = $fila['password'];
-        $nombreApellidosBD = $fila['nombreApellidos'];
+        $nombre = $fila['nombre'];
+        $apellidosBD = $fila['apellidos'];
 
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
-            $_SESSION['usuario'] = $nombreApellidosBD;
+            $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
 
             header('Location: ../menu-admin.php');
             exit();
 
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
-            $_SESSION['usuario'] = $nombreApellidosBD;
+            $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
 
             header('Location: ../menu-profesor.php');
             exit();

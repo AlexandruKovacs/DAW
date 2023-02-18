@@ -4,7 +4,8 @@ session_start();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $nombreApellidos = $_POST['nombreApellidos'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
     $departamento = $_POST['departamento'];
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
@@ -29,14 +30,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $insertaUsuario = "INSERT INTO profesores (nombreApellidos, idDepartamento, usuario, password, correo) 
+    $insertaUsuario = "INSERT INTO profesores (nombre, apellidos, idDepartamento, usuario, password, correo) 
             VALUES 
-            ('$nombreApellidos', '$departamento', '$usuario', '$password', '$correo')";
+            ('$nombre', '$apellidos', '$departamento', '$usuario', '$password', '$correo')";
 
     mysqli_query($conn, $insertaUsuario);
     mysqli_close($conn);
 
-    $_SESSION['usuario'] = $nombreApellidos;
+    $_SESSION['usuario'] = $nombre . ' ' . $apellidos;
     header('Location: ../menu-profesor.php');
 
 }

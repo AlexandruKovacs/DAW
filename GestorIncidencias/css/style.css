@@ -52,6 +52,12 @@ body {
     gap: 3rem;
 }
 
+.form-register div:nth-child(3) {
+    grid-column: -1/1;
+    grid-row: 2;
+    justify-self: center;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -61,7 +67,11 @@ body {
 
 label {
     display: block;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+}
+
+div:nth-child(3) label {
+    text-align: center;
 }
 
 input {
