@@ -1,3 +1,5 @@
+let xhr = new XMLHttpRequest();
+
 formLogin.addEventListener('submit', function(e) {
     e.preventDefault();
 
