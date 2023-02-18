@@ -53,10 +53,17 @@ if (isset($_SESSION['usuario'])) {
                     <input type="text" name="usuario" id="usuario" required>
 
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" required>
+                    <div class="input-icon">
+                        <input type="password" name="password" id="password" required>
+                        <i class="fa-solid fa-eye" id="showPassword"></i>
+                    </div>
+                    
 
                     <label for="password2">Confirmar contraseña</label>
+                    <div class="input-icon">
                     <input type="password" name="password2" id="password2" required>
+                        <i class="fa-solid fa-eye" id="showPassword2"></i>
+                    </div>
                 </div>
 
                 <div>
@@ -77,6 +84,8 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
     </main>
+    <script src="js/consts.js"></script>
+    <script src="js/functions.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

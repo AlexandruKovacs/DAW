@@ -58,7 +58,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
             <p>¿No tienes una cuenta? <a href="registro.php">Regístrate</a></p>
         </div>
     </main>
-
+    <script src="js/consts.js"></script>
+    <script src="js/functions.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
