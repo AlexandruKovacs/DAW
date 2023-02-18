@@ -1,8 +1,3 @@
-
-document.addEventListener('DOMContentLoaded', function() {
-    obtenerDepartamentos();
-});
-
 formLogin.addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -34,6 +29,3 @@ formLogin.addEventListener('submit', function(e) {
     };
     xhr.send(data);
 });
-
-showPassword.addEventListener('click', togglePassword);
-showPassword2.addEventListener('click', togglePassword2);

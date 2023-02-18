@@ -34,15 +34,16 @@ if (isset($_SESSION['usuario'])) {
     <main class="main">
         <div class="form-container">
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
+            <div id="mensaje"></div>
 
-            <form action="server/registro-usuario.php" method="POST" class="form-register">
+            <form class="form-register" id="formRegister">
                 <div>
 
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" required>
+                    <input type="text" name="nombre" id="nombre">
 
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" required>
+                    <input type="text" name="apellidos" id="apellidos">
 
                     <label for="correo">Correo corporativo</label>
                     <input type="email" name="correo" id="correo">
@@ -50,17 +51,17 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div>
                     <label for="usuario">Usuario</label>
-                    <input type="text" name="usuario" id="usuario" required>
+                    <input type="text" name="usuario" id="usuario">
 
                     <label for="password">Contraseña</label>
                     <div class="input-icon">
-                        <input type="password" name="password" id="password" required>
+                        <input type="password" name="password" id="password">
                         <i class="fa-regular fa-eye" id="showPassword"></i>
                     </div>
 
                     <label for="password2">Confirmar contraseña</label>
                     <div class="input-icon">
-                    <input type="password" name="password2" id="password2" required>
+                    <input type="password" name="password2" id="password2">
                         <i class="fa-regular fa-eye" id="showPassword2"></i>
                     </div>
                 </div>
@@ -85,6 +86,6 @@ if (isset($_SESSION['usuario'])) {
     </main>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/registro.js"></script>
 </body>
 </html>
