@@ -35,14 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
-            $_SESSION['usuario'] = $nombreBD;
+            $_SESSION['usuario'] = $nombreApellidosBD;
 
             header('Location: ../menu-admin.php');
             exit();
 
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
-            $_SESSION['usuario'] = $nombreBD . ' ' . $apellidosBD;
+            $_SESSION['usuario'] = $nombreApellidosBD;
 
             header('Location: ../menu-profesor.php');
             exit();

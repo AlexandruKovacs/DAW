@@ -9,7 +9,7 @@
     --blanco: #FFF;
     --negro: #000;
     --azul: #1475b0;
-    --azul-oscuro: #0e5e90;
+    --azul-oscuro: #0D77D1;
 }
 
 html {
@@ -156,11 +156,3 @@ a {
     padding: .5rem;
     color: var(--azul-oscuro);
 }
-
-/* .logout i:active {
-    color: var(--azul);
-}
-
-.logout i:focus {
-    color: var(--azul);
-} */
