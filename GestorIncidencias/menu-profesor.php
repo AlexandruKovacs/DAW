@@ -44,5 +44,14 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
 
     <h2>Profesor</h2>
+
+    <div class="menu-principal">
+        <button id="crearIncidencia" class="crear-incidencia">
+            <i class="fa-solid fa-plus fa-2xl"></i>
+        </button>
+        <button id="listarIncidencias" class="listar-incidencias">
+            <i class="fa-solid fa-list fa-2xl"></i>
+        </button>
+    </div>
 </body>
 </html>

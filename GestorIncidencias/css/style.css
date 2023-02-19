@@ -5,6 +5,7 @@
     --fondo: #f4f4f4;
     --gris: #9FA6B2;
     --gris-claro: #c4c4c4;
+    --gris-claro-2: #f0f0f0;
     --gris-oscuro: #ababab;
     --blanco: #FFF;
     --negro: #000;
@@ -191,4 +192,32 @@ a {
     border-radius: .8rem;
     background-color: var(--error);
     color: var(--error-fuente);
+}
+
+.menu-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    min-height: 50vh;
+}
+
+.crear-incidencia, .listar-incidencias {
+    background-color: var(--blanco);
+    border-radius: 1rem;
+    border: none;
+    color: var(--azul);
+    cursor: pointer;
+    height: 20rem;
+    width: 20rem;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.crear-incidencia:hover, .listar-incidencias:hover {
+    box-shadow: 0 1.5rem 2rem rgb(0 0 0 / 15%);
+}
+
+.fa-plus, .fa-list {
+    transform: scale(4.5);
 }
