@@ -6,9 +6,8 @@ formLogin.addEventListener('submit', function(e) {
     const usuario = document.getElementById('usuario').value;
     const password = document.getElementById('password').value;
 
-    mensaje.style.display = 'block';
-
     if (usuario.trim() === '' || password.trim() === '') {
+        mensaje.style.display = 'block';
         mensaje.innerHTML = 'Todos los campos son obligatorios.';
         return;
     }
