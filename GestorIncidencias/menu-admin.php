@@ -38,7 +38,7 @@ if (!isset($_SESSION['usuario'])) {
             </a>
         </div>
         <div class="info-container">
-            Bienvenido/a <?php echo $_SESSION['usuario']; ?>.
+            Bienvenido/a <?php echo $_SESSION['nombreApellidos']; ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>

@@ -32,7 +32,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_query($conn, $insertaUsuario);
         mysqli_close($conn);
     
-        $_SESSION['usuario'] = $nombre . ' ' . $apellidos;
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['nombreApellidos'] = $nombre . ' ' . $apellidos;
         $response = [
             'success' => true,
             'redirectUrl' => 'menu-profesor.php'

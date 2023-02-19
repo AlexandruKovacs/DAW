@@ -38,14 +38,16 @@ if (!isset($_SESSION['usuario'])) {
             </a>
         </div>
         <div class="info-container">
-            Bienvenido/a <?php echo $_SESSION['usuario']; ?>.
+            Bienvenido/a <?php echo $_SESSION['nombreApellidos']; ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>
 
     <main class="main-incidencia">
         <div class="form-container">
-        <h2>Nueva incidencia</h2>
+            <h2>Nueva incidencia</h2>
+            <div id="mensaje"></div>
+
             <form id="formIncidencia" class="form-incidencia">
 
                 <div>
@@ -63,9 +65,9 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
 
                 <div>
-                    <label for="curso">Curso</label>
-                    <input type="text" name="curso" id="curso" list="cursos">
-                    <datalist id="cursos">
+                    <label for="grupo">Grupo</label>
+                    <input type="text" name="grupo" id="grupo" list="grupos">
+                    <datalist id="grupos">
                     </datalist>
                 </div>
 

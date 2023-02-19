@@ -31,12 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idUsuario = $fila['id'];
         $usuarioBD = $fila['usuario'];
         $passwordBD = $fila['password'];
-        $nombre = $fila['nombre'];
+        $nombreBD = $fila['nombre'];
         $apellidosBD = $fila['apellidos'];
 
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
-            $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['nombreApellidos'] = $nombreBD . ' ' . $apellidosBD;
             $response = [
                 'success' => true,
                 'redirectUrl' => 'menu-admin.php'
@@ -44,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
-            $_SESSION['usuario'] = $nombre . ' ' . $apellidosBD;
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['nombreApellidos'] = $nombreBD . ' ' . $apellidosBD;
             $response = [
                 'success' => true,
                 'redirectUrl' => 'menu-profesor.php'

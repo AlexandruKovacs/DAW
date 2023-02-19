@@ -1,5 +1,6 @@
 let xhr = new XMLHttpRequest();
 let xhrAulas = new XMLHttpRequest();
+let xhrCursos = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -27,6 +28,7 @@ function obtenerTiposIncidencias() {
     xhr.onload = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
+            let tipoSelect = document.getElementById('tipo');
             let tipos = JSON.parse(xhr.responseText);
             console.log(tipos);
 
@@ -64,6 +66,29 @@ function obtenerAulas() {
     };
     xhrAulas.send();
 }
+
+function obtenerGrupos() {
+    xhrCursos.open('GET', 'server/obtener-grupos.php', true);
+    xhrCursos.onload = function() {
+        if (xhrCursos.readyState === 4 && xhrCursos.status === 200) {
+
+            let grupoSelect = document.getElementById('grupos');
+            let grupos = JSON.parse(xhrCursos.responseText);
+            console.log(grupos);
+
+            grupos.forEach(grupo => {
+                const option = document.createElement('option');
+
+                option.value = grupo.id;
+                option.text = grupo.nombre;
+
+                grupoSelect.appendChild(option);
+            });
+        }
+    };
+    xhrCursos.send();
+}
+
 
 function togglePassword() {
 
