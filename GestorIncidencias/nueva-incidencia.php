@@ -50,7 +50,9 @@ if (!isset($_SESSION['usuario'])) {
 
                 <div>
                     <label for="tipo">Tipo de incidencia</label>
-                    <input type="text" name="tipo" id="tipo">
+                    <select name="tipo" id="tipo">
+                        <option value="">Selecciona un tipo</option>
+                    </select>
                 </div>
 
                 <div>
@@ -88,5 +90,8 @@ if (!isset($_SESSION['usuario'])) {
             </form>
         </div>
     </main>
+    <script src="js/consts.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/nueva-incidencia.js"></script>
 </body>
 </html>

@@ -5,16 +5,37 @@ function obtenerDepartamentos() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
-            let datos = JSON.parse(xhr.responseText);
+            let departamentos = JSON.parse(xhr.responseText);
             console.log(xhr.responseText);
 
-            datos.forEach(departamento => {
+            departamentos.forEach(departamento => {
                 const option = document.createElement('option');
 
                 option.value = departamento.id;
                 option.text = departamento.nombre_departamento;
 
                 departamentoSelect.appendChild(option);
+            });
+        }
+    };
+    xhr.send();
+}
+
+function obtenerTiposIncidencias() {
+    xhr.open('GET', 'server/obtener-tipos-incidencias.php', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            let tipos = JSON.parse(xhr.responseText);
+            console.log(xhr.responseText);
+
+            tipos.forEach(tipo => {
+                const option = document.createElement('option');
+
+                option.value = tipo.id;
+                option.text = tipo.tipoIncidencia;
+
+                tipoSelect.appendChild(option);
             });
         }
     };

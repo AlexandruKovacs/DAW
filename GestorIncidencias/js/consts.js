@@ -1,4 +1,3 @@
-const departamentoSelect = document.getElementById('departamento');
 const showPassword = document.getElementById('showPassword');
 const showPassword2 = document.getElementById('showPassword2');
 const password = document.getElementById('password');
@@ -10,3 +9,5 @@ const nombre = document.getElementById('nombre');
 const apellidos = document.getElementById('apellidos');
 const correo = document.getElementById('correo');
 const usuario = document.getElementById('usuario');
+const departamentoSelect = document.getElementById('departamento');
+const tipoSelect = document.getElementById('tipo');
