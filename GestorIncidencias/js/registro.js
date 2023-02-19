@@ -1,14 +1,7 @@
 obtenerDepartamentos();
 
-nombre.addEventListener('change', validarNombre);
-apellidos.addEventListener('change', validarApellidos);
-correo.addEventListener('change', validarCorreo);
-usuario.addEventListener('change', validarUsuario);
-password.addEventListener('change', validarPassword);
-password2.addEventListener('change', validarPassword2);
-
-formRegister.addEventListener('submit', function(e) {
-    e.preventDefault();
+formRegister.addEventListener('submit', function(event) {
+    event.preventDefault();
 
     mensaje.style.display = 'block';
 
@@ -20,6 +13,42 @@ formRegister.addEventListener('submit', function(e) {
         return;
     }
 
+    if (!/^[A-Z][a-z]*( [A-Z][a-z]*)*$/.test(nombre.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'El nombre debe empezar por mayúscula y no contener caracteres especiales.';
+        return;
+    }
+
+    if (!/^[A-Z][a-z]*( [A-Z][a-z]*)*$/.test(apellidos.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'Los apellidos deben empezar por mayúscula y no contener caracteres especiales.';
+        return;
+    }
+
+    if (!/^[a-zA-Z0-9._%+-]+@educa\.madrid\.org$/.test(correo.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'El correo debe terminar en @educa.madrid.org';
+        return;
+    }
+
+    if (!/^[a-zA-Z0-9._-]{3,20}$/.test(usuario.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'El usuario debe contener entre 3 y 20 caracteres alfanuméricos.';
+        return;
+    }
+
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'La contraseña debe tener una letra mayúscula, una letra minúscula, un dígito y una logitud de 8 caracteres.';
+        return;
+    }
+
+    if (password.value !== password2.value) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'Las contraseñas no coinciden.';
+        return;
+    } 
+    
     const url = 'server/registrar-usuario.php';
     const data = `nombre=${nombre.value}&apellidos=${apellidos.value}&correo=${correo.value}&usuario=${usuario.value}&password=${password.value}&departamento=${departamentoSelect.value}`;
   
@@ -33,6 +62,7 @@ formRegister.addEventListener('submit', function(e) {
             if (response.success) {
                 window.location.href = response.redirectUrl;
             } else {
+                mensaje.style.display = 'block';
                 mensaje.innerHTML = response.message;
             }
         }
