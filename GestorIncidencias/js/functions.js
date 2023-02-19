@@ -1,4 +1,5 @@
 let xhr = new XMLHttpRequest();
+let xhrAulas = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -23,11 +24,11 @@ function obtenerDepartamentos() {
 
 function obtenerTiposIncidencias() {
     xhr.open('GET', 'server/obtener-tipos-incidencias.php', true);
-    xhr.onreadystatechange = function() {
+    xhr.onload = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             let tipos = JSON.parse(xhr.responseText);
-            console.log(xhr.responseText);
+            console.log(tipos);
 
             tipos.forEach(tipo => {
                 const option = document.createElement('option');
@@ -40,6 +41,28 @@ function obtenerTiposIncidencias() {
         }
     };
     xhr.send();
+}
+
+function obtenerAulas() {
+    xhrAulas.open('GET', 'server/obtener-aulas.php', true);
+    xhrAulas.onload = function() {
+        if (xhrAulas.readyState === 4 && xhrAulas.status === 200) {
+
+            let aulaSelect = document.getElementById('aulas');
+            let aulas = JSON.parse(xhrAulas.responseText);
+            console.log(aulas);
+
+            aulas.forEach(aula => {
+                const option = document.createElement('option');
+
+                option.value = aula.id;
+                option.text = aula.nombre;
+
+                aulaSelect.appendChild(option);
+            });
+        }
+    };
+    xhrAulas.send();
 }
 
 function togglePassword() {

@@ -11,3 +11,4 @@ const correo = document.getElementById('correo');
 const usuario = document.getElementById('usuario');
 const departamentoSelect = document.getElementById('departamento');
 const tipoSelect = document.getElementById('tipo');
+const aulaSelect = document.getElementById('aulas');
