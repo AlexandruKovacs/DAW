@@ -31,7 +31,7 @@ if (isset($_SESSION['usuario'])) {
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <main class="main">
+    <main class="main-register">
         <div class="form-container">
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
             <div id="mensaje"></div>

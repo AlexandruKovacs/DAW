@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú principal | Incidencias</title>
+    <title>Ver incidencias | Incidencias</title>
 
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
@@ -42,25 +42,5 @@ if (!isset($_SESSION['usuario'])) {
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>
-
-    <div class="menu-principal">
-        <div>
-            <a href="nueva-incidencia.php">
-                <button id="crearIncidencia" class="crear-incidencia">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </a>
-            <p>Nueva incidencia</p>
-        </div>
-
-        <div>
-            <a href="ver-incidencias.php">
-                <button id="listarIncidencias" class="listar-incidencias">
-                    <i class="fa-solid fa-list"></i>
-                </button>
-            </a>
-            <p>Ver incidencias</p>
-        </div>
-    </div>
 </body>
 </html>

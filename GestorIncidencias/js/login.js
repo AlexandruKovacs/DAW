@@ -24,6 +24,7 @@ formLogin.addEventListener('submit', function(e) {
             if (response.success) {
                 window.location.href = response.redirectUrl;
             } else {
+                mensaje.style.display = 'block';
                 mensaje.innerHTML = response.message;
             }
         }

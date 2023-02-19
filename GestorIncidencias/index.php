@@ -36,7 +36,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
 </head>
 <body>
     
-    <main class="main">
+    <main class="main-login">
         <div class="form-container">
             <div id="mensaje"></div>
             <img src="img/logo.png" alt="Imagen Logo" class="logo">
