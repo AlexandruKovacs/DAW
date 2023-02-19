@@ -36,9 +36,14 @@ formIncidencia.addEventListener('submit', function(event) {
     if (grupo.value !== null) {
         if (tipo.value.trim() === '' || aula.value.trim() === '' || 
         fecha.value.trim() === '' || descripcion.value.trim() === '') {
-    
             mensaje.style.display = 'block';
             mensaje.innerHTML = 'Todos los campos son obligatorios.';
+            return;
+        }
+
+        if (!/^[a-zA-Z0-9\s.,;:'"!?()\[\]\{\}\-]{30,200}$/.test(descripcion.value)) {
+            mensaje.style.display = 'block';
+            mensaje.innerHTML = 'La descripción debe tener entre 30 y 200 caracteres alfanuméricos.';
             return;
         }
     }
