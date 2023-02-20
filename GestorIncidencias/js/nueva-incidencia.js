@@ -2,23 +2,11 @@ obtenerTiposIncidencias();
 obtenerAulas();
 obtenerGrupos();
 
-// inputAulas.addEventListener('input', function() {
-//     const aulaSeleccionada = datalistAulas.querySelector(`option[value="${inputAulas.value}"]`);
-//     if (aulaSeleccionada) {
-//         inputAulas.value = aulaSeleccionada.innerText;
-//     }
-// });
-
-// inputGrupos.addEventListener('input', function() {
-//     const grupoSeleccionado = datalistGrupos.querySelector(`option[value="${inputGrupos.value}"]`);
-//     if (grupoSeleccionado) {
-//         inputGrupos.value = grupoSeleccionado.innerText;
-//     }
-// });
-
 aula.addEventListener('change', function() {
 
-    if (!/^(10|[1-9])$/.test(aula.value)) {
+    const selectedOption = document.querySelector(`#aulas option[value='${aula.value}']`);
+
+    if (selectedOption && selectedOption.textContent.startsWith('Aula')) {
         grupo.value = '';
         grupo.placeholder = '';
         grupo.disabled = false;
