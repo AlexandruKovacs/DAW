@@ -8,7 +8,6 @@ function obtenerDepartamentos() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             let departamentos = JSON.parse(xhr.responseText);
-            console.log(xhr.responseText);
 
             departamentos.forEach(departamento => {
                 const option = document.createElement('option');
@@ -30,7 +29,6 @@ function obtenerTiposIncidencias() {
 
             let tipoSelect = document.getElementById('tipo');
             let tipos = JSON.parse(xhr.responseText);
-            console.log(tipos);
 
             tipos.forEach(tipo => {
                 const option = document.createElement('option');
@@ -52,7 +50,6 @@ function obtenerAulas() {
 
             let aulaSelect = document.getElementById('aulas');
             let aulas = JSON.parse(xhrAulas.responseText);
-            console.log(aulas);
 
             aulas.forEach(aula => {
                 const option = document.createElement('option');
@@ -74,7 +71,6 @@ function obtenerGrupos() {
 
             let grupoSelect = document.getElementById('grupos');
             let grupos = JSON.parse(xhrCursos.responseText);
-            console.log(grupos);
 
             grupos.forEach(grupo => {
                 const option = document.createElement('option');
