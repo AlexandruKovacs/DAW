@@ -42,5 +42,14 @@ if (!isset($_SESSION['usuario'])) {
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>
+
+    <main class="main-incidencia">
+        <div class="incidencia-container">
+            <h2>Tus incidencias</h2>
+            <table id="incidencias">
+
+            </table>
+        </div>
+    </main>
 </body>
 </html>
