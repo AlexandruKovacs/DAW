@@ -50,8 +50,7 @@ if (!isset($_SESSION['usuario'])) {
             <table id="incidencias">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Profesor</th>
+                    <th>ID de incidencia</th>
                     <th>Aula</th>
                     <th>Grupo</th>
                     <th>Tipo de incidencia</th>

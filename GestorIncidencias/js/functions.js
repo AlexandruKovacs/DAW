@@ -96,6 +96,42 @@ function obtenerIncidencias() {
             let incidencias = JSON.parse(xhrIncidencias.responseText);
             console.log(incidencias);
 
+            const tbody = document.querySelector('#incidencias tbody');
+
+            incidencias.forEach(incidencia => {
+                const fila = document.createElement('tr');
+
+                const id = document.createElement('td');
+                id.textContent = incidencia.id;
+                fila.appendChild(id);
+
+                const idAula = document.createElement('td');
+                idAula.textContent = incidencia.idAula;
+                fila.appendChild(idAula);
+
+                const idGrupo = document.createElement('td');
+                idGrupo.textContent = incidencia.idGrupo ? incidencia.idGrupo : '-';
+                fila.appendChild(idGrupo);
+
+                const tipoIncidencia = document.createElement('td');
+                tipoIncidencia.textContent = incidencia.tipoIncidencia;
+                fila.appendChild(tipoIncidencia);
+
+                const descripcion = document.createElement('td');
+                descripcion.textContent = incidencia.descripcion;
+                fila.appendChild(descripcion);
+
+                const fecha = document.createElement('td');
+                fecha.textContent = incidencia.fechaCreacion;
+                fila.appendChild(fecha);
+
+                const estado = document.createElement('td');
+                estado.textContent = incidencia.estado;
+                fila.appendChild(estado);
+
+                tbody.appendChild(fila);
+            });
+
         };
     }
     xhrIncidencias.open('GET', `server/obtener-incidencias.php?idProfesor=${idProfesor}`, true);

@@ -33,6 +33,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     
@@ -60,5 +62,6 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == 'CTIC') {
         </div>
     </main>
     <script src="js/login.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

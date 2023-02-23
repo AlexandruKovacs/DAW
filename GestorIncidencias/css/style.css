@@ -13,7 +13,6 @@
     --azul-oscuro: #135d9e;
     --error: #F4D6D2;
     --error-fuente: #691911;
-
 }
 
 html {
@@ -31,6 +30,17 @@ body {
     font-size: 1.5rem;
     line-height: 2;
     user-select: none;
+}
+
+body.dark-theme {
+    background-color: var(--negro);
+    color: var(--gris-claro);
+}
+
+.info-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .main-login, .main-register {
@@ -181,13 +191,6 @@ input:focus, textarea:focus {
     background-color: var(--gris-oscuro);
 }
 
-.form-container p, a {
-    margin-top: 3rem;
-    margin-bottom: 0;
-    text-align: center;
-    text-decoration: none;
-}
-
 a {
     color: var(--azul-oscuro);
 }
@@ -257,4 +260,47 @@ a {
 
 .fa-plus, .fa-list {
     transform: scale(7.5);
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.toggle {
+    height: 24px;
+    width: 34px;
+    border-radius: 16px;
+    position: relative;
+    background: var(--azul-oscuro);
+    transition: all .2s ease;
+}
+    
+.toggle:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    transition: all .2s cubic-bezier(.5,.1,.75,1.35);
+}
+    
+.toggle:checked:after {
+    transform: translatex(14px);
+}
+
+.theme-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fa-brightness:before {
+    content: "\f0eb";
 }

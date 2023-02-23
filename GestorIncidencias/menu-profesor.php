@@ -29,6 +29,8 @@ if (!isset($_SESSION['usuario'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <nav class="nav-bar">
@@ -38,6 +40,11 @@ if (!isset($_SESSION['usuario'])) {
             </a>
         </div>
         <div class="info-container">
+            <div class="theme-container">
+                <i class="fa-solid fa-brightness"></i>
+                    <input type="checkbox" class="toggle" id="theme-checkbox" checked>
+                <i class="fa-solid fa-moon"></i>
+            </div>
             Bienvenido/a <?php echo $_SESSION['nombreApellidos']; ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
@@ -62,5 +69,6 @@ if (!isset($_SESSION['usuario'])) {
             <p>Ver incidencias</p>
         </div>
     </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
