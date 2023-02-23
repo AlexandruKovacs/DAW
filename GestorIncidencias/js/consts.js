@@ -5,6 +5,7 @@ const formLogin = document.getElementById('formLogin');
 const formRegister = document.getElementById('formRegister');
 const formIncidencia = document.getElementById('formIncidencia');
 const mensaje = document.getElementById('mensaje');
+const idProfesor = document.getElementById('idProfesor');
 
 const nombre = document.getElementById('nombre');
 const apellidos = document.getElementById('apellidos');

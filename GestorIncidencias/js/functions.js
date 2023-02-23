@@ -1,6 +1,7 @@
 let xhr = new XMLHttpRequest();
 let xhrAulas = new XMLHttpRequest();
 let xhrCursos = new XMLHttpRequest();
+let xhrIncidencias = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -83,6 +84,23 @@ function obtenerGrupos() {
         }
     };
     xhrCursos.send();
+}
+
+function obtenerIncidencias() {
+
+    let idProfesor = document.getElementById('idProfesor').value;
+
+    xhrIncidencias.onreadystatechange = function() {
+        if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
+
+            let incidencias = JSON.parse(xhrIncidencias.responseText);
+            console.log(incidencias);
+
+        };
+    }
+    xhrIncidencias.open('GET', `server/obtener-incidencias.php?idProfesor=${idProfesor}`, true);
+    xhrIncidencias.send();
+   
 }
 
 

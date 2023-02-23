@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($password == $passwordBD && $usuarioBD == 'CTIC') {
 
             $_SESSION['usuario'] = $usuario;
+            $_SESSION['idProfesor'] = $idUsuario;
             $_SESSION['nombreApellidos'] = $nombreBD . ' ' . $apellidosBD;
             $response = [
                 'success' => true,
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else if ($password == $passwordBD && $usuarioBD !== 'CTIC') {
 
             $_SESSION['usuario'] = $usuario;
+            $_SESSION['idProfesor'] = $idUsuario;
             $_SESSION['nombreApellidos'] = $nombreBD . ' ' . $apellidosBD;
             $response = [
                 'success' => true,

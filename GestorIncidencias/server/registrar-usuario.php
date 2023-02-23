@@ -29,10 +29,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 VALUES 
                 ('$nombre', '$apellidos', '$departamento', '$usuario', '$password', '$correo')";
     
+        $idProfesor = $conn->insert_id;
         mysqli_query($conn, $insertaUsuario);
         mysqli_close($conn);
     
         $_SESSION['usuario'] = $usuario;
+        $_SESSION['idProfesor'] = $idProfesor;
         $_SESSION['nombreApellidos'] = $nombre . ' ' . $apellidos;
         $response = [
             'success' => true,

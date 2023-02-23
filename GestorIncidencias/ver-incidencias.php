@@ -41,15 +41,33 @@ if (!isset($_SESSION['usuario'])) {
             Bienvenido/a <?php echo $_SESSION['nombreApellidos']; ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
+        <input type="hidden" id="idProfesor" value="<?php echo $_SESSION['idProfesor']; ?>">
     </nav>
 
     <main class="main-incidencia">
         <div class="incidencia-container">
             <h2>Tus incidencias</h2>
             <table id="incidencias">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Profesor</th>
+                    <th>Aula</th>
+                    <th>Grupo</th>
+                    <th>Tipo de incidencia</th>
+                    <th>Descripcion</th>
+                    <th>Fecha de creación</th>
+                    <th>Estado</th>
+                </tr>
+                </thead>
+                <tbody>
 
+                </tbody>
             </table>
         </div>
     </main>
+    <script src="js/consts.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/ver-incidencias.js"></script>
 </body>
 </html>
