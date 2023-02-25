@@ -89,38 +89,35 @@ function obtenerGrupos() {
 function obtenerIncidencias() {
 
     let idProfesor = document.getElementById('idProfesor').value;
-    let lleno = document.getElementById('lleno');
+    let tablaIncidencias = document.getElementById('tablaIncidencias');
     let vacio = document.getElementById('vacio');
 
     xhrIncidencias.onreadystatechange = function() {
         if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
 
             let incidencias = JSON.parse(xhrIncidencias.responseText);
-            console.log(incidencias.length);
 
             if (incidencias.length === 0) {
-                lleno.style.display = 'none';
-                vacio.style.display = 'block';
+                tablaIncidencias.style.visibility = 'hidden';
+                vacio.style.visibility = 'visible';
+                vacio.style.display = 'grid';
             } else {
-                lleno.style.display = 'block';
+                tablaIncidencias.style.visibility = 'visible';
+                vacio.style.visibility = 'hidden';
                 vacio.style.display = 'none';
             }
 
-            const tbody = document.querySelector('#incidencias tbody');
+            const tbody = document.querySelector('#tablaIncidencias tbody');
 
             incidencias.forEach(incidencia => {
                 const fila = document.createElement('tr');
 
-                const id = document.createElement('td');
-                id.textContent = incidencia.id;
-                fila.appendChild(id);
-
                 const idAula = document.createElement('td');
-                idAula.textContent = incidencia.idAula;
+                idAula.textContent = incidencia.nombreAula;
                 fila.appendChild(idAula);
 
                 const idGrupo = document.createElement('td');
-                idGrupo.textContent = incidencia.idGrupo ? incidencia.idGrupo : '-';
+                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
                 fila.appendChild(idGrupo);
 
                 const tipoIncidencia = document.createElement('td');
@@ -136,15 +133,39 @@ function obtenerIncidencias() {
                 fila.appendChild(fecha);
 
                 const estado = document.createElement('td');
-                const textoEstado = document.createElement('p');
 
-                textoEstado.className = incidencia.estado === 'Creada' ? 'creada' :
-                                        incidencia.estado === 'En proceso' ? 'en-proceso' :
-                                        'terminada';
+                if (incidencia.estado === 'Creada') {
+                    const iconoCreada = document.createElement('i');
+                    const textoEstado = document.createElement('p');
 
-                textoEstado.textContent = incidencia.estado;
+                    iconoCreada.className = 'fa-solid fa-folder-plus';
+                    textoEstado.textContent = incidencia.estado;
+                    textoEstado.className = 'creada';
 
-                estado.appendChild(textoEstado);
+                    textoEstado.appendChild(iconoCreada);
+                    estado.appendChild(textoEstado);
+                } else if (incidencia.estado === 'En proceso') {
+                    const iconoEnProceso = document.createElement('i');
+                    const textoEstado = document.createElement('p');
+
+                    iconoEnProceso.className = 'fa-solid fa-clock';
+                    textoEstado.textContent = incidencia.estado;
+                    textoEstado.className = 'en-proceso';
+
+                    textoEstado.appendChild(iconoEnProceso);
+                    estado.appendChild(textoEstado);
+                } else {
+                    const iconoTerminada = document.createElement('i');
+                    const textoEstado = document.createElement('p');
+
+                    iconoTerminada.className = 'fa-solid fa-check';
+                    textoEstado.textContent = incidencia.estado;
+                    textoEstado.className = 'terminada';
+
+                    textoEstado.appendChild(iconoTerminada);
+                    estado.appendChild(textoEstado);
+                }
+
                 fila.appendChild(estado);
 
                 tbody.appendChild(fila);

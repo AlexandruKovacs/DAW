@@ -51,25 +51,21 @@ if (!isset($_SESSION['usuario'])) {
             <img src="img/no-data.png" alt="No data" class="no-data">
             <p>No has registrado ninguna incidencia.</p>
         </div>
-        <div class="incidencia-container" id="lleno">
-            <h2>Tus incidencias</h2>
-            <table id="incidencias">
-                <thead>
-                <tr>
-                    <th>ID de incidencia</th>
-                    <th>Aula</th>
-                    <th>Grupo</th>
-                    <th>Tipo de incidencia</th>
-                    <th>Descripcion</th>
-                    <th>Fecha de creación</th>
-                    <th>Estado</th>
-                </tr>
-                </thead>
-                <tbody>
+        <table id="tablaIncidencias">
+            <thead>
+            <tr>
+                <th>Aula</th>
+                <th>Grupo</th>
+                <th>Tipo de incidencia</th>
+                <th>Descripción</th>
+                <th>Fecha de creación</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </main>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
