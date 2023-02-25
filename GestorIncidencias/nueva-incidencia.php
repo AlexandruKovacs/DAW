@@ -29,6 +29,8 @@ if (!isset($_SESSION['usuario'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <nav class="nav-bar">
@@ -95,5 +97,6 @@ if (!isset($_SESSION['usuario'])) {
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/nueva-incidencia.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

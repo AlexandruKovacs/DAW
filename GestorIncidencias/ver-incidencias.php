@@ -29,6 +29,8 @@ if (!isset($_SESSION['usuario'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <nav class="nav-bar">
@@ -45,7 +47,11 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
 
     <main class="main-incidencia">
-        <div class="incidencia-container">
+        <div id="vacio">
+            <img src="img/no-data.png" alt="No data" class="no-data">
+            <p>No has registrado ninguna incidencia.</p>
+        </div>
+        <div class="incidencia-container" id="lleno">
             <h2>Tus incidencias</h2>
             <table id="incidencias">
                 <thead>
@@ -68,5 +74,6 @@ if (!isset($_SESSION['usuario'])) {
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/ver-incidencias.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

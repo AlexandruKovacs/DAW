@@ -89,12 +89,22 @@ function obtenerGrupos() {
 function obtenerIncidencias() {
 
     let idProfesor = document.getElementById('idProfesor').value;
+    let lleno = document.getElementById('lleno');
+    let vacio = document.getElementById('vacio');
 
     xhrIncidencias.onreadystatechange = function() {
         if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
 
             let incidencias = JSON.parse(xhrIncidencias.responseText);
-            console.log(incidencias);
+            console.log(incidencias.length);
+
+            if (incidencias.length === 0) {
+                lleno.style.display = 'none';
+                vacio.style.display = 'block';
+            } else {
+                lleno.style.display = 'block';
+                vacio.style.display = 'none';
+            }
 
             const tbody = document.querySelector('#incidencias tbody');
 
@@ -126,7 +136,15 @@ function obtenerIncidencias() {
                 fila.appendChild(fecha);
 
                 const estado = document.createElement('td');
-                estado.textContent = incidencia.estado;
+                const textoEstado = document.createElement('p');
+
+                textoEstado.className = incidencia.estado === 'Creada' ? 'creada' :
+                                        incidencia.estado === 'En proceso' ? 'en-proceso' :
+                                        'terminada';
+
+                textoEstado.textContent = incidencia.estado;
+
+                estado.appendChild(textoEstado);
                 fila.appendChild(estado);
 
                 tbody.appendChild(fila);
