@@ -219,6 +219,7 @@ input:focus, textarea:focus {
 
 a {
     color: var(--azul-oscuro);
+    text-decoration: none;
 }
 
 .nav-bar {
@@ -284,7 +285,7 @@ a {
     box-shadow: 0 1.5rem 2rem rgb(0 0 0 / 15%);
 }
 
-.fa-plus, .fa-list {
+.fa-plus, .fa-list, .fa-bars-progress, .fa-pen-to-square {
     transform: scale(7.5);
 }
 
