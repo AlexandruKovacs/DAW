@@ -47,6 +47,7 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
 
     <main class="main-incidencia">
+        <h2>Tus incidencias</h2>
         <div id="vacio">
             <img src="img/no-data.png" alt="No data" class="no-data">
             <p>No has registrado ninguna incidencia.</p>
@@ -59,6 +60,7 @@ if (!isset($_SESSION['usuario'])) {
                 <th>Tipo de incidencia</th>
                 <th>Descripción</th>
                 <th>Fecha de creación</th>
+                <th>Comentarios CTIC</th>
                 <th>Estado</th>
             </tr>
             </thead>
@@ -67,6 +69,9 @@ if (!isset($_SESSION['usuario'])) {
             </tbody>
         </table>
     </main>
+    <div class="navegacion">
+         <a href="menu-profesor.php"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/ver-incidencias.js"></script>

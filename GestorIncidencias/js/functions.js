@@ -136,6 +136,10 @@ function obtenerIncidencias() {
                 fecha.textContent = fechaFormateada;
                 fila.appendChild(fecha);
 
+                const comentarios = document.createElement('td');
+                comentarios.textContent = incidencia.comentarios;
+                fila.appendChild(comentarios);
+
                 const estado = document.createElement('td');
 
                 if (incidencia.estado === 'Creada') {
@@ -148,8 +152,8 @@ function obtenerIncidencias() {
                     const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
                     estado.appendChild(elementoEstado);
                 }
-
                 fila.appendChild(estado);
+
                 tbody.appendChild(fila);
             });
 

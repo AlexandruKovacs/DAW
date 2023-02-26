@@ -13,7 +13,8 @@ $consulta = "SELECT aulas_estancias.nombre AS nombreAula,
                     tipos_incidencias.tipoIncidencia AS tipoIncidencia, 
                     incidencias.descripcion, 
                     incidencias.fechaCreacion, 
-                    incidencias.estado
+                    incidencias.estado,
+                    incidencias.comentarios
             FROM incidencias
 
             LEFT JOIN aulas_estancias ON incidencias.idAula = aulas_estancias.id 

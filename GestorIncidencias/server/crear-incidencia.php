@@ -22,13 +22,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idProfesor = $fila['id'];
 
         if ($idGrupo == null) {
-            $insertarIncidencia = "INSERT INTO incidencias (idProfesor, idAula, idGrupo, tipoIncidencia, descripcion, fechaCreacion, estado) 
+            $insertarIncidencia = "INSERT INTO incidencias (idProfesor, idAula, idGrupo, tipoIncidencia, descripcion, fechaCreacion, estado, comentarios) 
             VALUES 
-            ('$idProfesor', '$idAula', NULL, '$idTipo', '$descripcion', '$fecha', 'Creada')";
+            ('$idProfesor', '$idAula', NULL, '$idTipo', '$descripcion', '$fecha', 'Creada', '')";
         } else {
-            $insertarIncidencia = "INSERT INTO incidencias (idProfesor, idAula, idGrupo, tipoIncidencia, descripcion, fechaCreacion, estado) 
+            $insertarIncidencia = "INSERT INTO incidencias (idProfesor, idAula, idGrupo, tipoIncidencia, descripcion, fechaCreacion, estado, comentarios) 
             VALUES 
-            ('$idProfesor', '$idAula', '$idGrupo', '$idTipo', '$descripcion', '$fecha', 'Creada')";
+            ('$idProfesor', '$idAula', '$idGrupo', '$idTipo', '$descripcion', '$fecha', 'Creada', '')";
         }
 
         mysqli_query($conn, $insertarIncidencia);

@@ -21,20 +21,21 @@ aula.addEventListener('change', function() {
 formIncidencia.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    if (grupo.value !== null) {
-        if (tipo.value.trim() === '' || aula.value.trim() === '' || 
-        fecha.value.trim() === '' || descripcion.value.trim() === '') {
-            mensaje.style.display = 'block';
-            mensaje.innerHTML = 'Todos los campos son obligatorios.';
-            return;
-        }
-
-        if (!/^[a-zA-Z0-9\s.,;:'"!?()\[\]\{\}\-]{30,200}$/.test(descripcion.value)) {
-            mensaje.style.display = 'block';
-            mensaje.innerHTML = 'La descripción debe tener entre 30 y 200 caracteres alfanuméricos.';
-            return;
-        }
+    if (tipo.value.trim() === '' || aula.value.trim() === '' || 
+    fecha.value.trim() === '' || descripcion.value.trim() === '') {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'Todos los campos son obligatorios.';
+        return;
     }
+
+    if (!/^[ÁÉÍÓÚáéíóúÑñÜü¡¿çÇ\w\d\s.,:?!()]{30,200}$/.test(descripcion.value)) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = 'La descripción debe tener entre 30 y 200 caracteres alfanuméricos.';
+        console.log(descripcion.value);
+        return;
+    }
+
+    console.log('hola');
 
     const url = 'server/crear-incidencia.php';
     const data = `tipo=${tipo.value}&aula=${aula.value}&grupo=${grupo.value}&fecha=${fecha.value}&descripcion=${descripcion.value}`;

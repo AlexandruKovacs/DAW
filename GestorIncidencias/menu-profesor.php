@@ -66,7 +66,7 @@ if (!isset($_SESSION['usuario'])) {
                     <i class="fa-solid fa-list"></i>
                 </button>
             </a>
-            <p>Ver incidencias</p>
+            <p>Tus incidencias</p>
         </div>
     </div>
     <script src="js/main.js"></script>
