@@ -13,8 +13,9 @@
     --azul-oscuro: #135d9e;
     --error: #F4D6D2;
     --error-fuente: #691911;
-    --en-proceso: #fdf625;
-    --terminada: #07a007;
+    --creada: #0B5ED7;
+    --en-proceso: #FFCA2C;
+    --terminada: #157347;
 }
 
 html {
@@ -332,12 +333,17 @@ input[type="checkbox"] {
 
 .creada, .en-proceso, .terminada {
     border-radius: .5rem;
-    padding: .1rem;
+    padding: .5rem;
     text-align: center;
 }
 
+.creada i , .en-proceso i , .terminada i {
+    margin-left: .5rem;
+}
+
 .creada {
-    background: var(--azul);
+    background: var(--creada);
+    color: var(--blanco);
 }
 
 .en-proceso {
@@ -346,6 +352,7 @@ input[type="checkbox"] {
 
 .terminada {
     background: var(--terminada);
+    color: var(--blanco);
 }
 
 table {

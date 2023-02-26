@@ -129,45 +129,27 @@ function obtenerIncidencias() {
                 fila.appendChild(descripcion);
 
                 const fecha = document.createElement('td');
-                fecha.textContent = incidencia.fechaCreacion;
+
+                const datoFecha = new Date(incidencia.fechaCreacion);
+                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
+                
+                fecha.textContent = fechaFormateada;
                 fila.appendChild(fecha);
 
                 const estado = document.createElement('td');
 
                 if (incidencia.estado === 'Creada') {
-                    const iconoCreada = document.createElement('i');
-                    const textoEstado = document.createElement('p');
-
-                    iconoCreada.className = 'fa-solid fa-folder-plus';
-                    textoEstado.textContent = incidencia.estado;
-                    textoEstado.className = 'creada';
-
-                    textoEstado.appendChild(iconoCreada);
-                    estado.appendChild(textoEstado);
+                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                    estado.appendChild(elementoEstado);
                 } else if (incidencia.estado === 'En proceso') {
-                    const iconoEnProceso = document.createElement('i');
-                    const textoEstado = document.createElement('p');
-
-                    iconoEnProceso.className = 'fa-solid fa-clock';
-                    textoEstado.textContent = incidencia.estado;
-                    textoEstado.className = 'en-proceso';
-
-                    textoEstado.appendChild(iconoEnProceso);
-                    estado.appendChild(textoEstado);
+                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                    estado.appendChild(elementoEstado);
                 } else {
-                    const iconoTerminada = document.createElement('i');
-                    const textoEstado = document.createElement('p');
-
-                    iconoTerminada.className = 'fa-solid fa-check';
-                    textoEstado.textContent = incidencia.estado;
-                    textoEstado.className = 'terminada';
-
-                    textoEstado.appendChild(iconoTerminada);
-                    estado.appendChild(textoEstado);
+                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                    estado.appendChild(elementoEstado);
                 }
 
                 fila.appendChild(estado);
-
                 tbody.appendChild(fila);
             });
 
@@ -178,6 +160,18 @@ function obtenerIncidencias() {
    
 }
 
+function crearElementoEstado(iconoClass, texto, textoClass) {
+    const icono = document.createElement('i');
+    const textoElemento = document.createElement('p');
+  
+    icono.className = iconoClass;
+    textoElemento.textContent = texto;
+    textoElemento.className = textoClass;
+  
+    textoElemento.appendChild(icono);
+  
+    return textoElemento;
+}
 
 function togglePassword() {
 
