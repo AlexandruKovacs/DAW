@@ -42,25 +42,6 @@ if (!isset($_SESSION['usuario'])) {
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
     </nav>
-
-    <div class="menu-principal">
-        <div>
-            <a href="ver-incidencias-proceso.php">
-                <button id="crearIncidencia" class="crear-incidencia">
-                    <i class="fa-solid fa-bars-progress"></i>
-                </button>
-            </a>
-            <p>Incidencias en proceso</p>
-        </div>
-
-        <div>
-            <a href="modificar-estado.php">
-                <button id="listarIncidencias" class="listar-incidencias">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-            </a>
-            <p>Modificar estado</p>
-        </div>
-    </div>
+    
 </body>
 </html>
