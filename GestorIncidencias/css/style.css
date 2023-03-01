@@ -36,8 +36,8 @@ body {
 }
 
 body.dark-theme {
-    background-color: var(--negro);
-    color: var(--gris-claro);
+    background-color: var(--gris-oscuro);
+    color: var(--negro);
 }
 
 .info-container {

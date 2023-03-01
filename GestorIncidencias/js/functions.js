@@ -164,6 +164,84 @@ function obtenerIncidencias() {
    
 }
 
+function obtenerIncidenciasEnProceso() {
+
+    let estado = 'En proceso';
+    let tablaIncidencias = document.getElementById('tablaIncidencias');
+    let vacio = document.getElementById('vacio');
+
+    xhrIncidencias.onreadystatechange = function() {
+        if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
+
+            let incidencias = JSON.parse(xhrIncidencias.responseText);
+
+            if (incidencias.length === 0) {
+                tablaIncidencias.style.visibility = 'hidden';
+                vacio.style.visibility = 'visible';
+                vacio.style.display = 'grid';
+            } else {
+                tablaIncidencias.style.visibility = 'visible';
+                vacio.style.visibility = 'hidden';
+                vacio.style.display = 'none';
+            }
+
+            const tbody = document.querySelector('#tablaIncidencias tbody');
+
+            incidencias.forEach(incidencia => {
+                const fila = document.createElement('tr');
+
+                const idAula = document.createElement('td');
+                idAula.textContent = incidencia.nombreAula;
+                fila.appendChild(idAula);
+
+                const idGrupo = document.createElement('td');
+                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
+                fila.appendChild(idGrupo);
+
+                const tipoIncidencia = document.createElement('td');
+                tipoIncidencia.textContent = incidencia.tipoIncidencia;
+                fila.appendChild(tipoIncidencia);
+
+                const descripcion = document.createElement('td');
+                descripcion.textContent = incidencia.descripcion;
+                fila.appendChild(descripcion);
+
+                const fecha = document.createElement('td');
+
+                const datoFecha = new Date(incidencia.fechaCreacion);
+                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
+                
+                fecha.textContent = fechaFormateada;
+                fila.appendChild(fecha);
+
+                const comentarios = document.createElement('td');
+                comentarios.textContent = incidencia.comentarios;
+                fila.appendChild(comentarios);
+
+                const estado = document.createElement('td');
+
+                if (incidencia.estado === 'Creada') {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                    estado.appendChild(elementoEstado);
+                } else if (incidencia.estado === 'En proceso') {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                    estado.appendChild(elementoEstado);
+                } else {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                    estado.appendChild(elementoEstado);
+                }
+                fila.appendChild(estado);
+
+                tbody.appendChild(fila);
+            });
+
+        };
+    }
+    xhrIncidencias.open('GET', `server/obtener-incidencias.php?estado=${estado}`, true);
+    xhrIncidencias.send();
+   
+}
+
 function crearElementoEstado(iconoClass, texto, textoClass) {
     const icono = document.createElement('i');
     const textoElemento = document.createElement('p');
