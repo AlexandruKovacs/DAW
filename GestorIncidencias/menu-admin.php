@@ -43,23 +43,41 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
 
-    <div class="menu-principal">
-        <div>
-            <a href="ver-incidencias-proceso.php">
-                <button id="crearIncidencia" class="crear-incidencia">
-                    <i class="fa-solid fa-bars-progress"></i>
-                </button>
-            </a>
-            <p>Incidencias en proceso</p>
-        </div>
+    <div class="menu-flex">
 
-        <div>
+        <div class="modificar-boton">
             <a href="modificar-estado.php">
-                <button id="listarIncidencias" class="listar-incidencias">
+                <button class="modificar-estado">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </a>
             <p>Modificar estado</p>
+        </div>
+        <div class="caja-creadas">
+            <a href="ver-incidencias-creadas.php">
+                <button class="incidencia-creada">
+                    <i class="fa-solid fa-folder-plus icono-sobre"></i>
+                </button>
+            </a>
+            <p>Creadas</p>
+        </div>
+
+        <div class="caja-proceso">
+            <a href="ver-incidencias-proceso.php">
+                <button class="incidencia-proceso">
+                    <i class="fa-solid fa-clock icono-reloj"></i>
+                </button>
+            </a>
+            <p>En proceso</p>
+        </div>
+
+        <div class="caja-terminadas">
+            <a href="ver-incidencias-terminadas.php">
+                <button class="incidencia-terminada">
+                    <i class="fa-solid fa-check icono-check"></i>
+                </button>
+            </a>
+            <p>Terminadas</p>
         </div>
     </div>
 </body>

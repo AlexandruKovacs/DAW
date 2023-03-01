@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver incidencias | Incidencias</title>
+    <title>En proceso | Incidencias</title>
 
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
@@ -35,22 +35,23 @@ if (!isset($_SESSION['usuario'])) {
 <body>
     <nav class="nav-bar">
         <div class="logo-container">
-            <a class="refresh" href="menu-profesor.php">
+            <a class="refresh" href="menu-admin.php">
                 <img src="img/logo.png" alt="Imagen Logo">
             </a>
         </div>
         <div class="info-container">
-            Profesor/a <?php echo $_SESSION['nombreApellidos']; ?>.
+            Bienvenido/a <?php echo strtoupper($_SESSION['usuario']); ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
         <input type="hidden" id="idProfesor" value="<?php echo $_SESSION['idProfesor']; ?>">
+        <input type="hidden" id="estado" value="Creada">
     </nav>
 
     <main class="main-incidencia">
-        <h2>Tus incidencias</h2>
+        <h2>Incidencias creadas</h2>
         <div id="vacio">
             <img src="img/no-data.png" alt="No data" class="no-data">
-            <p>No has registrado ninguna incidencia.</p>
+            <p>No hay ninguna incidencia creada.</p>
         </div>
         <table id="tablaIncidencias">
             <thead>
@@ -60,8 +61,7 @@ if (!isset($_SESSION['usuario'])) {
                 <th>Tipo de incidencia</th>
                 <th>Descripción</th>
                 <th>Fecha de creación</th>
-                <th>Comentarios CTIC</th>
-                <th>Estado</th>
+                <th>Añadir comentarios</th>
             </tr>
             </thead>
             <tbody>
@@ -70,11 +70,11 @@ if (!isset($_SESSION['usuario'])) {
         </table>
     </main>
     <div class="navegacion">
-         <a href="menu-profesor.php"><i class="fa-solid fa-arrow-left"></i></a>
+         <a href="menu-admin.php"><i class="fa-solid fa-arrow-left"></i></a>
     </div>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/ver-incidencias.js"></script>
+    <script src="js/ver-incidencias-estado.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

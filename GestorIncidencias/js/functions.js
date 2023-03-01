@@ -2,6 +2,7 @@ let xhr = new XMLHttpRequest();
 let xhrAulas = new XMLHttpRequest();
 let xhrCursos = new XMLHttpRequest();
 let xhrIncidencias = new XMLHttpRequest();
+let xhrIncidenciasEnProceso = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -164,16 +165,15 @@ function obtenerIncidencias() {
    
 }
 
-function obtenerIncidenciasEnProceso() {
+function obtenerIncidenciasPorEstado(estado) {
 
-    let estado = 'En proceso';
     let tablaIncidencias = document.getElementById('tablaIncidencias');
     let vacio = document.getElementById('vacio');
 
-    xhrIncidencias.onreadystatechange = function() {
-        if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
+    xhrIncidenciasEnProceso.onreadystatechange = function() {
+        if (xhrIncidenciasEnProceso.readyState === 4 && xhrIncidenciasEnProceso.status === 200) {
 
-            let incidencias = JSON.parse(xhrIncidencias.responseText);
+            let incidencias = JSON.parse(xhrIncidenciasEnProceso.responseText);
 
             if (incidencias.length === 0) {
                 tablaIncidencias.style.visibility = 'hidden';
@@ -218,27 +218,13 @@ function obtenerIncidenciasEnProceso() {
                 comentarios.textContent = incidencia.comentarios;
                 fila.appendChild(comentarios);
 
-                const estado = document.createElement('td');
-
-                if (incidencia.estado === 'Creada') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
-                    estado.appendChild(elementoEstado);
-                } else if (incidencia.estado === 'En proceso') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
-                    estado.appendChild(elementoEstado);
-                } else {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
-                    estado.appendChild(elementoEstado);
-                }
-                fila.appendChild(estado);
-
                 tbody.appendChild(fila);
             });
 
         };
     }
-    xhrIncidencias.open('GET', `server/obtener-incidencias.php?estado=${estado}`, true);
-    xhrIncidencias.send();
+    xhrIncidenciasEnProceso.open('GET', `server/obtener-incidencias-estado.php?estado=${estado}`, true);
+    xhrIncidenciasEnProceso.send();
    
 }
 

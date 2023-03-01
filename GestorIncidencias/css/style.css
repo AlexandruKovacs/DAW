@@ -270,7 +270,8 @@ a {
     text-align: center;
 }
 
-.crear-incidencia, .listar-incidencias {
+.crear-incidencia, .listar-incidencias, .incidencia-creada, 
+.incidencia-proceso, .incidencia-terminada, .modificar-estado {
     background-color: var(--blanco);
     border-radius: 1rem;
     border: none;
@@ -282,11 +283,12 @@ a {
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
 }
 
-.crear-incidencia:hover, .listar-incidencias:hover {
+.crear-incidencia:hover, .listar-incidencias:hover, .incidencia-creada:hover, 
+.incidencia-proceso:hover, .incidencia-terminada:hover, .modificar-estado:hover {
     box-shadow: 0 1.5rem 2rem rgb(0 0 0 / 15%);
 }
 
-.fa-plus, .fa-list, .fa-bars-progress, .fa-pen-to-square {
+.fa-plus, .fa-list, .fa-bars-progress, .fa-pen-to-square, .icono-sobre, .icono-reloj, .icono-check {
     transform: scale(7.5);
 }
 
@@ -358,7 +360,7 @@ input[type="checkbox"] {
 }
 
 table {
-    width: 70%;
+    width: 80%;
     border-collapse: collapse;
     margin: auto;
     text-align: center;
@@ -366,7 +368,7 @@ table {
 }
   
 table th, table td {
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem;
 }
   
 table th {
@@ -411,6 +413,17 @@ table td:last-child {
     color: var(--azul-oscuro);
     font-size: 3rem;
 }
+
+.menu-flex {
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 20rem;
+}
+
+div > p {
+    text-align: center;
+}
   
 @media screen and (max-width: 767px) {
 
@@ -433,4 +446,4 @@ table td:last-child {
     .navegacion {
         position: relative;
     }
-} 
+}

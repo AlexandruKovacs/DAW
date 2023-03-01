@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incidencias en proceso | Incidencias</title>
+    <title>En proceso | Incidencias</title>
 
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
@@ -43,12 +43,15 @@ if (!isset($_SESSION['usuario'])) {
             Bienvenido/a <?php echo strtoupper($_SESSION['usuario']); ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
+        <input type="hidden" id="idProfesor" value="<?php echo $_SESSION['idProfesor']; ?>">
+        <input type="hidden" id="estado" value="En proceso">
     </nav>
 
     <main class="main-incidencia">
+        <h2>Incidencias en proceso</h2>
         <div id="vacio">
             <img src="img/no-data.png" alt="No data" class="no-data">
-            <p>No has registrado ninguna incidencia.</p>
+            <p>No hay ninguna incidencia en proceso.</p>
         </div>
         <table id="tablaIncidencias">
             <thead>
@@ -58,8 +61,7 @@ if (!isset($_SESSION['usuario'])) {
                 <th>Tipo de incidencia</th>
                 <th>Descripción</th>
                 <th>Fecha de creación</th>
-                <th>Comentarios CTIC</th>
-                <th>Estado</th>
+                <th>Añadir comentarios</th>
             </tr>
             </thead>
             <tbody>
@@ -72,7 +74,7 @@ if (!isset($_SESSION['usuario'])) {
     </div>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/ver-incidencias-proceso.js"></script>
+    <script src="js/ver-incidencias-estado.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
