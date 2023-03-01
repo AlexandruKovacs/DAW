@@ -44,7 +44,6 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
 
     <div class="menu-flex">
-
         <div class="modificar-boton">
             <a href="modificar-estado.php">
                 <button class="modificar-estado">
