@@ -69,6 +69,13 @@ if (!isset($_SESSION['usuario'])) {
             </tbody>
         </table>
     </main>
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <h2>Título del modal</h2>
+            <p>Contenido del modal.</p>
+            <button id="cerrarModal">Cerrar</button>
+        </div>
+    </div>
     <div class="navegacion">
          <a href="menu-admin.php"><i class="fa-solid fa-arrow-left"></i></a>
     </div>

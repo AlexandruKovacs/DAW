@@ -70,7 +70,6 @@ if (!isset($_SESSION['usuario'])) {
             </tbody>
         </table>
     </main>
-    <button id="miBoton">Haz clic aquí</button>
     <div id="miModal" class="modal">
         <div class="modal-contenido">
             <h2>Título del modal</h2>

@@ -170,8 +170,10 @@ function obtenerIncidencias() {
 
 function obtenerIncidenciasPorEstado(estado) {
 
-    let tablaIncidencias = document.getElementById('tablaIncidenciasEstado');
-    let vacio = document.getElementById('vacio');
+    const tablaIncidencias = document.getElementById('tablaIncidenciasEstado');
+    const vacio = document.getElementById('vacio');
+    const modal = document.getElementById('miModal');
+    const cerrarModal = document.getElementById('cerrarModal');
 
     xhrIncidenciasEnProceso.onreadystatechange = function() {
         if (xhrIncidenciasEnProceso.readyState === 4 && xhrIncidenciasEnProceso.status === 200) {
@@ -226,12 +228,20 @@ function obtenerIncidenciasPorEstado(estado) {
                 agregarComentario.className = 'fa-solid fa-pen';
                 agregarComentario.setAttribute('id', `btn-${incidencia.id}`);
                 
-                agregarComentario.onclick = function() {
+                agregarComentario.addEventListener('click', function() {
                     const idFila = this.getAttribute('id').split('-')[1];
-                    // Aquí puedes realizar la acción deseada utilizando el ID correspondiente de la fila.
-                    // Por ejemplo, abrir un cuadro de diálogo para que el usuario ingrese un comentario.
-                    alert(`Agregar comentario para el ID ${idFila}`);
-                };
+
+                    console.log(idFila);
+
+                    modal.style.display = 'block';
+                    modal.classList.add('mostrar');
+                });
+
+                cerrarModal.addEventListener('click', function() {
+
+                    modal.style.display = 'none';
+                    modal.classList.remove('mostrar');
+                });
                 
                 const tdBoton = document.createElement('td');
                 tdBoton.appendChild(agregarComentario);
