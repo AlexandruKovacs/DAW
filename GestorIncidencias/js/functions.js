@@ -92,6 +92,7 @@ function obtenerIncidencias() {
     let idProfesor = document.getElementById('idProfesor').value;
     let tablaIncidencias = document.getElementById('tablaIncidencias');
     let vacio = document.getElementById('vacio');
+    let tusIncidencias = document.getElementById('tus-incidencias');
 
     xhrIncidencias.onreadystatechange = function() {
         if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
@@ -102,10 +103,12 @@ function obtenerIncidencias() {
                 tablaIncidencias.style.visibility = 'hidden';
                 vacio.style.visibility = 'visible';
                 vacio.style.display = 'grid';
+                tusIncidencias.style.display = 'none';
             } else {
                 tablaIncidencias.style.visibility = 'visible';
                 vacio.style.visibility = 'hidden';
                 vacio.style.display = 'none';
+                tusIncidencias.style.display = 'block';
             }
 
             const tbody = document.querySelector('#tablaIncidencias tbody');
@@ -167,7 +170,7 @@ function obtenerIncidencias() {
 
 function obtenerIncidenciasPorEstado(estado) {
 
-    let tablaIncidencias = document.getElementById('tablaIncidencias');
+    let tablaIncidencias = document.getElementById('tablaIncidenciasEstado');
     let vacio = document.getElementById('vacio');
 
     xhrIncidenciasEnProceso.onreadystatechange = function() {
@@ -185,7 +188,7 @@ function obtenerIncidenciasPorEstado(estado) {
                 vacio.style.display = 'none';
             }
 
-            const tbody = document.querySelector('#tablaIncidencias tbody');
+            const tbody = document.querySelector('#tablaIncidenciasEstado tbody');
 
             incidencias.forEach(incidencia => {
                 const fila = document.createElement('tr');
@@ -217,6 +220,22 @@ function obtenerIncidenciasPorEstado(estado) {
                 const comentarios = document.createElement('td');
                 comentarios.textContent = incidencia.comentarios;
                 fila.appendChild(comentarios);
+
+                
+                const agregarComentario = document.createElement('i');
+                agregarComentario.className = 'fa-solid fa-pen';
+                agregarComentario.setAttribute('id', `btn-${incidencia.id}`);
+                
+                agregarComentario.onclick = function() {
+                    const idFila = this.getAttribute('id').split('-')[1];
+                    // Aquí puedes realizar la acción deseada utilizando el ID correspondiente de la fila.
+                    // Por ejemplo, abrir un cuadro de diálogo para que el usuario ingrese un comentario.
+                    alert(`Agregar comentario para el ID ${idFila}`);
+                };
+                
+                const tdBoton = document.createElement('td');
+                tdBoton.appendChild(agregarComentario);
+                fila.appendChild(tdBoton);
 
                 tbody.appendChild(fila);
             });

@@ -53,7 +53,7 @@ if (!isset($_SESSION['usuario'])) {
             <img src="img/no-data.png" alt="No data" class="no-data">
             <p>No hay ninguna incidencia terminada.</p>
         </div>
-        <table id="tablaIncidencias">
+        <table id="tablaIncidenciasEstado">
             <thead>
             <tr>
                 <th>Aula</th>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['usuario'])) {
                 <th>Tipo de incidencia</th>
                 <th>Descripción</th>
                 <th>Fecha de creación</th>
-                <th>Añadir comentarios</th>
+                <th colspan="2">Añadir comentarios</th>
             </tr>
             </thead>
             <tbody>

@@ -10,7 +10,8 @@ if ($conn->connect_error) {
 
 $consulta = "SELECT aulas_estancias.nombre AS nombreAula, 
                     grupos.nombre AS nombreGrupo, 
-                    tipos_incidencias.tipoIncidencia AS tipoIncidencia, 
+                    tipos_incidencias.tipoIncidencia AS tipoIncidencia,
+                    incidencias.id,
                     incidencias.descripcion, 
                     incidencias.fechaCreacion, 
                     incidencias.estado,
