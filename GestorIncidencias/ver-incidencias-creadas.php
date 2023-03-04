@@ -70,8 +70,6 @@ if (!isset($_SESSION['usuario'])) {
             </tbody>
         </table>
     </main>
-    <div id="miModal" class="modal">
-    </div>
     <div class="navegacion">
          <a href="menu-admin.php"><i class="fa-solid fa-arrow-left"></i></a>
     </div>
