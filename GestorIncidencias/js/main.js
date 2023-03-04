@@ -1,4 +1,4 @@
-const themeToggle = $('#theme-checkbox');
+const themeToggle = $('#tema');
 const body = $('body');
 
 const savedTheme = localStorage.getItem('theme');
