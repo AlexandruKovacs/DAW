@@ -222,45 +222,14 @@ function obtenerIncidenciasPorEstado(estado) {
                 comentarios.textContent = incidencia.comentarios;
                 fila.appendChild(comentarios);
 
-                const abrirModalBoton = document.createElement('i');
-                abrirModalBoton.className = 'fa-solid fa-pen';
-                abrirModalBoton.setAttribute('id', `btn-${incidencia.id}`);
-
-                const idFila = incidencia.id;
-                abrirModalBoton.dataset.id = idFila;
-                abrirModalBoton.addEventListener('click', function() {
-
-                    const idFila = this.dataset.id;
-
-                    console.log(idFila);
+                const editarComentarios = document.createElement('i');
+                editarComentarios.className = 'fa-solid fa-pen';
+                editarComentarios.setAttribute('id', `btn-${incidencia.id}`);
                 
-                    const url = 'server/obtener-comentario.php';
-                    const data = `idIncidencia=${idFila}`;
-                  
-                    xhrComentarios.open('GET', url);
-                    xhrComentarios.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhrComentarios.onreadystatechange = function() {
-                        if (this.readyState === 4 && this.status === 200) {
-                            console.log(this.responseText);
-                            modal.innerHTML = this.responseText;
-                        }
-                    };
-                    xhrComentarios.send(data);
-
-                    modal.style.display = 'block';
-                    modal.classList.add('mostrar');
-                });
-
-                const cerrarModalBoton = document.getElementById('cerrarModal');
-                if (cerrarModalBoton) {
-                    cerrarModalBoton.addEventListener('click', function() {
-                        modal.style.display = 'none';
-                        modal.classList.remove('mostrar');
-                    });
-                }
+                const idFila = incidencia.id;
                 
                 const tdBoton = document.createElement('td');
-                tdBoton.appendChild(abrirModalBoton);
+                tdBoton.appendChild(editarComentarios);
                 fila.appendChild(tdBoton);
                 
                 tbody.appendChild(fila);
