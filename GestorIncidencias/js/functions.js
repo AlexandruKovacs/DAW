@@ -3,6 +3,7 @@ let xhrAulas = new XMLHttpRequest();
 let xhrCursos = new XMLHttpRequest();
 let xhrIncidencias = new XMLHttpRequest();
 let xhrIncidenciasEnProceso = new XMLHttpRequest();
+let xhrComentarios = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -172,8 +173,6 @@ function obtenerIncidenciasPorEstado(estado) {
 
     const tablaIncidencias = document.getElementById('tablaIncidenciasEstado');
     const vacio = document.getElementById('vacio');
-    const modal = document.getElementById('miModal');
-    const cerrarModal = document.getElementById('cerrarModal');
 
     xhrIncidenciasEnProceso.onreadystatechange = function() {
         if (xhrIncidenciasEnProceso.readyState === 4 && xhrIncidenciasEnProceso.status === 200) {
@@ -223,38 +222,54 @@ function obtenerIncidenciasPorEstado(estado) {
                 comentarios.textContent = incidencia.comentarios;
                 fila.appendChild(comentarios);
 
-                
-                const agregarComentario = document.createElement('i');
-                agregarComentario.className = 'fa-solid fa-pen';
-                agregarComentario.setAttribute('id', `btn-${incidencia.id}`);
-                
-                agregarComentario.addEventListener('click', function() {
-                    const idFila = this.getAttribute('id').split('-')[1];
+                const abrirModalBoton = document.createElement('i');
+                abrirModalBoton.className = 'fa-solid fa-pen';
+                abrirModalBoton.setAttribute('id', `btn-${incidencia.id}`);
+
+                const idFila = incidencia.id;
+                abrirModalBoton.dataset.id = idFila;
+                abrirModalBoton.addEventListener('click', function() {
+
+                    const idFila = this.dataset.id;
 
                     console.log(idFila);
+                
+                    const url = 'server/obtener-comentario.php';
+                    const data = `idIncidencia=${idFila}`;
+                  
+                    xhrComentarios.open('GET', url);
+                    xhrComentarios.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhrComentarios.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            console.log(this.responseText);
+                            modal.innerHTML = this.responseText;
+                        }
+                    };
+                    xhrComentarios.send(data);
 
                     modal.style.display = 'block';
                     modal.classList.add('mostrar');
                 });
 
-                cerrarModal.addEventListener('click', function() {
-
-                    modal.style.display = 'none';
-                    modal.classList.remove('mostrar');
-                });
+                const cerrarModalBoton = document.getElementById('cerrarModal');
+                if (cerrarModalBoton) {
+                    cerrarModalBoton.addEventListener('click', function() {
+                        modal.style.display = 'none';
+                        modal.classList.remove('mostrar');
+                    });
+                }
                 
                 const tdBoton = document.createElement('td');
-                tdBoton.appendChild(agregarComentario);
+                tdBoton.appendChild(abrirModalBoton);
                 fila.appendChild(tdBoton);
-
+                
                 tbody.appendChild(fila);
-            });
 
+            });
         };
     }
     xhrIncidenciasEnProceso.open('GET', `server/obtener-incidencias-estado.php?estado=${estado}`, true);
     xhrIncidenciasEnProceso.send();
-   
 }
 
 function crearElementoEstado(iconoClass, texto, textoClass) {

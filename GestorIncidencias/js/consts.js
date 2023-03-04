@@ -4,6 +4,7 @@ const showPassword2 = document.getElementById('showPassword2');
 const formLogin = document.getElementById('formLogin');
 const formRegister = document.getElementById('formRegister');
 const formIncidencia = document.getElementById('formIncidencia');
+const formComentarios =  document.getElementById('formComentarios');
 const mensaje = document.getElementById('mensaje');
 const idProfesor = document.getElementById('idProfesor');
 
@@ -19,9 +20,13 @@ const aula = document.getElementById('aula');
 const grupo = document.getElementById('grupo');
 const fecha = document.getElementById('fecha');
 const descripcion = document.getElementById('descripcion');
+const comentarios = document.getElementById('comentarios');
 
 const departamentoSelect = document.getElementById('departamento');
 const inputAulas = document.getElementById('aula');
 const datalistAulas = document.getElementById('aulas');
 const inputGrupos = document.getElementById('grupo');
 const datalistGrupos = document.getElementById('grupos');
+
+const modal = document.getElementById('miModal');
+const textComentarios = document.getElementById('comentarios');
