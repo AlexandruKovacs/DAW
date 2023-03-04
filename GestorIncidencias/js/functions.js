@@ -222,14 +222,20 @@ function obtenerIncidenciasPorEstado(estado) {
                 comentarios.textContent = incidencia.comentarios;
                 fila.appendChild(comentarios);
 
-                const editarComentarios = document.createElement('i');
-                editarComentarios.className = 'fa-solid fa-pen';
-                editarComentarios.setAttribute('id', `btn-${incidencia.id}`);
-                
-                const idFila = incidencia.id;
-                
+                const baseUrl = 'editar-incidencia';
+
+                const estado = incidencia.estado;
+                const sufijo = estado === 'Creada' ? '-creada' :
+                            estado === 'En proceso' ? '-proceso' :
+                            estado === 'Terminada' ? '-terminada' :
+                            '';
+
+                const editarEnlace = document.createElement('a');
+                editarEnlace.href = `${baseUrl}${sufijo}.php?id=${incidencia.id}`;
+                editarEnlace.innerHTML = '<i class="fa-solid fa-pen"></i>';
+       
                 const tdBoton = document.createElement('td');
-                tdBoton.appendChild(editarComentarios);
+                tdBoton.appendChild(editarEnlace);
                 fila.appendChild(tdBoton);
                 
                 tbody.appendChild(fila);

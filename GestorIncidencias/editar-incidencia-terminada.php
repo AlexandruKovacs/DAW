@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En proceso | Incidencias</title>
+    <title>Editar comentarios | Incidencias</title>
 
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
@@ -33,7 +33,7 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <nav class="nav-bar">
+<nav class="nav-bar">
         <div class="logo-container">
             <a class="refresh" href="menu-admin.php">
                 <img src="img/logo.png" alt="Imagen Logo">
@@ -43,38 +43,23 @@ if (!isset($_SESSION['usuario'])) {
             Bienvenido/a <?php echo strtoupper($_SESSION['usuario']); ?>.
             <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
         </div>
-        <input type="hidden" id="idProfesor" value="<?php echo $_SESSION['idProfesor']; ?>">
-        <input type="hidden" id="estado" value="Creada">
     </nav>
 
-    <main class="main-incidencia">
-        <h2>Incidencias creadas</h2>
-        <div id="vacio">
-            <img src="img/no-data.png" alt="No data" class="no-data">
-            <p>No hay ninguna incidencia creada.</p>
-        </div>
-        <table id="tablaIncidenciasEstado">
-            <thead>
-            <tr>
-                <th>Aula</th>
-                <th>Grupo</th>
-                <th>Tipo de incidencia</th>
-                <th>Descripción</th>
-                <th>Fecha de creación</th>
-                <th colspan="2">Añadir comentarios</th>
-            </tr>
-            </thead>
-            <tbody>
+    <main class="main-crear-incidencia">
+        <div class="form-container">
+            <h2>Comentarios de la incidencia</h2>
+            <div id="mensaje"></div>
 
-            </tbody>
-        </table>
+            <form id="formIncidencia" class="form-incidencia">
+      
+                <label for="comentarios">Añadir comentarios</label>
+                <textarea name="comentarios" id="comentarios"></textarea>
+
+                <a class="atras" id="atras" href="ver-incidencias-terminadas.php">Atrás</a>
+                <button class="registrar" id="registrar">Editar cometarios</button>
+                
+            </form>
+        </div>
     </main>
-    <div class="navegacion">
-         <a href="menu-admin.php"><i class="fa-solid fa-arrow-left"></i></a>
-    </div>
-    <script src="js/consts.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/ver-incidencias-estado.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
