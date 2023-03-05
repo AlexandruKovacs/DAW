@@ -446,6 +446,21 @@ div > p {
 #tablaIncidenciasEstado i {
     cursor: pointer;
 }
+
+.caja-correcto {
+    display: none;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15rem;
+    width: 50rem;
+}
+
+.img-correcto {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 50%;
+}
   
 @media screen and (max-width: 767px) {
 
@@ -468,36 +483,4 @@ div > p {
     .navegacion {
         position: relative;
     }
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.modal.mostrar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-}
-
-.modal-contenido {
-    background-color: var(--blanco);
-    border-radius: 1rem;
-    padding: 2rem;
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

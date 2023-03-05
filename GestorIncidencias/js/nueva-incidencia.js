@@ -31,11 +31,8 @@ formIncidencia.addEventListener('submit', function(event) {
     if (!/^[ÁÉÍÓÚáéíóúÑñÜü¡¿çÇ\w\d\s.,:?!()]{30,200}$/.test(descripcion.value)) {
         mensaje.style.display = 'block';
         mensaje.innerHTML = 'La descripción debe tener entre 30 y 200 caracteres alfanuméricos.';
-        console.log(descripcion.value);
         return;
     }
-
-    console.log('hola');
 
     const url = 'server/crear-incidencia.php';
     const data = `tipo=${tipo.value}&aula=${aula.value}&grupo=${grupo.value}&fecha=${fecha.value}&descripcion=${descripcion.value}`;
@@ -44,7 +41,6 @@ formIncidencia.addEventListener('submit', function(event) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
 
             if (response.success) {

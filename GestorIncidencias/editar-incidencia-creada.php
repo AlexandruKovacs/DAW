@@ -45,30 +45,34 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
 
-    <main class="main-editar-incidencia">
+    <main class="main-editar-incidencia" id="mainEditar">
         <div class="form-container">
             <h2>Comentarios de la incidencia</h2>
             <div id="mensaje"></div>
 
             <form id="formComentarios" class="form-comentarios">
+                <div>
+                    <label for="comentarios">Añadir comentarios</label>
+                    <textarea name="comentarios" id="comentarios"></textarea>
+                </div>
 
-            <div>
-                <label for="comentarios">Añadir comentarios</label>
-                <textarea name="comentarios" id="comentarios"></textarea>
-                <input type="hidden" name="idIncidencia" id="idOculto">
-            </div>
-            <div>
+                <div>
+                    <button class="editar" id="editar">Editar cometarios</button>
+                </div>
                 
-                <button class="editar" id="editar">Editar cometarios</button>
-            </div>
-
-            <div>
-            <a class="atras" id="atras" href="ver-incidencias-creadas.php">Atrás</a>
-            </div>
-                
+                <div>
+                    <a class="atras" id="atras" href="ver-incidencias-creadas.php">Atrás</a>
+                </div>
             </form>
         </div>
     </main>
+    <div class="caja-correcto" id="cajaCorrecto">
+        <img src="img/success.png" alt="Imagen correcto" class="img-correcto">
+        <p>Comentarios modificados correctamente.</p>
+        <div class="navegacion">
+            <a href="ver-incidencias-creadas.php"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/editar-comentarios.js"></script>
