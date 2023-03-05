@@ -45,7 +45,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
 
-    <main class="main-editar-incidencia">
+    <main class="main-editar-incidencia" id="mainEditar">
         <div class="form-container">
             <h2>Comentarios de la incidencia</h2>
             <div id="mensaje"></div>

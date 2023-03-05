@@ -43,7 +43,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
 
-    <div class="menu-flex">
+    <div class="menu-principal">
         <div class="modificar-boton">
             <a href="modificar-estado.php">
                 <button class="modificar-estado">
