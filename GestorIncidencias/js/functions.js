@@ -5,6 +5,7 @@ let xhrIncidencias = new XMLHttpRequest();
 let xhrIncidenciasProfesor = new XMLHttpRequest();
 let xhrIncidenciasEnProceso = new XMLHttpRequest();
 let xhrComentarios = new XMLHttpRequest();
+let xhrEstado = new XMLHttpRequest();
 
 function obtenerDepartamentos() {
     xhr.open('GET', 'server/obtener-departamentos.php', true);
@@ -95,6 +96,10 @@ function obtenerIncidencias() {
     let vacio = document.getElementById('vacio');
     let modificarEstadoTitulo = document.getElementById('modificarEstadoTitulo');
 
+    while (tablaIncidencias.rows.length > 1) {
+        tablaIncidencias.deleteRow(1);
+    }
+
     xhrIncidencias.onreadystatechange = function() {
         if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
 
@@ -151,9 +156,11 @@ function obtenerIncidencias() {
 
                 if (incidencia.estado === 'Creada') {
                     const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                    elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'En proceso'));
                     estado.appendChild(elementoEstado);
                 } else if (incidencia.estado === 'En proceso') {
                     const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                    elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'Terminada'));
                     estado.appendChild(elementoEstado);
                 } else {
                     const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
@@ -168,7 +175,6 @@ function obtenerIncidencias() {
     }
     xhrIncidencias.open('GET', `server/obtener-incidencias.php`, true);
     xhrIncidencias.send();
-   
 }
 
 function obtenerIncidenciasPorProfesor(idProfesor) {
@@ -347,6 +353,18 @@ function crearElementoEstado(iconoClass, texto, textoClass) {
     textoElemento.appendChild(icono);
   
     return textoElemento;
+}
+
+function cambiarEstadoIncidencia(idIncidencia, nuevoEstado) {
+    xhrEstado.onreadystatechange = function() {
+        if (xhrEstado.readyState === 4 && xhrEstado.status === 200) {
+            console.log(xhrEstado.responseText);
+            obtenerIncidencias();
+        }
+    };
+    xhrEstado.open('POST', 'server/modificar-estado.php', true);
+    xhrEstado.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhrEstado.send(`idIncidencia=${idIncidencia}&nuevoEstado=${nuevoEstado}`);
 }
 
 function togglePassword() {
