@@ -1,27 +1,16 @@
-const themeToggle = $('#tema');
-const body = $('body');
+const elements = $('body, input, select, textarea, .nav-bar, .crear-incidencia, .listar-incidencias, .form-container, table th, table tr, .navegacion');
 
-const savedTheme = localStorage.getItem('theme');
+const cambioTema = $('#tema');
+const temaActual = localStorage.getItem('tema');
 
-if (savedTheme === 'dark') {
-    body.addClass('dark-theme');
-    themeToggle.prop('checked', true);
+elements.addClass(temaActual === 'dark' ? 'dark-theme' : '');
 
-} else {
-    body.removeClass('dark-theme');
-    themeToggle.prop('checked', false);
+cambioTema.prop('checked', temaActual === 'dark');
 
-}
+cambioTema.on('change', function() {
 
-themeToggle.on('change', function() {
+  const tema = $(this).prop('checked') ? 'dark' : 'light';
+  localStorage.setItem('tema', tema);
+  elements.toggleClass('dark-theme', tema === 'dark');
 
-    if ($(this).prop('checked')) {
-        localStorage.setItem('theme', 'dark');
-        body.addClass('dark-theme');
-
-    } else {
-        localStorage.setItem('theme', 'light');
-        body.removeClass('dark-theme');
-
-    }
 });
