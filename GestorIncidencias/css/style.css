@@ -16,7 +16,6 @@
     --creada: #0B5ED7;
     --en-proceso: #FFCA2C;
     --terminada: #157347;
-    --archivada: #000000;
 }
 
 html {
@@ -357,7 +356,7 @@ input[type="checkbox"] {
     text-align: center;
 }
 
-.creada i, .en-proceso i, .terminada i, .archivada i {
+.creada i, .en-proceso i, .terminada i {
     margin-left: .5rem;
 }
 
@@ -372,11 +371,6 @@ input[type="checkbox"] {
 
 .terminada {
     background: var(--terminada);
-    color: var(--blanco);
-}
-
-.archivada {
-    background-color: var(--archivada);
     color: var(--blanco);
 }
 

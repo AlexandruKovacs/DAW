@@ -126,54 +126,52 @@ function obtenerIncidencias() {
             const tbody = document.querySelector('#tablaIncidencias tbody');
 
             incidencias.forEach(incidencia => {
-                const fila = document.createElement('tr');
+                if (incidencia.estado !== 'Archivada') {
+                    const fila = document.createElement('tr');
 
-                const idAula = document.createElement('td');
-                idAula.textContent = incidencia.nombreAula;
-                fila.appendChild(idAula);
+                    const idAula = document.createElement('td');
+                    idAula.textContent = incidencia.nombreAula;
+                    fila.appendChild(idAula);
 
-                const idGrupo = document.createElement('td');
-                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
-                fila.appendChild(idGrupo);
+                    const idGrupo = document.createElement('td');
+                    idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
+                    fila.appendChild(idGrupo);
 
-                const tipoIncidencia = document.createElement('td');
-                tipoIncidencia.textContent = incidencia.tipoIncidencia;
-                fila.appendChild(tipoIncidencia);
+                    const tipoIncidencia = document.createElement('td');
+                    tipoIncidencia.textContent = incidencia.tipoIncidencia;
+                    fila.appendChild(tipoIncidencia);
 
-                const descripcion = document.createElement('td');
-                descripcion.textContent = incidencia.descripcion;
-                fila.appendChild(descripcion);
+                    const descripcion = document.createElement('td');
+                    descripcion.textContent = incidencia.descripcion;
+                    fila.appendChild(descripcion);
 
-                const fecha = document.createElement('td');
+                    const fecha = document.createElement('td');
 
-                const datoFecha = new Date(incidencia.fechaCreacion);
-                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
-                
-                fecha.textContent = fechaFormateada;
-                fila.appendChild(fecha);
+                    const datoFecha = new Date(incidencia.fechaCreacion);
+                    const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
+                    
+                    fecha.textContent = fechaFormateada;
+                    fila.appendChild(fecha);
 
-                const estado = document.createElement('td');
+                    const estado = document.createElement('td');
 
-                if (incidencia.estado === 'Creada') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
-                    elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'En proceso'));
-                    estado.appendChild(elementoEstado);
-                } else if (incidencia.estado === 'En proceso') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
-                    elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'Terminada'));
-                    estado.appendChild(elementoEstado);
-                } else if (incidencia.estado === 'Terminada') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
-                    estado.appendChild(elementoEstado);
-                } else {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-box-archive', incidencia.estado, 'archivada');
-                    estado.appendChild(elementoEstado);
+                    if (incidencia.estado === 'Creada') {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                        elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'En proceso'));
+                        estado.appendChild(elementoEstado);
+                    } else if (incidencia.estado === 'En proceso') {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                        elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'Terminada'));
+                        estado.appendChild(elementoEstado);
+                    } else {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                        estado.appendChild(elementoEstado);
+                    }
+                    fila.appendChild(estado);
+
+                    tbody.appendChild(fila);
                 }
-                fila.appendChild(estado);
-
-                tbody.appendChild(fila);
             });
-
         };
     }
     xhrIncidencias.open('GET', `server/obtener-incidencias.php`, true);
