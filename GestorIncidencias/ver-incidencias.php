@@ -70,11 +70,11 @@ if (!isset($_SESSION['usuario'])) {
         </table>
     </main>
     <div class="navegacion">
-         <a href="menu-profesor.php"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="menu-profesor.php"><i class="fa-solid fa-arrow-left"></i></a>
     </div>
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/ver-incidencias.js"></script>
+    <script src="js/ver-incidencias-profesor.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
