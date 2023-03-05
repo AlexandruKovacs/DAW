@@ -349,6 +349,7 @@ function crearElementoEstado(iconoClass, texto, textoClass) {
     icono.className = iconoClass;
     textoElemento.textContent = texto;
     textoElemento.className = textoClass;
+    textoElemento.style.cursor = 'pointer';
   
     textoElemento.appendChild(icono);
   
