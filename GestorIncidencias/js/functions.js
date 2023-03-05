@@ -89,94 +89,6 @@ function obtenerGrupos() {
     xhrCursos.send();
 }
 
-function obtenerIncidenciasPorProfesor() {
-
-    let idProfesor = document.getElementById('idProfesor').value;
-    let tablaIncidencias = document.getElementById('tablaIncidencias');
-    let vacio = document.getElementById('vacio');
-    let tusIncidencias = document.getElementById('tus-incidencias');
-
-    xhrIncidenciasProfesor.onreadystatechange = function() {
-        if (xhrIncidenciasProfesor.readyState === 4 && xhrIncidenciasProfesor.status === 200) {
-
-            let incidencias = JSON.parse(xhrIncidenciasProfesor.responseText);
-
-            console.log(incidencias.length);
-            if (incidencias.length === 0) {
-                tablaIncidencias.style.visibility = 'hidden';
-                vacio.style.visibility = 'visible';
-                vacio.style.display = 'grid';
-
-                if (tusIncidencias) {
-                    tusIncidencias.style.display = 'none';
-                }
-            } else {
-                tablaIncidencias.style.visibility = 'visible';
-                vacio.style.visibility = 'hidden';
-                vacio.style.display = 'none';
-
-                if (tusIncidencias) {
-                    tusIncidencias.style.display = 'block';
-                }
-            }
-
-            const tbody = document.querySelector('#tablaIncidencias tbody');
-
-            incidencias.forEach(incidencia => {
-                const fila = document.createElement('tr');
-
-                const idAula = document.createElement('td');
-                idAula.textContent = incidencia.nombreAula;
-                fila.appendChild(idAula);
-
-                const idGrupo = document.createElement('td');
-                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
-                fila.appendChild(idGrupo);
-
-                const tipoIncidencia = document.createElement('td');
-                tipoIncidencia.textContent = incidencia.tipoIncidencia;
-                fila.appendChild(tipoIncidencia);
-
-                const descripcion = document.createElement('td');
-                descripcion.textContent = incidencia.descripcion;
-                fila.appendChild(descripcion);
-
-                const fecha = document.createElement('td');
-
-                const datoFecha = new Date(incidencia.fechaCreacion);
-                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
-                
-                fecha.textContent = fechaFormateada;
-                fila.appendChild(fecha);
-
-                const comentarios = document.createElement('td');
-                comentarios.textContent = incidencia.comentarios;
-                fila.appendChild(comentarios);
-
-                const estado = document.createElement('td');
-
-                if (incidencia.estado === 'Creada') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
-                    estado.appendChild(elementoEstado);
-                } else if (incidencia.estado === 'En proceso') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
-                    estado.appendChild(elementoEstado);
-                } else {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
-                    estado.appendChild(elementoEstado);
-                }
-                fila.appendChild(estado);
-
-                tbody.appendChild(fila);
-            });
-
-        };
-    }
-    xhrIncidenciasProfesor.open('GET', `server/obtener-incidencias-profesor.php?idProfesor=${idProfesor}`, true);
-    xhrIncidenciasProfesor.send();
-   
-}
-
 function obtenerIncidencias() {
 
     let tablaIncidencias = document.getElementById('tablaIncidencias');
@@ -256,6 +168,93 @@ function obtenerIncidencias() {
     }
     xhrIncidencias.open('GET', `server/obtener-incidencias.php`, true);
     xhrIncidencias.send();
+   
+}
+
+function obtenerIncidenciasPorProfesor(idProfesor) {
+
+    let tablaIncidencias = document.getElementById('tablaIncidencias');
+    let vacio = document.getElementById('vacio');
+    let tusIncidencias = document.getElementById('tus-incidencias');
+
+    xhrIncidenciasProfesor.onreadystatechange = function() {
+        if (xhrIncidenciasProfesor.readyState === 4 && xhrIncidenciasProfesor.status === 200) {
+
+            console.log(xhrIncidenciasProfesor.responseText);
+            let incidencias = JSON.parse(xhrIncidenciasProfesor.responseText);
+
+            if (incidencias.length === 0) {
+                tablaIncidencias.style.visibility = 'hidden';
+                vacio.style.visibility = 'visible';
+                vacio.style.display = 'grid';
+
+                if (tusIncidencias) {
+                    tusIncidencias.style.display = 'none';
+                }
+            } else {
+                tablaIncidencias.style.visibility = 'visible';
+                vacio.style.visibility = 'hidden';
+                vacio.style.display = 'none';
+
+                if (tusIncidencias) {
+                    tusIncidencias.style.display = 'block';
+                }
+            }
+
+            const tbody = document.querySelector('#tablaIncidencias tbody');
+
+            incidencias.forEach(incidencia => {
+                const fila = document.createElement('tr');
+
+                const idAula = document.createElement('td');
+                idAula.textContent = incidencia.nombreAula;
+                fila.appendChild(idAula);
+
+                const idGrupo = document.createElement('td');
+                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
+                fila.appendChild(idGrupo);
+
+                const tipoIncidencia = document.createElement('td');
+                tipoIncidencia.textContent = incidencia.tipoIncidencia;
+                fila.appendChild(tipoIncidencia);
+
+                const descripcion = document.createElement('td');
+                descripcion.textContent = incidencia.descripcion;
+                fila.appendChild(descripcion);
+
+                const fecha = document.createElement('td');
+
+                const datoFecha = new Date(incidencia.fechaCreacion);
+                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
+                
+                fecha.textContent = fechaFormateada;
+                fila.appendChild(fecha);
+
+                const comentarios = document.createElement('td');
+                comentarios.textContent = incidencia.comentarios;
+                fila.appendChild(comentarios);
+
+                const estado = document.createElement('td');
+
+                if (incidencia.estado === 'Creada') {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                    estado.appendChild(elementoEstado);
+                } else if (incidencia.estado === 'En proceso') {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                    estado.appendChild(elementoEstado);
+                } else {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                    estado.appendChild(elementoEstado);
+                }
+                fila.appendChild(estado);
+
+                tbody.appendChild(fila);
+            });
+
+        };
+    }
+    xhrIncidenciasProfesor.open('GET', `server/obtener-incidencias-profesor.php?idProfesor=${idProfesor}`, true);
+    xhrIncidenciasProfesor.send();
    
 }
 
