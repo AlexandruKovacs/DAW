@@ -81,7 +81,6 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 
             </form>
-
         </div>
     </main>
     <script src="js/consts.js"></script>
