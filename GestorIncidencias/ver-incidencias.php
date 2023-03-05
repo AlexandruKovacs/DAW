@@ -47,7 +47,7 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
 
     <main class="main-incidencia">
-        <h2 id="tus-incidencias">Tus incidencias</h2>
+        <h2 id="tituloPagina">Tus incidencias</h2>
         <div id="vacio">
             <img src="img/no-data.png" alt="No data" class="no-data">
             <p>No has registrado ninguna incidencia.</p>

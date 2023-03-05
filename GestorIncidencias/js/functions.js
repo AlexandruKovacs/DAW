@@ -92,9 +92,9 @@ function obtenerGrupos() {
 
 function obtenerIncidencias() {
 
-    let tablaIncidencias = document.getElementById('tablaIncidencias');
-    let vacio = document.getElementById('vacio');
-    let modificarEstadoTitulo = document.getElementById('modificarEstadoTitulo');
+    const tablaIncidencias = document.getElementById('tablaIncidencias');
+    const vacio = document.getElementById('vacio');
+    const tituloPagina = document.getElementById('tituloPagina');
 
     while (tablaIncidencias.rows.length > 1) {
         tablaIncidencias.deleteRow(1);
@@ -110,16 +110,16 @@ function obtenerIncidencias() {
                 vacio.style.visibility = 'visible';
                 vacio.style.display = 'grid';
 
-                if (modificarEstadoTitulo) {
-                    modificarEstadoTitulo.style.display = 'none';
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'none';
                 }
             } else {
                 tablaIncidencias.style.visibility = 'visible';
                 vacio.style.visibility = 'hidden';
                 vacio.style.display = 'none';
 
-                if (modificarEstadoTitulo) {
-                    modificarEstadoTitulo.style.display = 'block';
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'block';
                 }
             }
 
@@ -179,9 +179,9 @@ function obtenerIncidencias() {
 
 function obtenerIncidenciasPorProfesor(idProfesor) {
 
-    let tablaIncidencias = document.getElementById('tablaIncidencias');
-    let vacio = document.getElementById('vacio');
-    let tusIncidencias = document.getElementById('tus-incidencias');
+    const tablaIncidencias = document.getElementById('tablaIncidencias');
+    const vacio = document.getElementById('vacio');
+    const tituloPagina = document.getElementById('tituloPagina');
 
     xhrIncidenciasProfesor.onreadystatechange = function() {
         if (xhrIncidenciasProfesor.readyState === 4 && xhrIncidenciasProfesor.status === 200) {
@@ -194,16 +194,16 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
                 vacio.style.visibility = 'visible';
                 vacio.style.display = 'grid';
 
-                if (tusIncidencias) {
-                    tusIncidencias.style.display = 'none';
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'none';
                 }
             } else {
                 tablaIncidencias.style.visibility = 'visible';
                 vacio.style.visibility = 'hidden';
                 vacio.style.display = 'none';
 
-                if (tusIncidencias) {
-                    tusIncidencias.style.display = 'block';
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'block';
                 }
             }
 
@@ -268,6 +268,7 @@ function obtenerIncidenciasPorEstado(estado) {
 
     const tablaIncidencias = document.getElementById('tablaIncidenciasEstado');
     const vacio = document.getElementById('vacio');
+    const tituloPagina = document.getElementById('tituloPagina');
 
     xhrIncidenciasEnProceso.onreadystatechange = function() {
         if (xhrIncidenciasEnProceso.readyState === 4 && xhrIncidenciasEnProceso.status === 200) {
@@ -278,10 +279,18 @@ function obtenerIncidenciasPorEstado(estado) {
                 tablaIncidencias.style.visibility = 'hidden';
                 vacio.style.visibility = 'visible';
                 vacio.style.display = 'grid';
+
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'none';
+                }
             } else {
                 tablaIncidencias.style.visibility = 'visible';
                 vacio.style.visibility = 'hidden';
                 vacio.style.display = 'none';
+
+                if (tituloPagina) {
+                    tituloPagina.style.display = 'none';
+                }
             }
 
             const tbody = document.querySelector('#tablaIncidenciasEstado tbody');
