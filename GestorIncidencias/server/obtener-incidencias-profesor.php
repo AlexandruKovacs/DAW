@@ -14,7 +14,8 @@ $consulta = "SELECT aulas_estancias.nombre AS nombreAula,
                     incidencias.descripcion, 
                     incidencias.fechaCreacion, 
                     incidencias.estado,
-                    incidencias.comentarios
+                    incidencias.comentarios,
+                    incidencias.id
             FROM incidencias
 
             LEFT JOIN aulas_estancias ON incidencias.idAula = aulas_estancias.id 
@@ -24,7 +25,6 @@ $consulta = "SELECT aulas_estancias.nombre AS nombreAula,
         WHERE incidencias.idProfesor = $idProfesor;";
 
 $resultado = $conn->query($consulta);
-
 
 if ($resultado->num_rows > 0) {
 

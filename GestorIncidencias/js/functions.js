@@ -183,10 +183,13 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
     const vacio = document.getElementById('vacio');
     const tituloPagina = document.getElementById('tituloPagina');
 
+    while (tablaIncidencias.rows.length > 1) {
+        tablaIncidencias.deleteRow(1);
+    }
+
     xhrIncidenciasProfesor.onreadystatechange = function() {
         if (xhrIncidenciasProfesor.readyState === 4 && xhrIncidenciasProfesor.status === 200) {
 
-            console.log(xhrIncidenciasProfesor.responseText);
             let incidencias = JSON.parse(xhrIncidenciasProfesor.responseText);
 
             if (incidencias.length === 0) {
@@ -210,58 +213,60 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
             const tbody = document.querySelector('#tablaIncidencias tbody');
 
             incidencias.forEach(incidencia => {
-                const fila = document.createElement('tr');
+                if (incidencia.estado !== 'Archivada') {
+                    const fila = document.createElement('tr');
 
-                const idAula = document.createElement('td');
-                idAula.textContent = incidencia.nombreAula;
-                fila.appendChild(idAula);
+                    const idAula = document.createElement('td');
+                    idAula.textContent = incidencia.nombreAula;
+                    fila.appendChild(idAula);
 
-                const idGrupo = document.createElement('td');
-                idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
-                fila.appendChild(idGrupo);
+                    const idGrupo = document.createElement('td');
+                    idGrupo.textContent = incidencia.nombreGrupo ? incidencia.nombreGrupo : '-';
+                    fila.appendChild(idGrupo);
 
-                const tipoIncidencia = document.createElement('td');
-                tipoIncidencia.textContent = incidencia.tipoIncidencia;
-                fila.appendChild(tipoIncidencia);
+                    const tipoIncidencia = document.createElement('td');
+                    tipoIncidencia.textContent = incidencia.tipoIncidencia;
+                    fila.appendChild(tipoIncidencia);
 
-                const descripcion = document.createElement('td');
-                descripcion.textContent = incidencia.descripcion;
-                fila.appendChild(descripcion);
+                    const descripcion = document.createElement('td');
+                    descripcion.textContent = incidencia.descripcion;
+                    fila.appendChild(descripcion);
 
-                const fecha = document.createElement('td');
+                    const fecha = document.createElement('td');
 
-                const datoFecha = new Date(incidencia.fechaCreacion);
-                const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
-                
-                fecha.textContent = fechaFormateada;
-                fila.appendChild(fecha);
+                    const datoFecha = new Date(incidencia.fechaCreacion);
+                    const fechaFormateada = `${datoFecha.getDate()}-${datoFecha.getMonth() + 1}-${datoFecha.getFullYear()}`;
+                    
+                    fecha.textContent = fechaFormateada;
+                    fila.appendChild(fecha);
 
-                const comentarios = document.createElement('td');
-                comentarios.textContent = incidencia.comentarios;
-                fila.appendChild(comentarios);
+                    const comentarios = document.createElement('td');
+                    comentarios.textContent = incidencia.comentarios;
+                    fila.appendChild(comentarios);
 
-                const estado = document.createElement('td');
+                    const estado = document.createElement('td');
 
-                if (incidencia.estado === 'Creada') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
-                    estado.appendChild(elementoEstado);
-                } else if (incidencia.estado === 'En proceso') {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
-                    estado.appendChild(elementoEstado);
-                } else {
-                    const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
-                    estado.appendChild(elementoEstado);
+                    if (incidencia.estado === 'Creada') {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-folder-plus', incidencia.estado, 'creada');
+                        estado.appendChild(elementoEstado);
+                    } else if (incidencia.estado === 'En proceso') {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
+                        estado.appendChild(elementoEstado);
+                    } else {
+                        const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                        elementoEstado.addEventListener('click', () => archivarIncidencia(incidencia.id, idProfesor));
+                        estado.appendChild(elementoEstado);
+                    }
+                    fila.appendChild(estado);
+
+                    tbody.appendChild(fila);
                 }
-                fila.appendChild(estado);
-
-                tbody.appendChild(fila);
             });
 
         };
     }
     xhrIncidenciasProfesor.open('GET', `server/obtener-incidencias-profesor.php?idProfesor=${idProfesor}`, true);
     xhrIncidenciasProfesor.send();
-   
 }
 
 function obtenerIncidenciasPorEstado(estado) {
@@ -289,7 +294,7 @@ function obtenerIncidenciasPorEstado(estado) {
                 vacio.style.display = 'none';
 
                 if (tituloPagina) {
-                    tituloPagina.style.display = 'none';
+                    tituloPagina.style.display = 'block';
                 }
             }
 
@@ -359,7 +364,10 @@ function crearElementoEstado(iconoClass, texto, textoClass) {
     textoElemento.textContent = texto;
     textoElemento.className = textoClass;
     textoElemento.style.cursor = 'pointer';
-  
+    if (texto === 'Terminada') {
+        textoElemento.title = 'Archivar';
+    }
+    
     textoElemento.appendChild(icono);
   
     return textoElemento;
@@ -368,13 +376,23 @@ function crearElementoEstado(iconoClass, texto, textoClass) {
 function cambiarEstadoIncidencia(idIncidencia, nuevoEstado) {
     xhrEstado.onreadystatechange = function() {
         if (xhrEstado.readyState === 4 && xhrEstado.status === 200) {
-            console.log(xhrEstado.responseText);
             obtenerIncidencias();
         }
     };
     xhrEstado.open('POST', 'server/modificar-estado.php', true);
     xhrEstado.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhrEstado.send(`idIncidencia=${idIncidencia}&nuevoEstado=${nuevoEstado}`);
+}
+
+function archivarIncidencia(idIncidencia, idProfesor) {
+    xhrEstado.onreadystatechange = function() {
+        if (xhrEstado.readyState === 4 && xhrEstado.status === 200) {
+            obtenerIncidenciasPorProfesor(idProfesor);
+        }
+    };
+    xhrEstado.open('POST', 'server/archivar-incidencia.php', true);
+    xhrEstado.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhrEstado.send(`idIncidencia=${idIncidencia}`);
 }
 
 function togglePassword() {
