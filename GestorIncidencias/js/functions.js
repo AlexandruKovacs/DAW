@@ -162,8 +162,11 @@ function obtenerIncidencias() {
                     const elementoEstado = crearElementoEstado('fa-solid fa-clock', incidencia.estado, 'en-proceso');
                     elementoEstado.addEventListener('click', () => cambiarEstadoIncidencia(incidencia.id, 'Terminada'));
                     estado.appendChild(elementoEstado);
-                } else {
+                } else if (incidencia.estado === 'Terminada') {
                     const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
+                    estado.appendChild(elementoEstado);
+                } else {
+                    const elementoEstado = crearElementoEstado('fa-solid fa-box-archive', incidencia.estado, 'archivada');
                     estado.appendChild(elementoEstado);
                 }
                 fila.appendChild(estado);
