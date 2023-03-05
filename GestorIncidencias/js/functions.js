@@ -254,7 +254,7 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
                         estado.appendChild(elementoEstado);
                     } else {
                         const elementoEstado = crearElementoEstado('fa-solid fa-check', incidencia.estado, 'terminada');
-                        elementoEstado.addEventListener('click', () => archivarIncidencia(incidencia.id, idProfesor));
+                        elementoEstado.addEventListener('click', () => archivarIncidencia(incidencia.id, 'Archivada', idProfesor));
                         estado.appendChild(elementoEstado);
                     }
                     fila.appendChild(estado);
@@ -384,7 +384,7 @@ function cambiarEstadoIncidencia(idIncidencia, nuevoEstado) {
     xhrEstado.send(`idIncidencia=${idIncidencia}&nuevoEstado=${nuevoEstado}`);
 }
 
-function archivarIncidencia(idIncidencia, idProfesor) {
+function archivarIncidencia(idIncidencia, nuevoEstado, idProfesor) {
     xhrEstado.onreadystatechange = function() {
         if (xhrEstado.readyState === 4 && xhrEstado.status === 200) {
             obtenerIncidenciasPorProfesor(idProfesor);
@@ -392,7 +392,7 @@ function archivarIncidencia(idIncidencia, idProfesor) {
     };
     xhrEstado.open('POST', 'server/modificar-estado.php', true);
     xhrEstado.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhrEstado.send(`idIncidencia=${idIncidencia}&estadoNuevo=Archivada`);
+    xhrEstado.send(`idIncidencia=${idIncidencia}&estadoNuevo=${nuevoEstado}`);
 }
 
 function togglePassword() {
