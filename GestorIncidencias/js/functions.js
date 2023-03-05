@@ -392,7 +392,7 @@ function archivarIncidencia(idIncidencia, nuevoEstado, idProfesor) {
     };
     xhrEstado.open('POST', 'server/modificar-estado.php', true);
     xhrEstado.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhrEstado.send(`idIncidencia=${idIncidencia}&estadoNuevo=${nuevoEstado}`);
+    xhrEstado.send(`idIncidencia=${idIncidencia}&nuevoEstado=${nuevoEstado}`);
 }
 
 function togglePassword() {
