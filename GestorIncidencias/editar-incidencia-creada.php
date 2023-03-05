@@ -52,7 +52,6 @@ if (!isset($_SESSION['usuario'])) {
 
             <form id="formComentarios" class="form-comentarios">
 
-            
             <div>
                 <label for="comentarios">Añadir comentarios</label>
                 <textarea name="comentarios" id="comentarios"></textarea>

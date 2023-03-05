@@ -45,21 +45,33 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
 
-    <main class="main-crear-incidencia">
+    <main class="main-editar-incidencia">
         <div class="form-container">
             <h2>Comentarios de la incidencia</h2>
             <div id="mensaje"></div>
 
-            <form id="formIncidencia" class="form-incidencia">
-      
+            <form id="formComentarios" class="form-comentarios">
+
+            <div>
                 <label for="comentarios">Añadir comentarios</label>
                 <textarea name="comentarios" id="comentarios"></textarea>
+                <input type="hidden" name="idIncidencia" id="idOculto">
+            </div>
+            <div>
+                
+                <button class="editar" id="editar">Editar cometarios</button>
+            </div>
 
-                <a class="atras" id="atras" href="ver-incidencias-terminadas.php">Atrás</a>
-                <button class="registrar" id="registrar">Editar cometarios</button>
+            <div>
+            <a class="atras" id="atras" href="ver-incidencias-creadas.php">Atrás</a>
+            </div>
                 
             </form>
         </div>
     </main>
+    <script src="js/consts.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/editar-comentarios.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
