@@ -66,6 +66,5 @@ if (!isset($_SESSION['usuario'])) {
     <script src="js/consts.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/ver-incidencias-estado.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
