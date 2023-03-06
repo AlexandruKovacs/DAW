@@ -5,6 +5,11 @@
         </a>
     </div>
     <div class="info-container">
+        <div class="theme-container">
+            <i class="fa-solid fa-brightness"></i>
+                <input type="checkbox" class="toggle" id="tema" checked>
+            <i class="fa-solid fa-moon"></i>
+        </div>
         Profesor/a <?php echo $_SESSION['nombreApellidos']; ?>.
         <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
     </div>
