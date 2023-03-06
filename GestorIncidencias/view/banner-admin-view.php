@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="info-container">
-        Bienvenido/a <?php echo strtoupper($_SESSION['usuario']); ?>.
+        <p class="nombre-admin">Bienvenido/a <?php echo strtoupper($_SESSION['usuario']); ?>.</p>
         <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
     </div>
 </nav>

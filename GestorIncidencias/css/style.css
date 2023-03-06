@@ -350,6 +350,10 @@ a {
         padding-left: 2rem;
     }
 
+    .nombre-admin {
+        padding: 1rem;
+    }
+
     .nav-bar img {
         width: 20rem;
     }
