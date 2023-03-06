@@ -424,7 +424,7 @@ table th.dark-theme {
     background-color: var(--dark-grey);
 }
 
-table tr:nth-child(even){
+table tr:nth-child(even) {
     background-color: var(--blanco);
 }
 
