@@ -38,7 +38,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="menu-principal">
         <div>
             <a href="nueva-incidencia.php">
-                <button id="crearIncidencia" class="crear-incidencia">
+                <button id="crearIncidencia" class="crear-incidencia" name="crear-incidencia">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </a>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['usuario'])) {
 
         <div>
             <a href="ver-incidencias.php">
-                <button id="listarIncidencias" class="listar-incidencias">
+                <button id="listarIncidencias" class="listar-incidencias" name="listar-incidencias">
                     <i class="fa-solid fa-list"></i>
                 </button>
             </a>

@@ -10,7 +10,7 @@
                 <input type="checkbox" class="toggle" id="tema" checked>
             <i class="fa-solid fa-moon"></i>
         </div>
-        Profesor/a <?php echo $_SESSION['nombreApellidos']; ?>.
+        <p>Profesor/a <?php echo $_SESSION['nombreApellidos']; ?>.</p>
         <a class="logout" href="server/cerrar-sesion.php"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
     </div>
 </nav>

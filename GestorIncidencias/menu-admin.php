@@ -36,7 +36,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="menu-principal">
         <div class="modificar-boton">
             <a href="modificar-estado.php">
-                <button class="modificar-estado">
+                <button class="modificar-estado" name="modificar-estado">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </a>
@@ -44,7 +44,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
         <div class="caja-creadas">
             <a href="ver-incidencias-creadas.php">
-                <button class="incidencia-creada">
+                <button class="incidencia-creada" name="ver-incidecias-creadas">
                     <i class="fa-solid fa-folder-plus icono-sobre"></i>
                 </button>
             </a>
@@ -53,7 +53,7 @@ if (!isset($_SESSION['usuario'])) {
 
         <div class="caja-proceso">
             <a href="ver-incidencias-proceso.php">
-                <button class="incidencia-proceso">
+                <button class="incidencia-proceso" name="ver-incidecias-proceso">
                     <i class="fa-solid fa-clock icono-reloj"></i>
                 </button>
             </a>
@@ -62,7 +62,7 @@ if (!isset($_SESSION['usuario'])) {
 
         <div class="caja-terminadas">
             <a href="ver-incidencias-terminadas.php">
-                <button class="incidencia-terminada">
+                <button class="incidencia-terminada" name="ver-incidecias-terminadas">
                     <i class="fa-solid fa-check icono-check"></i>
                 </button>
             </a>

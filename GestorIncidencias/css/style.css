@@ -111,7 +111,7 @@ body.dark-theme {
 
 .form-container {
     background-color: #fff;
-    margin: 0 auto;
+    margin: 5rem auto;
     padding: 3rem;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
@@ -153,6 +153,17 @@ body.dark-theme {
     text-align: center;
 }
 
+@media (max-width: 868px) {
+    .form-container {
+        margin: 5rem;
+    }
+
+    .form-register, .form-incidencia {
+        display: block;
+        width: 30rem;
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -176,6 +187,13 @@ label {
     grid-column: -1/1;
     grid-row: 3;
     width: 100%;
+}
+
+@media (max-width: 868px) {
+    .form-incidencia {
+        display: block;
+        width: 30rem;
+    }
 }
 
 .form-comentarios div:nth-child(1) {
@@ -309,6 +327,51 @@ a {
 
 .menu-principal div > p {
     text-align: center;
+}
+
+@media (max-width: 1120px) {
+    .menu-principal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 5rem 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-principal {
+        display: block;
+        margin: 5rem;
+        text-align: center;
+    }
+
+    .nav-bar {
+        padding: 0;
+        padding-left: 2rem;
+    }
+
+    .nav-bar img {
+        width: 20rem;
+    }
+
+    .nav-bar .info-container {
+        width: 20rem;
+    }
+
+    .info-container p {
+        text-align: right;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .info-container p {
+        font-size: 1rem;
+    }
+
+    .nav-bar img {
+        width: 10rem;
+    }
 }
 
 .crear-incidencia, .listar-incidencias, .incidencia-creada, 
@@ -512,7 +575,7 @@ div > p {
     max-width: 50%;
 }
   
-@media screen and (max-width: 767px) {
+@media (max-width: 868px) {
 
     table th, table td {
         display: block;
