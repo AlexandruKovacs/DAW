@@ -29,8 +29,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 VALUES 
                 ('$nombre', '$apellidos', '$departamento', '$usuario', '$password', '$correo')";
     
-        $idProfesor = $conn->insert_id;
         mysqli_query($conn, $insertaUsuario);
+        $idProfesor = $conn->insert_id;
         mysqli_close($conn);
     
         $_SESSION['usuario'] = $usuario;
