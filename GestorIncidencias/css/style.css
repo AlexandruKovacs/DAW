@@ -423,13 +423,21 @@ table th {
 table th.dark-theme {
     background-color: var(--dark-grey);
 }
-  
-table tr:nth-child(even) {
+
+table tr:nth-child(even){
     background-color: var(--blanco);
 }
 
-table tr.dark-theme {
+table tr:nth-child(odd){
     background-color: none;
+}
+
+.dark-theme tr:nth-child(even) {
+    background-color: var(--dark-grey);
+}
+
+.dark-theme tr:nth-child(odd) {
+    background-color: var(--dark-grey-1);
 }
 
 table td:last-child {
