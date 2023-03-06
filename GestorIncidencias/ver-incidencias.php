@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['usuario'])) {
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] === 'CTIC') {
 
   header("Location: index.php");
   exit();
