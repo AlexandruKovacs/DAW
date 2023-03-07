@@ -35,6 +35,7 @@ body {
     font-size: 1.5rem;
     line-height: 1.5;
     user-select: none;
+    scroll-behavior: smooth;
 }
 
 body.dark-theme {
