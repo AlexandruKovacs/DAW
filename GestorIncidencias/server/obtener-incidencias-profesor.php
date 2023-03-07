@@ -1,8 +1,8 @@
 <?php
 
-$idProfesor = $_GET['idProfesor'];
-
 $conn = new mysqli('localhost', 'root', '', 'gestor');
+
+$idProfesor = mysqli_real_escape_string($conn, $_GET['idProfesor']);
 
 if ($conn->connect_error) {
     die('Conexión fallida: ' . $conn->connect_error);
@@ -26,17 +26,10 @@ $consulta = "SELECT aulas_estancias.nombre AS nombreAula,
 
 $resultado = $conn->query($consulta);
 
-if ($resultado->num_rows > 0) {
-
-    $incidencias = [];
+$incidencias = [];
   
-    while($fila = $resultado->fetch_assoc()) {
-        $incidencias[] = $fila;
-    }
-
-} else {
-
-    $incidencias = [];
+while($fila = $resultado->fetch_assoc()) {
+    $incidencias[] = $fila;
 }
 
 $JSONIncidencias = json_encode($incidencias);

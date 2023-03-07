@@ -11,11 +11,11 @@ if ($conn->connect_error) {
 $consulta = "SELECT aulas_estancias.nombre AS nombreAula, 
                     grupos.nombre AS nombreGrupo, 
                     tipos_incidencias.tipoIncidencia AS tipoIncidencia,
-                    incidencias.id,
                     incidencias.descripcion, 
                     incidencias.fechaCreacion, 
                     incidencias.estado,
-                    incidencias.comentarios
+                    incidencias.comentarios,
+                    incidencias.id
             FROM incidencias
 
             LEFT JOIN aulas_estancias ON incidencias.idAula = aulas_estancias.id 
@@ -26,16 +26,10 @@ $consulta = "SELECT aulas_estancias.nombre AS nombreAula,
 
 $resultado = $conn->query($consulta);
 
-if ($resultado->num_rows > 0) {
+$incidencias = [];
 
-    $incidencias = [];
-    while($fila = $resultado->fetch_assoc()) {
-        $incidencias[] = $fila;
-    }
-
-} else {
-
-    $incidencias = [];
+while($fila = $resultado->fetch_assoc()) {
+    $incidencias[] = $fila;
 }
 
 $JSONIncidencias = json_encode($incidencias);
