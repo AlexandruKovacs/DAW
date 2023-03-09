@@ -193,21 +193,25 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
 
             let incidencias = JSON.parse(xhrIncidenciasProfesor.responseText);
 
-            if (incidencias.length === 0) {
-                tablaIncidencias.style.visibility = 'hidden';
-                vacio.style.visibility = 'visible';
-                vacio.style.display = 'grid';
+            for (let i = 0; i < incidencias.length; i++) {
+                let estado = incidencias[i].estado;
 
-                if (tituloPagina) {
-                    tituloPagina.style.display = 'none';
-                }
-            } else {
-                tablaIncidencias.style.visibility = 'visible';
-                vacio.style.visibility = 'hidden';
-                vacio.style.display = 'none';
-
-                if (tituloPagina) {
-                    tituloPagina.style.display = 'block';
+                if (incidencias.length === 0 || estado === 'Archivada') {
+                    tablaIncidencias.style.visibility = 'hidden';
+                    vacio.style.visibility = 'visible';
+                    vacio.style.display = 'grid';
+    
+                    if (tituloPagina) {
+                        tituloPagina.style.display = 'none';
+                    }
+                } else {
+                    tablaIncidencias.style.visibility = 'visible';
+                    vacio.style.visibility = 'hidden';
+                    vacio.style.display = 'none';
+    
+                    if (tituloPagina) {
+                        tituloPagina.style.display = 'block';
+                    }
                 }
             }
 
