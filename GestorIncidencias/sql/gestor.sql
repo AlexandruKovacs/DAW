@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `gestor`
+-- Base de datos: `id20430323_gestor`
 --
 
 -- --------------------------------------------------------
@@ -205,9 +205,9 @@ CREATE TABLE `incidencias` (
 --
 
 INSERT INTO `incidencias` (`id`, `idProfesor`, `idAula`, `idGrupo`, `tipoIncidencia`, `descripcion`, `fechaCreacion`, `estado`, `comentarios`) VALUES
-(1, 8, 18, 15, 1, 'Descripcion de la incidencia recien creda', '2023-02-26', 'Creada', 'Comentarios de la incidencia número 1.'),
-(2, 8, 2, NULL, 2, 'Descripcion de la incidencia recien creda', '2023-02-24', 'Terminada', 'Estos son los comentarios de la segunda incidencia.'),
-(3, 8, 4, NULL, 4, 'Hola, esto es una breve descripción sobre la incidencia ', '2023-03-22', 'En proceso', 'Se ha finalizado la incidencia correctamente y felizmente.');
+(1, 2, 18, 15, 1, 'Descripcion de la incidencia recien creda', '2023-02-26', 'Creada', 'Comentarios de la incidencia número 1.'),
+(2, 2, 2, NULL, 2, 'Descripcion de la incidencia recien creda', '2023-02-24', 'Terminada', 'Estos son los comentarios de la segunda incidencia.'),
+(3, 2, 4, NULL, 4, 'Hola, esto es una breve descripción sobre la incidencia ', '2023-03-22', 'En proceso', 'Se ha finalizado la incidencia correctamente y felizmente.');
 
 -- --------------------------------------------------------
 
