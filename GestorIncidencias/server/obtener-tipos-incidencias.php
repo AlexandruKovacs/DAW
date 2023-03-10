@@ -1,6 +1,6 @@
 <?php
 
-require ('config/conexion.php');
+require ('../config/conexion.php');
 
 if ($conn->connect_error) {
   die('Conexión fallida: ' . $conn->connect_error);

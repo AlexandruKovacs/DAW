@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $comentarios = $_POST['comentarios'];
     $idIncidencia = $_POST['idIncidencia'];
 
-    require ('config/conexion.php');
+    require ('../config/conexion.php');
     
     $updateComentarios = "UPDATE incidencias SET comentarios = '$comentarios' WHERE id = '$idIncidencia'";
     

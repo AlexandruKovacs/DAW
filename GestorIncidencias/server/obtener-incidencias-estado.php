@@ -1,6 +1,6 @@
 <?php
 
-require ('config/conexion.php');
+require ('../config/conexion.php');
 
 $estado = mysqli_real_escape_string($conn, $_GET['estado']);
 

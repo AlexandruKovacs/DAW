@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $comentarios = $_POST['comentarios'];
 
-    require ('config/conexion.php');
+    require ('../config/conexion.php');
 
     if (mysqli_connect_errno()) {
         echo 'Error al conectarse a MySQL: ' . mysqli_connect_error();

@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion = $_POST['descripcion'];
     $usuario = $_SESSION['usuario'];
 
-    require ('config/conexion.php');
+    require ('../config/conexion.php');
     
     $selectUsuarios = "SELECT * FROM profesores WHERE usuario = '$usuario' LIMIT 1";
     $resultado = mysqli_query($conn, $selectUsuarios);

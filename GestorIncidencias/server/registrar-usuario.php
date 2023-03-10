@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $password = hash('sha512', $password);
 
-    require ('config/conexion.php');
+    require ('../config/conexion.php');
     
     $selectUsuarios = "SELECT * FROM profesores WHERE usuario = '$usuario' LIMIT 1";
     $resultado = mysqli_query($conn, $selectUsuarios);
