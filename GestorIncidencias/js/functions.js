@@ -198,7 +198,7 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
 
             let incidencias = JSON.parse(xhrIncidenciasProfesor.responseText);
 
-            if (incidencias.length === 0) {
+            if (incidencias.length === 0 || incidencias.every(incidencia => incidencia.estado === 'Archivada')) {
                 tablaIncidencias.style.visibility = 'hidden';
                 vacio.style.visibility = 'visible';
                 vacio.style.display = 'grid';
@@ -374,9 +374,10 @@ function crearElementoEstado(iconoClass, texto, textoClass) {
     icono.className = iconoClass;
     textoElemento.textContent = texto;
     textoElemento.className = textoClass;
-    textoElemento.style.cursor = 'pointer';
+
     if (texto === 'Terminada') {
-        textoElemento.title = 'Archivar';
+        textoElemento.style.cursor = 'pointer';
+        textoElemento.title = 'Lista para archivar';
     }
     
     textoElemento.appendChild(icono);
