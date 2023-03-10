@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $password = hash('sha512', $password);
 
-    $conexion = new mysqli('localhost', 'root', '', 'gestor');
+    $conexion = new mysqli('localhost', 'id20430323_root', '', 'id20430323_gestor');
 
     $sql = 'SELECT * FROM profesores WHERE usuario = ?';
 

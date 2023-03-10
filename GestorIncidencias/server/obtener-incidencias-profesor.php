@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'root', '', 'gestor');
+$conn = new mysqli('localhost', 'id20430323_root', '', 'id20430323_gestor');
 
 $idProfesor = mysqli_real_escape_string($conn, $_GET['idProfesor']);
 
