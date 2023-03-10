@@ -103,6 +103,7 @@ function obtenerIncidencias() {
     xhrIncidencias.onreadystatechange = function() {
         if (xhrIncidencias.readyState === 4 && xhrIncidencias.status === 200) {
 
+            console.log(xhrIncidencias.responseText);
             let incidencias = JSON.parse(xhrIncidencias.responseText);
 
             if (incidencias.length === 0) {
@@ -128,6 +129,10 @@ function obtenerIncidencias() {
             incidencias.forEach(incidencia => {
                 if (incidencia.estado !== 'Archivada') {
                     const fila = document.createElement('tr');
+
+                    const idProfesor = document.createElement('td');
+                    idProfesor.textContent = incidencia.nombreProfesor + ' ' + incidencia.apellidosProfesor;
+                    fila.appendChild(idProfesor);
 
                     const idAula = document.createElement('td');
                     idAula.textContent = incidencia.nombreAula;
@@ -304,6 +309,10 @@ function obtenerIncidenciasPorEstado(estado) {
 
             incidencias.forEach(incidencia => {
                 const fila = document.createElement('tr');
+
+                const idProfesor = document.createElement('td');
+                idProfesor.textContent = incidencia.nombreProfesor + ' ' + incidencia.apellidosProfesor;
+                fila.appendChild(idProfesor);
 
                 const idAula = document.createElement('td');
                 idAula.textContent = incidencia.nombreAula;

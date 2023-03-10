@@ -46,6 +46,7 @@ if (!isset($_SESSION['usuario'])) {
         <table id="tablaIncidenciasEstado">
             <thead>
             <tr>
+                <th>Profesor</th>
                 <th>Aula</th>
                 <th>Grupo</th>
                 <th>Tipo de incidencia</th>
