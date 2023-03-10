@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $password = hash('sha512', $password);
 
-    $conexion = new mysqli('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
+    require ('config/conexion.php');
 
     $sql = 'SELECT * FROM profesores WHERE usuario = ?';
 
-    $stmt = $conexion->prepare($sql);
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $usuario);
     $stmt->execute();
 

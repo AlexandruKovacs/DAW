@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
+require ('config/conexion.php');
 
 $idProfesor = mysqli_real_escape_string($conn, $_GET['idProfesor']);
 

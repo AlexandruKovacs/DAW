@@ -3,7 +3,7 @@
 $idIncidencia = $_POST['idIncidencia'];
 $nuevoEstado = $_POST['nuevoEstado'];
 
-$conn = new mysqli('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
+require ('config/conexion.php');
 
 if ($conn->connect_error) {
     die('Conexión fallida: ' . $conn->connect_error);

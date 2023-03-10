@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $password = hash('sha512', $password);
 
-    $conn = mysqli_connect('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
+    require ('config/conexion.php');
     
     $selectUsuarios = "SELECT * FROM profesores WHERE usuario = '$usuario' LIMIT 1";
     $resultado = mysqli_query($conn, $selectUsuarios);

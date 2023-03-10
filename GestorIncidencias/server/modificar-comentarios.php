@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $comentarios = $_POST['comentarios'];
     $idIncidencia = $_POST['idIncidencia'];
 
-    $conn = mysqli_connect('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
+    require ('config/conexion.php');
     
     $updateComentarios = "UPDATE incidencias SET comentarios = '$comentarios' WHERE id = '$idIncidencia'";
     
