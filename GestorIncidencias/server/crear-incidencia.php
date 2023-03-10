@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion = $_POST['descripcion'];
     $usuario = $_SESSION['usuario'];
 
-    $conn = mysqli_connect('localhost', 'id20430323_root', '', 'id20430323_gestor');
+    $conn = mysqli_connect('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
     
     $selectUsuarios = "SELECT * FROM profesores WHERE usuario = '$usuario' LIMIT 1";
     $resultado = mysqli_query($conn, $selectUsuarios);

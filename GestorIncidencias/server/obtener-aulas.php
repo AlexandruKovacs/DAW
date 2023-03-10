@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'id20430323_root', '', 'id20430323_gestor');
+$conn = new mysqli('localhost', 'id20430323_root', '9Qbgkf/eK-Z&CI|g', 'id20430323_gestor');
 
 if ($conn->connect_error) {
   die('Conexión fallida: ' . $conn->connect_error);

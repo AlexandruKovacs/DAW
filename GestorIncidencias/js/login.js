@@ -19,6 +19,7 @@ formLogin.addEventListener('submit', function(e) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
 
             if (response.success) {
