@@ -211,28 +211,7 @@ function obtenerIncidenciasPorProfesor(idProfesor) {
                 }
             }
 
-            for (let i = 0; i < incidencias.length; i++) {
-                let estado = incidencias[i].estado;
-
-                if (incidencias.length === 0 || estado === 'Archivada') {
-                    tablaIncidencias.style.visibility = 'hidden';
-                    vacio.style.visibility = 'visible';
-                    vacio.style.display = 'grid';
-    
-                    if (tituloPagina) {
-                        tituloPagina.style.display = 'none';
-                    }
-                } else {
-                    tablaIncidencias.style.visibility = 'visible';
-                    vacio.style.visibility = 'hidden';
-                    vacio.style.display = 'none';
-    
-                    if (tituloPagina) {
-                        tituloPagina.style.display = 'block';
-                    }
-                }
-            }
-
+            
             const tbody = document.querySelector('#tablaIncidencias tbody');
 
             incidencias.forEach(incidencia => {
